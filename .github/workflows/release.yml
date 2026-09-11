@@ -52,7 +52,7 @@ jobs:
             2. Copy to: `/sdcard/Android/data/com.netease.g104.cn/files/Netease/g104/Documents/reborn_offline.py`
             3. Launch Marvel Super War
             
-            Full instructions → [INSTALL.md](https://github.com/${{ github.repository }}/blob/main/INSTALL.md)
+            Full instructions → [INSTALL_EN.md](https://github.com/${{ github.repository }}/blob/main/INSTALL_EN.md) / [INSTALL_ID.md](https://github.com/${{ github.repository }}/blob/main/INSTALL_ID.md)
             
             ---
             

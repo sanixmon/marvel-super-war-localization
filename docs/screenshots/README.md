@@ -37,6 +37,4 @@ All screenshots taken in-game after applying `reborn_offline.py`.
 
 ![Match Loading – Hero Cards](05_match_loading_heroes.jpg)
 
----
-
-*Mod: [`reborn_offline.py`](../../assets/Documents/reborn_offline.py) · Install: [`INSTALL.md`](../../INSTALL.md)*
+*Mod: [`reborn_offline.py`](../../assets/Documents/reborn_offline.py) · Install: [English](../../INSTALL_EN.md) | [Bahasa Indonesia](../../INSTALL_ID.md)*

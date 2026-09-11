@@ -64,6 +64,7 @@ This script automatically:
 ---
 
 ### 4. Repository Structure
+- [INSTALL_EN.md](./INSTALL_EN.md) — Quick installation guide for the offline localization mod.
 - [RECON.md](./RECON.md) — Detailed reverse-engineering report on NeoX, VFS loaders, and binary structure.
 - [STRINGS.csv](./STRINGS.csv) — 1,195 extracted Chinese string entries with IDs and translation contexts.
 - [GLOSSARY.md](./GLOSSARY.md) — Standardized character names, abilities, roles, and menu glossary.
@@ -135,6 +136,7 @@ Skrip ini akan otomatis:
 ---
 
 ### 4. Peta File Repositori
+- [INSTALL_ID.md](./INSTALL_ID.md) — Panduan cepat pemasangan mod lokalisasi offline.
 - [RECON.md](./RECON.md) — Laporan teknis reverse-engineering engine NeoX dan VFS.
 - [STRINGS.csv](./STRINGS.csv) — 1,195 baris string teks Mandarin terstruktur siap terjemah.
 - [GLOSSARY.md](./GLOSSARY.md) — Glosarium resmi hero Marvel, peran, atribut, dan tombol menu.
