@@ -3,7 +3,8 @@
 
 [![Game](https://img.shields.io/badge/Game-Marvel%20Super%20War-blue.svg)](https://g104.163.com/)
 [![Engine](https://img.shields.io/badge/Engine-NetEase%20NeoX%203.0-orange.svg)](#architecture)
-[![License](https://img.shields.io/badge/License-MIT%20%2F%20Research-green.svg)](#)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg)](CODE_OF_CONDUCT.md)
 
 [English](#english) • [Bahasa Indonesia](#bahasa-indonesia)
 
@@ -57,8 +58,8 @@ This script automatically:
 
 #### Step 3: Translating Newly Added Strings
 1. Compare new strings against [STRINGS.csv](./STRINGS.csv).
-2. Use [GLOSSARY.md](./GLOSSARY.md) for character names, items, and combat stats to maintain consistent terminology.
-3. Submit a Pull Request with updated translations!
+2. Consult [GLOSSARY.md](./GLOSSARY.md) for character names, items, and combat stats to maintain consistent terminology.
+3. Review [CONTRIBUTING.md](./CONTRIBUTING.md) and submit a Pull Request!
 
 ---
 
@@ -69,6 +70,14 @@ This script automatically:
 - [PATCH.md](./PATCH.md) — Proof of concept diffs and invariant verification log.
 - [BUILD.md](./BUILD.md) — Comprehensive manual reproduction and CLI signing guide.
 - [patch_poc.py](./patch_poc.py) — Standalone automated patch and build script.
+- [CONTRIBUTING.md](./CONTRIBUTING.md) — Translation guidelines and PR submission rules.
+- [DISCLAIMER.md](./DISCLAIMER.md) — Legal notice, intellectual property, and fair-use policy.
+- [LICENSE](./LICENSE) — MIT License.
+
+---
+
+### 5. Legal Notice
+This project is an independent educational research and fan translation effort. It is not affiliated with, endorsed by, or sponsored by Marvel Entertainment, The Walt Disney Company, or NetEase, Inc. See [DISCLAIMER.md](./DISCLAIMER.md) for full intellectual property details.
 
 ---
 
@@ -121,7 +130,7 @@ Skrip ini akan otomatis:
 #### Langkah 3: Menambahkan Translasi Baru
 1. Cek string baru yang belum ada di [STRINGS.csv](./STRINGS.csv).
 2. Gunakan panduan nama hero dan istilah di [GLOSSARY.md](./GLOSSARY.md).
-3. Buat Pull Request (PR) ke repositori ini!
+3. Baca aturan di [CONTRIBUTING.md](./CONTRIBUTING.md) lalu buat Pull Request (PR) ke repositori ini!
 
 ---
 
@@ -132,3 +141,11 @@ Skrip ini akan otomatis:
 - [PATCH.md](./PATCH.md) — Rincian modifikasi string POC dan pengujian biner.
 - [BUILD.md](./BUILD.md) — Panduan langkah manual perakitan dan penandatanganan APK.
 - [patch_poc.py](./patch_poc.py) — Skrip otomasi siap pakai untuk membangun APK hasil patch.
+- [CONTRIBUTING.md](./CONTRIBUTING.md) — Pedoman kontribusi terjemahan dan aturan PR.
+- [DISCLAIMER.md](./DISCLAIMER.md) — Pernyataan hukum hak cipta, fair-use, dan non-afiliasi.
+- [LICENSE](./LICENSE) — Lisensi lisensi terbuka MIT.
+
+---
+
+### 5. Pernyataan Hukum
+Proyek ini merupakan inisiatif riset edukasi dan translasi komunitas independen, serta tidak berafiliasi dengan atau didukung oleh Marvel Entertainment, The Walt Disney Company, maupun NetEase, Inc. Rincian lengkap hak cipta dan merek dagang dapat dibaca di [DISCLAIMER.md](./DISCLAIMER.md).
