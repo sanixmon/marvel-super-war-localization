@@ -1,0 +1,22 @@
+# Android Packages & Binaries
+*.apk
+*.apks
+*.xapk
+*.idsig
+
+# Intermediate Resource Tables & Temporary Rebuilds
+resources.arsc
+resources_poc.arsc
+*.tmp
+*.log
+
+# Decompiled Folders & Build Artifacts
+apk_res_out/
+dist/
+build/
+
+# Python & Environment
+__pycache__/
+*.pyc
+*.keystore
+.agents/

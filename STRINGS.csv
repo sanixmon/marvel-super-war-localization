@@ -1,0 +1,1196 @@
+ID,Chinese,English,Context,Source,Notes
+app_name,漫威超级战争,Marvel Super War,Application Label,resources.arsc,Extracted from APK resources
+cancel,退出,Cancel,Button,resources.arsc,Extracted from APK resources
+confirm,确认,Confirm,Button,resources.arsc,Extracted from APK resources
+export_ef_alert_cancel,取消,Cancel,Button,resources.arsc,Extracted from APK resources
+export_ef_alert_confirm,退出,Confirm,Button,resources.arsc,Extracted from APK resources
+export_ef_alert_message,你想要结束游戏并退出吗？,Do you want to end the game and exit?,Dialog Message,resources.arsc,Extracted from APK resources
+export_ef_alert_title,退出游戏,Exit Game,Dialog Title,resources.arsc,Extracted from APK resources
+nxunisdk_message_exit_game,确定要退出游戏?,,System/SDK,resources.arsc,Extracted from APK resources
+nxunisdk_title_exit_game,退出游戏,,System/SDK,resources.arsc,Extracted from APK resources
+obb_access_failed,文件访问失败,,System/SDK,resources.arsc,Extracted from APK resources
+obb_access_message,无法访问外部存储,,System/SDK,resources.arsc,Extracted from APK resources
+obb_download_btn_cancel,取消,Cancel,Button,resources.arsc,Extracted from APK resources
+obb_download_btn_pause,暂停,,OBB Downloader,resources.arsc,Extracted from APK resources
+obb_download_btn_resume,继续,,OBB Downloader,resources.arsc,Extracted from APK resources
+obb_download_btn_retry,重试,,OBB Downloader,resources.arsc,Extracted from APK resources
+obb_download_title_complete,下载完成,,OBB Downloader,resources.arsc,Extracted from APK resources
+obb_download_title_coping,正在复制文件，请稍等,,OBB Downloader,resources.arsc,Extracted from APK resources
+obb_download_title_downloading,下载扩展文件中，请稍等,,OBB Downloader,resources.arsc,Extracted from APK resources
+obb_download_title_failed,下载失败,,OBB Downloader,resources.arsc,Extracted from APK resources
+obb_download_title_paused,下载暂停,,OBB Downloader,resources.arsc,Extracted from APK resources
+unisdk_alert_dialog_info,未成年人消费限制说明,,System/SDK,resources.arsc,Extracted from APK resources
+unisdk_alert_dialog_positive,我知道了,,System/SDK,resources.arsc,Extracted from APK resources
+unisdk_alert_dialog_tips,提示,,System/SDK,resources.arsc,Extracted from APK resources
+netease_mpay__abnormal,异常,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__account,帐号,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__account_input_hint,请输入%1$s帐号,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__activity_rebuild,客户端进程被意外中断，请确保运行内存充足。,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__add_new_user,添加新帐号,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__agree,同意,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__agree_rule_to_login,请先同意相关政策条款再继续登录,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__alipay,支付宝,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__alipay_not_install,本设备未安装支付宝应用，无法开通免密支付。,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__allow,允许,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__and,与,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__anti_addiction_check_quit_msg,【防沉迷】亲爱的玩家，根据国家新闻出版署《关于防止未成年人沉迷网络游戏的通知》《关于进一步严格管理 切实防止未成年人沉迷网络游戏的通知》，当前防沉迷系统保护已生效，未成年用户不可体验游戏。,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__anti_addiction_close,关闭,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__anti_addiction_countdown_float_left_time,%1$d分钟,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__anti_addiction_countdown_float_left_time_short,不足%1$d分钟,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__anti_addiction_countdown_float_prefix,未实名帐号 (剩余,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__anti_addiction_force_quit_msg,【防沉迷】亲爱的玩家，根据国家相关法规规定，当前防沉迷系统保护已生效，请合理安排游戏，注意休息哦~,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__anti_addiction_friendly_tip,温馨提示,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__anti_addiction_iknow,我知道了,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__anti_addiction_internal_error,内部数据异常，请退出游戏！,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__anti_addiction_left_time_today,今天剩余游戏时长,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__anti_addiction_network_error,网络不给力，请检查网络状态后重试。,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__anti_addiction_quit,退出游戏,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__anti_addiction_realname_info_verify_fail_header,您的实名登记信息<ntsdk color=\,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__anti_addiction_realname_verify_force_msg,亲爱的玩家，请先完成实名登记，才能体验游戏。,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__anti_addiction_realname_verify_optional_msg,【防沉迷】亲爱的玩家，根据国家新闻出版署《关于防止未成年人沉迷网络游戏的通知》《关于进一步严格管理 切实防止未成年人沉迷网络游戏的通知》，未实名帐号不可体验游戏，请完成实名登记。,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__anti_addiction_realname_with_underline, 实名登记 ,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__anti_addiction_verify,实名登记,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__appeal_channel_auto,自助方式,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__appeal_channel_manual,人工申诉,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__appeal_login_by_sms,验证码登录,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__bind_account,绑定帐号,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__bind_immediately,马上绑定,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__bind_mobile_input_hint,请输入要绑定的手机号,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__bind_other_channel,绑定其他帐号,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__bind_tip,为了快速游戏数据安全，请绑定一个帐号。,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__can_not_use_on_ios,受政策限制不能在iOS应用中使用,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__cancel,取消,Cancel,Button,resources.arsc,Extracted from APK resources
+netease_mpay__change_password,修改密码,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__channel_disabled,暂不可用,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__choose_cbg_login_account,请选择要登录藏宝阁的帐号,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__click_to_select,点击选择,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__close,关闭,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__confirm,确认,Confirm,Button,resources.arsc,Extracted from APK resources
+netease_mpay__confirm_bind,绑定本机号码,Confirm,Button,resources.arsc,Extracted from APK resources
+netease_mpay__confirm_delete,确认删除,Confirm,Button,resources.arsc,Extracted from APK resources
+netease_mpay__confirm_deposit,确认充值,Confirm,Button,resources.arsc,Extracted from APK resources
+netease_mpay__confirm_login,本机号码登录,Confirm,Button,resources.arsc,Extracted from APK resources
+netease_mpay__confirm_mobile_login,确认登录手机帐号,Confirm,Button,resources.arsc,Extracted from APK resources
+netease_mpay__confirm_on_mobile,请在手机点击确认以登录,Confirm,Button,resources.arsc,Extracted from APK resources
+netease_mpay__confirm_pay,确认支付,Confirm,Button,resources.arsc,Extracted from APK resources
+netease_mpay__confirm_urs_password,为保证安全，请输入您的邮箱密码。,Confirm,Button,resources.arsc,Extracted from APK resources
+netease_mpay__continue,继续,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__continue_deposit,继续充值,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__continue_pay,继续支付,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__copy_clipboard,拷贝到剪切板,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__copy_clipboard_done,检测结果已复制！,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__delete_account,删除记录,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__delete_finish,完成,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__delete_guest_photo_confirm,快速游戏帐号状态已更新，原帐号凭证图片已失效，是否删除？,Confirm,Button,resources.arsc,Extracted from APK resources
+netease_mpay__deposit_result_page_title,订单充值结果,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__deposit_success,充值成功,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__deposit_title,充值金额：,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__dev_invalid_login_type,不支持该帐号类型,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__dev_target_urs_pid_empty,urs产品号不能为空,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__ecard_balance_template,%1$s点,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__ecard_balance_tip,点数余额：,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__ecard_need_balance_template,(所需点数：%1$s点),,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__ecard_pay,网易一卡通支付,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__ecard_pay_tips,可使用网易充值一卡通实体卡或虚拟卡密充值。,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__enter_problem,遇到问题,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__err_cbg_login_no_user,登录信息出错,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__err_login_data_not_exist,登录信息不存在！,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__err_login_expired_and_login_again,登录已失效，请重新登录。,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__err_login_expired_and_login_by_mobile,登录已失效，请使用绑定的手机号登录。,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__err_no_login,用户尚未登录。,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__exchange_rate,（1元=10点）,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__fetch_in_progress,获取中...,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__fetch_qrcode_fail,没有获取到二维码信息，重试？,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__friendly_tip,温馨提示,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__function_not_available,维护中,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__game,游戏,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__go_download,去下载,,OBB Downloader,resources.arsc,Extracted from APK resources
+netease_mpay__goto_prepay,去充值,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__goto_setting,去设置,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__help,帮助,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__hide_pay_channels,收起支付方式,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__hours_before,%1$s小时前,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__i_know,我知道了,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__input_ecard_number,请输入网易一卡通卡号,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__input_ecard_password,请输入网易一卡通密码,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__input_mcard_number,请输入充值卡卡号,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__input_mcard_password,请输入充值卡密码,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__input_password_to_verify_urs,请输入邮箱密码验证身份,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__input_phone_sms,请填写手机短信验证码,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__input_phone_vvc,请填写语音验证码,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__ji,及,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__just_now,刚刚,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__last_login_time,上次登录 %1$s,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__link_pay_plugin_tips_pay,支付中，请尽快完成支付。,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__loading,加载中,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__loading_text,加载中...,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__login,登录,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__login_account_changed_warning,%1$s帐号发生变化。\n确定继续以变更后的帐号登录？,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__login_again,重新登录,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__login_bind_channels_title,请选择绑定帐号,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__login_bind_disabled,当前帐号暂时无法绑定,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__login_center_3rd_nickname_default,扫码登录帐号,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__login_channel_apple,通过Apple登录,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__login_channel_battlenet,战网,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__login_channel_dashen,网易大神,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__login_channel_douyin,抖音,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__login_channel_douyin_cloud,前往抖音获取手机号码,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__login_channel_douyin_cloud_tip,通过抖音授权获取手机号码登录,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__login_channel_guest,快速游戏,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__login_channel_mobile,手机号登录,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__login_channel_more,更多方式,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__login_channel_mowang,默往,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__login_channel_neteaseoauth,网易帐号,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__login_channel_others,使用其他帐号登录>,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__login_channel_qrcode,扫码登录,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__login_channel_sg,闲聊,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__login_channel_urs,网易邮箱,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__login_channel_weibo,新浪微博,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__login_channel_weixin,微信,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__login_channel_yixin,易信,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__login_click_to_login_mobile,点击登录手机帐号,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__login_confirm_login,确认登录,Confirm,Button,resources.arsc,Extracted from APK resources
+netease_mpay__login_do_set,立刻设置,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__login_echo_format,即将登录%1$s,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__login_err_dashen_not_installed,尚未安装网易大神应用，登录失败。,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__login_err_format_template,%1$s格式错误！,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__login_err_google_auth_cancel,已取消登录Google帐号,Cancel,Button,resources.arsc,Extracted from APK resources
+netease_mpay__login_err_google_services,Google Play服务无法使用，请先安装或者升级Google Play服务。,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__login_err_login_channel_not_available,维护中，请选择其他登录方式。,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__login_err_mowang_not_installed,尚未安装默往应用，登录失败。,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__login_err_no_facebook_user,facebook帐号登录失败,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__login_err_no_input_account,请输入帐号！,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__login_err_no_input_external_account,请输入第三方帐号信息！,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__login_err_no_support_bind,当前帐号无需绑定！,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__login_err_not_guest_to_bind,登录失效，请登录快速游戏帐号绑定！,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__login_err_password_illeagal_character,密码包含无效字符，请重新输入！,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__login_err_password_size,密码长度应控制在6–16个字符之内,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__login_err_qq_not_installed,尚未安装QQ客户端，登录失败。,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__login_err_sg_not_installed,尚未安装闲聊客户端，登录失败。,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__login_err_weixin_not_installed,尚未安装微信应用，登录失败。,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__login_err_yixin_not_installed,尚未安装易信客户端，登录失败。,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__login_failed,登录失败,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__login_get_captcha,获取验证码,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__login_guest_account_has_been_deleted_tips,原快速游戏帐号已注销，下次登录将创建新帐号。,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__login_guest_bind_tips_default,建议尽快绑定帐号，以防数据丢失。,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__login_guest_login_confirm,需要读写文件权限，以便储存及恢复快速游戏帐号数据。,Confirm,Button,resources.arsc,Extracted from APK resources
+netease_mpay__login_has_send,已发送,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__login_input_captcha,请输入验证码,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__login_input_login_password,请输入登录密码,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__login_input_mobile,请输入手机号码,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__login_input_password,请输入密码,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__login_input_urs_template,请输入%1$s,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__login_login_immediately,立即登录,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__login_login_success_welcome_back_template,", 欢迎进入%1$s。",,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__login_mobile_get_security_state_failed_template,获取帐号信息状态失败，请重试或返回%1$s。,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__login_mobile_guide_set_security_template,您的帐号%1$s信息尚未完善，请尽快补充完整以保证帐号的安全。,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__login_nettest_check_dns,检测当前DNS...,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__login_nettest_check_finish,请导出报告联系开发组或客服,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__login_nettest_check_http,检测网络请求...,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__login_nettest_check_localtime,检测系统时间...,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__login_nettest_check_ping,检测访问延迟状态...,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__login_nettest_check_report,查看报告,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__login_nettest_check_traceroute,检测服务器连接...,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__login_nettest_export_report,导出报告,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__login_nettest_status_finish,检测完成,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__login_nettest_status_in_progress,检测中,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__login_nettest_title,网络检测,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__login_oauth_do_continue,继续登录,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__login_oauth_quit_weibo_confirm,退出微博登录？,Confirm,Button,resources.arsc,Extracted from APK resources
+netease_mpay__login_please_login_before_qrcode_scan,当前未登录帐号，请登录后再扫码。,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__login_qr_code_login_other_accounts,使用官方渠道帐号登录,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__login_qr_code_login_scan_tips_default,MuMu模拟器已支持%1$s渠道版本扫码登录,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__login_qr_code_login_scan_tips_default2,打开%1$s手机端app扫码登录,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__login_qrcode_remember_tip,您已启用记住帐号，请留意帐号安全，如需撤销该桌面模拟器登录凭证，请登录游戏后进入“用户中心—登录管理”中进行操作。,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__login_qrcode_scan_nopay,快捷扫码功能暂不支持支付。,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__login_qrcode_scan_retry,二维码识别失败，请扫描桌面模拟器二维码。,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__login_quick_edit,快捷编辑,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__login_registration_title,注册新用户,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__login_related_urs_title,该手机已绑定其他帐号，也可直接登录：,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__login_remember_login_info,记住帐号，下次登录免扫码。,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__login_scancode_login_success_welcome_back_template,已登录%1$s,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__login_send_captcha,发送短信,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__login_unfreeze,解冻,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__login_unlock,解锁,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__login_upload_sms_template,免费验证码短信已用完，请编辑短信%1$s发送到%2$s，即可获得验证码。短信费用由运营商收取，网易公司不额外收费。,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__login_weibo_login_title,微博登录,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__login_with_other_accounts,其他帐号登录,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__login_with_password,密码登录,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__mcard_confirm_message_other_template,卡内余额仍可以购买%1$s产品，但不可充值话费，确认支付？,Confirm,Button,resources.arsc,Extracted from APK resources
+netease_mpay__mcard_confirm_message_urs,卡内余额将充值到您的网易通行证帐号，确认支付？,Confirm,Button,resources.arsc,Extracted from APK resources
+netease_mpay__mcard_deposit_tips,所选面值请与充值卡实际面值一致，以免造成充值失败或卡内金额损失。,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__mcard_err_empty_denomination,请选择充值卡的面额,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__mcard_pay_tips,所选面值请与充值卡实际面值一致，以免造成充值失败或卡内金额损失，超出订单金额的部分将充值到帐号点数。,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__mcard_pay_tips_other,所选手机充值卡实际面值请与支付面值一致，以免造成支付失败或卡内资金损失。,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__mcard_prepay_tips_other,所选面值请与充值卡实际面值一致，以免造成充值失败或卡内资金损失。,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__mcard_price_title,充值卡面值：,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__mcard_selector_title,请选择与支付面值一致的充值卡,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__mins_before,%1$s分钟前,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__mobile_app,手机端APP,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__mobile_login_means_agree,已同意,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__mobile_login_means_agree_hint,请同意《服务条款》,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__more_pay_channels,更多支付方式,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__mpay_trade_quit_tip,交易尚未完成，继续交易？,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__need_install_app,请先安装%1$sapp。,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__net_check_ok,开始检测,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__net_report_dns,DNS解析,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__net_report_http,网络请求测试,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__net_report_localtime,本地时间：,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__net_report_network_time,网络时间：,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__net_report_ping,ping测试,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__net_report_ping_avg,平均值：,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__net_report_ping_lost_packet,个包，丢包率,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__net_report_ping_max,最大值：,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__net_report_ping_min,最小值：,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__net_report_ping_receive_packet,个包，收到,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__net_report_ping_send,发送,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__net_report_ping_std,标准差：,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__net_report_time,时间检测,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__net_report_time_interval,时间间隔：,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__net_test_error,检测结果异常，请重新检测！,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__net_test_ping_error,ping测试发生异常。,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__network_err_client_protocol,协议错误！,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__network_err_cmwap_bad_network,网络状况不佳，请切换到WiFi环境。,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__network_err_fatal,无法访问该页面，请稍后再试！,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__network_err_fetch_config,网络不给力，请检查网络状态后重试。,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__network_err_fetchurl_others,无法访问服务器，请稍后再试！,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__network_err_goto_net_test,网络连接失败，是否进行网络检测？,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__network_err_illegal_param,请求参数错误!,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__network_err_invalid_url_address,访问地址无效！,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__network_err_no_connected,网络不可用，请检查网络设置。,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__network_err_no_local_file,等待页面加载失败，请检查您的配置。,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__network_err_no_perr_certificate,登录失败，请尝试切换网络，或稍候再试！,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__network_err_no_perr_certificate_date_error,访问出错，请正确设置本机系统日期时间后重试！,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__network_err_param_encoding,请求参数编码错误！,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__network_err_proxy,检测到您使用了代理认证，为了您的帐号安全，请勿使用不可信的代理服务器。,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__network_err_request_method,未知的请求方式！,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__network_err_retriable,无法访问页面,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__network_err_server,服务器错误，请稍候再试！,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__network_err_server_read,访问网络出错，请稍候再试！,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__network_err_server_status,服务器出错，请稍候再试！,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__network_warn_no_wifi,当前网络非WiFi环境，是否继续？,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__next_step,下一步,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__no_use_one_step_pay, 不使用免密支付 ,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__normal,正常,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__not_delete_guest_picture,请勿删除以便恢复快速游戏帐号数据,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__not_sign_pay_description,成功签约代扣服务后，将自动扣除本次购买金额。,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__ok,确定,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__one_pass_login,本机号码,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__one_pass_login_fail_switch_other_login,本机号码快捷登录服务暂时不可用，请使用短信验证码登录。,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__one_step_pay,免密支付,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__one_step_pay_tip1,您已开通免密支付，无需输入密码即可支付,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__one_step_pay_tip2,可在用户中心-免密支付设置进行管理,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__op_failure_and_try_later,操作失败，请稍后重试。,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__open,打开,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__other_login_channel,其他登录方式,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__other_pay_channels,其他支付方式,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__pay,支付,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__pay_amount_title,支付金额：,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__pay_fail,支付失败,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__pay_method_not_allowed,当前不支持该支付方式,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__pay_on_mobile,请在手机上完成支付,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__pay_qr_code_pay_scan_tips_default,打开游戏手机客户端扫码支付,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__pay_result,支付结果,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__pay_result_not_found_yet,暂时未能查询到结果，若支付成功会在游戏中自动发货，请返回游戏。,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__pay_result_page_title,订单支付结果,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__pay_result_unknown,查询支付结果超时,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__pay_success,支付成功,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__pay_title,支付：,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__pay_wait_mcard_paying,正在确认手机充值卡订单，耗时可能较长，请耐心等待。,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__pay_wait_paying,正在确认订单，请稍候。,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__people,人,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__permission_reject_warning_write_sdcard,未授予访问存储空间的权限，快速游戏帐号数据可能丢失。,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__permission_union_login_confirm,请授予读写文件权限，以便储存及读取帐号数据。,Confirm,Button,resources.arsc,Extracted from APK resources
+netease_mpay__permission_union_login_reject_warning_write_sdcard,缺少读写文件权限，可能导致丢失帐号信息。,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__please_select_deposit_amount,请选择充值点数（1元=10点）,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__prepay,充值,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__prepay_and_pay,充值并支付,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__prepay_mcard_selector_title,请选择要使用的充值卡面值,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__prepay_result_failed,充值失败,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__price_unit_dian,点,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__price_unit_yuan,元,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__prior,优先,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__privacy_agreed,我已详细阅读并同意,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__privacy_rule_text,《网易集团隐私政策》,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__qr_code_pay,扫码支付,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__qrcode_pay_ali_tips,打开支付宝扫一扫付款,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__qrcode_pay_code_fail_refresh,二维码加载失败\n请刷新重试,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__qrcode_pay_loading_code,正在加载二维码\n请稍后…,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__qrcode_pay_query_order,正在确认订单\n请耐心等待,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__qrcode_pay_wx_tips,打开微信扫一扫付款,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__query_pay_result_after_sign_processing,签约成功，正在执行支付操作。,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__query_pay_result_only_processing,正在执行支付操作,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__query_sign_result_processing,正在查询签约结果,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__queue_board_description,当前登录人数较多，请耐心等候。,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__queue_wait_number,排队人数,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__queue_wait_time,预计时间,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__quit,退出,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__re_set,重新设置,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__realname_about,关于,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__realname_about_title,防沉迷措施,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__realname_about_title_with_underline, 防沉迷措施 ,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__realname_confirm,确认登记,Confirm,Button,resources.arsc,Extracted from APK resources
+netease_mpay__realname_id,身份证号:,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__realname_id_error,证件号码为空!,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__realname_id_hint,请填写真实有效的护照号,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__realname_idcard_hint,请填写真实有效的身份证号,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__realname_name,姓  名:,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__realname_name_error,名字为空!,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__realname_name_hint,请填写真实姓名,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__realname_passport,护照号:,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__realname_quit,退出游戏,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__realname_region,国家/地区:,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__realname_rewrite,重新填写,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__realname_submit_now,马上提交,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__realname_title,游戏实名登记,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__realname_update_id,身份证号：%1$s,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__realname_update_msg,以下是您的实名登记信息，该信息仅用于实名登记不会泄露于任何第三方。实名登记资料一旦填写确认，<ntsdk color=\,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__realname_update_name,姓  名：%1$s,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__realname_update_no_mainland_tip,注意：非中国大陆实名信息登记后，需登录客服专区提交客服审核。,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__realname_update_oversea_verify_msg,亲爱的玩家，您已成功登记为非中国大陆居民，请尽快登录客服专区提交相关证件资料进行审核。,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__realname_update_passport,护照号：%1$s,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__realname_update_type,认证身份：%1$s,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__recent_login_game,最近登录 %1$s,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__recharge_title,点数充值,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__refresh,刷新,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__refresh_qrcode,请刷新二维码重试,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__refresh_qrcode2,请刷新二维码重新尝试,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__refreshing,刷新中,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__refuse,拒绝,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__register_realname,实名登记,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__request_processing,请求处理中,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__retry,重试,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__retry_later,稍候再试,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__retry_scan,重新扫码,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__return,返回,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__return_game,返回游戏,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__return_game_to_deliver_product,请返回游戏，将自动发货。,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__return_game_to_order_again,请返回游戏重新购买,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__role_id_empty,角色ID不能为空!,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__role_info_empty,角色信息不能为空!,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__role_upload,上传角色信息\n,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__role_uploaded,角色信息已上传\n,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__save_guest_photo_confirm,是否允许通过图片保存快速游戏数据，以防卸载后帐号丢失？,Confirm,Button,resources.arsc,Extracted from APK resources
+netease_mpay__save_photo_album,保存到本地相册,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__save_photo_album_done,已经成功保存到相册！,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__save_photo_album_fail,无法保存到相册！,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__save_photo_confirm,保存图片需要访问存储空间的权限。,Confirm,Button,resources.arsc,Extracted from APK resources
+netease_mpay__save_to_clipboard_done,已复制到剪贴板,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__scan_pay,扫一扫支付,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__scan_qrcode_expired,二维码已过期,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__scan_qrcode_success,扫码成功,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__scancode_err_func_disabled,暂不支持二维码扫描,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__scancode_err_login_no_user,登录信息出错，请重新扫描登录。,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__scancode_err_no_pay_guest,本设备上无对应需要支付的快速游戏帐号信息，请使用有对应快速游戏帐号的设备支付。,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__scancode_err_pay_no_user,支付信息出错，请重新扫描支付。,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__scancode_err_title_template,没有扫描到登录或支付信息，请扫描%1$s中的二维码。,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__scancode_no_account,您尚未登录任何帐号,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__scancode_pay_failure,支付失败，请刷新二维码后重新支付。,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__scancode_pay_no_account,当前要支付的帐号信息不存在，是否登录该帐号？,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__scancode_title_game_template,请选择要登录《%1$s》%2$s的帐号,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__second,秒,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__security_message_reading,立即查阅,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__security_message_warning,您有未查阅的安全通知，请及时查阅，谨防帐号被盗！,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__select_account_login,选择帐号登录,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__select_channel,请选择充值方式,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__select_currency,请选择充值点数,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__select_login_platform,请选择登录平台,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__select_other_login_channel_title,请选择登录方式,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__select_pay_channel,请选择支付方式,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__send_again,重新发送,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__send_sms_failed,发送短信失败,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__send_to,发送至%1$s,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__service_rule_text,《服务条款》,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__set_bound,已绑定,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__set_current_login_header,当前登录：,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__set_empty_mailbox,暂时没有新消息哦～,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__set_empty_mailbox_guide_template,去玩会%1$s好好享受这段时间吧～,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__set_mailbox,我的消息,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__set_manage_account,帐号管理,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__set_message_detail,消息详情,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__set_mobile_pass_hint,请设置6–16位登录密码,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__set_no_bound,未绑定,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__set_no_more_message,没有更多消息了,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__set_no_new_message,暂时没有消息,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__set_no_set,未设置,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__set_pass_title,请为帐号%1$s设置密码以保证安全。,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__set_password,设置密码,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__set_pull_to_refresh,下拉刷新,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__set_realname,实名信息,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__set_related_mobile,关联手机,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__set_security_center,安全中心,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__set_security_email,密保邮箱,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__set_set_done,已设置,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__set_switch_account,切换帐号,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__set_update_mailbox_in_progress,正在更新消息列表,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__set_user_center,用户中心,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__set_verified,已认证,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__set_verify_failed,认证失败,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__set_verifying,认证中,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__sign_and_pay,签约代扣并支付,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__sign_channel_select,选择代扣方式,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__sign_defeat,签约失败,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__sign_defeat_tips,签约失败，点击确定返回游戏。,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__sign_method,签约方式,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__sign_pay_defeat,签约代扣失败,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__sign_pay_defeat_tips,签约扣费失败，点击确定返回游戏。,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__sign_pay_qq_not_install,系统检测到未安装QQ客户端，无法使用QQ支付。,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__sign_pay_success,签约代扣成功,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__sign_pay_success_tips,签约代扣成功，后续代扣将优先使用此支付方式，点击确定返回游戏。,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__sign_pay_unknown,抱歉，暂未获得扣费结果。,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__sign_pay_weixin_not_install,系统检测到未安装微信客户端，无法使用微信支付。,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__sign_qr_code_expired,二维码已过期，请点击刷新。,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__sign_qr_code_scanned,扫码成功，请到%1$s操作。,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__sign_service_error,签约服务繁忙，请稍后再试。,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__sign_success,签约成功,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__sign_success_tips,签约成功，点击确定返回游戏。,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__sign_terminate_confirm,是否确认解除%1$s代扣服务？,Confirm,Button,resources.arsc,Extracted from APK resources
+netease_mpay__sign_unknown,抱歉，暂未获得签约结果。,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__sign_unknown_tips,请点击刷新查看结果，或关闭弹窗重新开通。,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__signed,已签约,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__signed_pay,代扣支付,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__signed_pay_description,您已签约代扣服务，即将使用%1$s进行支付。,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__skip,暂时跳过,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__sms_send_success,验证码已发送,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__submit,提交,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__tenpay_plugin_tips_plugin,本服务由QQ钱包提供，请放心使用。,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__timeout,超时,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__tips_header,温馨提示：,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__try_next_time,下次再说,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__unknown,未知,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__unsign,解约,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__upgrade,升级,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__uppay_err_download,暂时无法下载支付控件,,OBB Downloader,resources.arsc,Extracted from APK resources
+netease_mpay__uppay_err_plugin,请先下载支付控件！,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__urs_login_bind,绑定,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__urs_login_bind_register,邮箱注册,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__urs_login_bind_template,请输入要绑定的%1$s,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__urs_login_forget_password,忘记密码,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__urs_login_no_account,没有帐号？,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__urs_login_no_bind_phone,该邮箱没有绑定手机号，请选择其他登录方式。,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__urs_login_register_now,立即注册,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__urs_login_sms_hint,请输入验证码,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__urs_login_sms_msg_default,已绑定手机的邮箱帐号，可通过验证码登录。,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__urs_login_sms_msg_has_sent,该邮箱帐号已绑定手机%1$s,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__urs_login_sms_refetch,请重新获取短信验证码,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__use_ecard,使用网易一卡通,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__verification_change_to_sms,接收短信验证码,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__verification_change_to_vvc,接收语音验证码,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__verify_sms_title,请验证游戏内绑定的手机号%1$s,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__vvc_send_success,请留意接听电话收取语音验证码,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__wanna_exit,确定退出,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__warnning,警告,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__warnning_delete_user,是否确认删除该帐号的登录记录？,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__webview_need_upgrade,您的系统WebView已经过期，请到应用商店安装最新的WebView应用。,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__wechat,微信,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__weixinpay_plugin_tips_plugin,本服务由微信支付提供，请放心使用。,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__weixinpay_qq_not_install,系统检测到未安装QQ客户端，请选择其他支付方式。,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay__weixinpay_weixin_not_install,系统检测到未安装微信客户端，请选择其他支付方式。,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay_netease_channel__login_qrcode_confirm,确定,Confirm,Button,resources.arsc,Extracted from APK resources
+netease_mpay_netease_channel__login_qrcode_scan_nopay,快捷扫码功能暂不支持支付。,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay_netease_channel__login_qrcode_scan_retry,二维码识别失败，请扫描桌面模拟器二维码。,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay_webview_js__failed_to_select_file,无法访问您的本地文件,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_mpay_webview_js__select_file_title,选择要上传的文件,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+netease_push_manage__cancel,取消,Cancel,Button,resources.arsc,Extracted from APK resources
+netease_push_manage__ok,确认,,System/SDK,resources.arsc,Extracted from APK resources
+netease_push_manage__please_confirm_with_correct_client,请使用正确的游戏客户端扫码确认。,Confirm,Button,resources.arsc,Extracted from APK resources
+netease_push_manage__server_error,网络连接超时，请稍后重试。,,System/SDK,resources.arsc,Extracted from APK resources
+unisdk_protocol_title,用户协议,,System/SDK,resources.arsc,Extracted from APK resources
+unisdk_protocol_confirm,确 定,Confirm,Button,resources.arsc,Extracted from APK resources
+unisdk_protocol_accept,接 受,,System/SDK,resources.arsc,Extracted from APK resources
+unisdk_protocol_reject,拒 绝,,System/SDK,resources.arsc,Extracted from APK resources
+noah_game__aas_check_quit_msg,【防沉迷】亲爱的玩家，根据国家新闻出版署《关于防止未成年人沉迷网络游戏的通知》《关于进一步严格管理 切实防止未成年人沉迷网络游戏的通知》，当前防沉迷系统保护已生效，未成年用户不可体验游戏。,,System/SDK,resources.arsc,Extracted from APK resources
+noah_game__aas_close,关闭,,System/SDK,resources.arsc,Extracted from APK resources
+noah_game__aas_countdown_float_left_time,%1$s分钟,,System/SDK,resources.arsc,Extracted from APK resources
+noah_game__aas_countdown_float_left_time_short,不足%1$s分钟,,System/SDK,resources.arsc,Extracted from APK resources
+noah_game__aas_countdown_float_prefix,未实名帐号 (剩余,,System/SDK,resources.arsc,Extracted from APK resources
+noah_game__aas_force_quit_msg,【防沉迷】亲爱的玩家，据国家新闻出版署《关于防止未成年人沉迷网络游戏的通知》，当前防沉迷系统保护已生效，请合理安排游戏，注意休息哦~,,System/SDK,resources.arsc,Extracted from APK resources
+noah_game__aas_friendly_tip,温馨提示,,System/SDK,resources.arsc,Extracted from APK resources
+noah_game__aas_i_know,我知道了,,System/SDK,resources.arsc,Extracted from APK resources
+noah_game__aas_internal_error,内部数据异常，请退出游戏！,,System/SDK,resources.arsc,Extracted from APK resources
+noah_game__aas_left_time_today,今天剩余游戏时长,,System/SDK,resources.arsc,Extracted from APK resources
+noah_game__aas_measure_title,防沉迷措施,,System/SDK,resources.arsc,Extracted from APK resources
+noah_game__aas_network_error,网络不给力，请检查网络状态后重试。,,System/SDK,resources.arsc,Extracted from APK resources
+noah_game__aas_quit,退出游戏,,System/SDK,resources.arsc,Extracted from APK resources
+noah_game__aas_realname_verify_force_msg,亲爱的玩家，请先完成实名登记，才能体验游戏。,,System/SDK,resources.arsc,Extracted from APK resources
+noah_game__aas_realname_verify_optional_msg,【防沉迷】亲爱的玩家，根据国家新闻出版署《关于防止未成年人沉迷网络游戏的通知》《关于进一步严格管理 切实防止未成年人沉迷网络游戏的通知》，未实名帐号不可体验游戏，请完成实名登记。,,System/SDK,resources.arsc,Extracted from APK resources
+noah_game__aas_realname_with_underline, 实名登记 ,,System/SDK,resources.arsc,Extracted from APK resources
+noah_game__aas_rules,根据国家新闻出版署《关于防止未成年人沉迷网络游戏的通知》《关于进一步严格管理 切实防止未成年人沉迷网络游戏的通知》，为引导未成年人健康游戏，未实名的玩家不能登录游戏，未成年玩家登录游戏将会受到以下限制：\n一、时间限制\n1. 未成年玩家可在周五、周六、周日和法定节假日每日晚20时至21时登录游戏，其他时间无法登录游戏。\n二、消费限制\n1. 8周岁以下(不含)无法进行充值。\n2. 8周岁至16周岁(含8周岁，不含16周岁)充值单次不超过50元，每月累计不超过200元。\n3. 16周岁至18周岁(含16周岁，不含18周岁)充值单次不超过100元，每月累计不超过400元。,,System/SDK,resources.arsc,Extracted from APK resources
+noah_game__aas_rules_header,【防沉迷】亲爱的玩家，<ntsdk color=\,,System/SDK,resources.arsc,Extracted from APK resources
+noah_game__aas_verify,实名登记,,System/SDK,resources.arsc,Extracted from APK resources
+mobile_link__change_mobile,更换号码,,System/SDK,resources.arsc,Extracted from APK resources
+mobile_link__confirm,确认,Confirm,Button,resources.arsc,Extracted from APK resources
+mobile_link__current_linked_is,当前关联手机号：%1$s,,System/SDK,resources.arsc,Extracted from APK resources
+mobile_link__current_linked_phone,当前关联手机号,,System/SDK,resources.arsc,Extracted from APK resources
+mobile_link__current_linked_phone_is,当前关联的手机号是%1$s,,System/SDK,resources.arsc,Extracted from APK resources
+mobile_link__current_phone_is,验证手机号：%1$s,,System/SDK,resources.arsc,Extracted from APK resources
+mobile_link__error_phone_null,请输入手机号码,,System/SDK,resources.arsc,Extracted from APK resources
+mobile_link__error_protocol_unchecked,请先同意运营商条款，再继续操作。,,System/SDK,resources.arsc,Extracted from APK resources
+mobile_link__error_server,网络连接超时，请稍后重试。,,System/SDK,resources.arsc,Extracted from APK resources
+mobile_link__error_sms_null,请输入短信验证码,,System/SDK,resources.arsc,Extracted from APK resources
+mobile_link__get_captcha,获取验证码,,System/SDK,resources.arsc,Extracted from APK resources
+mobile_link__history_phone_is,曾用手机号：%1$s,,System/SDK,resources.arsc,Extracted from APK resources
+mobile_link__input_current_phone_hint,请输入当前关联手机号进行验证,,System/SDK,resources.arsc,Extracted from APK resources
+mobile_link__input_old_phone_hint,请输入原手机号进行验证,,System/SDK,resources.arsc,Extracted from APK resources
+mobile_link__input_phone_hint,请输入手机号码,,System/SDK,resources.arsc,Extracted from APK resources
+mobile_link__input_sms_hint,请输入验证码,,System/SDK,resources.arsc,Extracted from APK resources
+mobile_link__link_history_phone_tip,您曾关联以上号码，是否继续使用该号码为关联手机号？,,System/SDK,resources.arsc,Extracted from APK resources
+mobile_link__link_local_phone,关联本机号码,,System/SDK,resources.arsc,Extracted from APK resources
+mobile_link__link_other_phone,关联其他手机号,,System/SDK,resources.arsc,Extracted from APK resources
+mobile_link__link_phone,关联手机,,System/SDK,resources.arsc,Extracted from APK resources
+mobile_link__link_phone_success_tip,关联成功，当前关联手机号,,System/SDK,resources.arsc,Extracted from APK resources
+mobile_link__local_phone_is,本机号码：%1$s,,System/SDK,resources.arsc,Extracted from APK resources
+mobile_link__next,下一步,,System/SDK,resources.arsc,Extracted from APK resources
+mobile_link__not_update,不更新,,System/SDK,resources.arsc,Extracted from APK resources
+mobile_link__ok,我知道了,,System/SDK,resources.arsc,Extracted from APK resources
+mobile_link__phone_auto_link_phone,手机帐号自动关联登录手机号,,System/SDK,resources.arsc,Extracted from APK resources
+mobile_link__read_and_agree,我已详细阅读并同意,,System/SDK,resources.arsc,Extracted from APK resources
+mobile_link__return_game,返回游戏,,System/SDK,resources.arsc,Extracted from APK resources
+mobile_link__send_again,重新发送,,System/SDK,resources.arsc,Extracted from APK resources
+mobile_link__sms_verify,短信验证,,System/SDK,resources.arsc,Extracted from APK resources
+mobile_link__unified_update_phone_sms_tip,关联手机成功，是否将所有原手机号为%1$s的关联手机统一更新为此号码？需要通过短信验证原手机号。,,System/SDK,resources.arsc,Extracted from APK resources
+mobile_link__unified_update_phone_tip,关联手机成功，是否将所有原手机号为%1$s的关联手机统一更新为此号码？,,System/SDK,resources.arsc,Extracted from APK resources
+mobile_link__update,更新,,System/SDK,resources.arsc,Extracted from APK resources
+mobile_link__update_phone,更换号码,,System/SDK,resources.arsc,Extracted from APK resources
+mobile_link__verify_history_phone_tip,当前已关联以上手机号，是否继续使用该号码为关联手机号？,,System/SDK,resources.arsc,Extracted from APK resources
+epaypp_all_image,所有照片,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+epaypp_back_facing_camera_not_exist,不存在后置摄像头,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+epaypp_camera_not_detected,未检测到相机,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+epaypp_file_path_is_null,文件路径为空,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+epaypp_id_avatar_layer,人像面,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+epaypp_id_guohui_layer,国徽面,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+epaypp_loading,加载中,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+epaypp_open_back_facing_camera_fail,打开后置摄像头失败,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+epaypp_take_photo_fail,拍照失败,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+epaypp_take_photo_save_fail,拍照保存失败,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+epaypp_taking_photo,拍照,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+epaypp_toke_photo_image,拍摄照片,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+epaysdk_account,持卡人,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+epaysdk_account_desc,为了您的账户资金安全，只能绑定持卡人本人的银行卡。\n\n获取更多帮助，请致电网易支付客服电话\n %1$s。,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+epaysdk_account_tips,持卡人说明,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+epaysdk_acid_head_warming,验证本人姓名和身份证号，以保证账户安全；\n完成身份验证后仅可添加本人银行卡,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+epaysdk_acid_no_sms_tips,1.请检查手机信号，或者重新开机尝试\n2.请检查短信是否被手机安全软件拦截\n3.各个机型的短信中心号码设置有不同的方式，建议您到当地的通讯运营商咨询核实手机中的短信中心号码是否设置正确\n4.获取更多帮助，请拨打客服电话\n %1$s,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+epaysdk_acid_phone_tips_hasp,1 .若手机已停用，请至网易支付APP「我的」-「设置」页面更换手机号码\n2.获取更多帮助，请拨打客服电话400-0881188,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+epaysdk_acid_phone_tips_nop,请填写本人常用手机号,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+epaysdk_activate_failed,激活失败,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+epaysdk_activate_now,立即开通,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+epaysdk_add,添加,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+epaysdk_add_bankcard,添加银行卡,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+epaysdk_auto_risk_diff_se_no,待验证将军令与设备绑定序列号不一致，请确认,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+epaysdk_auto_risk_invalid,将军令已失效，请确认后重新激活,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+epaysdk_auto_risk_low_version,将军令客户端版本过低，请更新,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+epaysdk_bank_phone,银行预留手机号,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+epaysdk_bankcard_detail,银行卡详情,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+epaysdk_base_back_modify,返回修改,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+epaysdk_base_balance,余额,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+epaysdk_base_cmb_name_warming,您输入的持卡人姓名「%s」存在特殊符号，确认绑卡？,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+epaysdk_base_confirm_commit,确认提交,Confirm,Button,resources.arsc,Extracted from APK resources
+epaysdk_base_file_chooser_title,文件选择,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+epaysdk_base_unsupport_picking_file,当前系统不能处理文件上传,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+epaysdk_bind_card_findback,绑定新卡找回,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+epaysdk_bind_card_set_pwd,绑定新卡设置,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+epaysdk_bind_card_verify,绑定新卡验证身份,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+epaysdk_cancel,取消,Cancel,Button,resources.arsc,Extracted from APK resources
+epaysdk_change_card_tip,更换银行卡,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+epaysdk_change_password,修改支付密码,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+epaysdk_change_pay_method,切换支付方式,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+epaysdk_change_paymethod,更换支付方式,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+epaysdk_choose_account,选择账号,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+epaysdk_choose_owner_bank,选择所属银行,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+epaysdk_code_sent_already,验证码已发送至手机号,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+epaysdk_collapse,收起,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+epaysdk_complaints,求助反馈,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+epaysdk_complete,完成,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+epaysdk_current_login_account,当前登录账号：%s,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+epaysdk_cvv,安全码,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+epaysdk_cvv_desc,安全码是打印在信用卡背面签名区域的一串数字，一般是后3位或4位数字。,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+epaysdk_cvv_tips,安全码说明,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+epaysdk_delete_succeed,删除成功,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+epaysdk_edit,编辑,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+epaysdk_epay_youhui,网易支付优惠,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+epaysdk_error_too_much_wait,尝试次数过多，请稍后再试,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+epaysdk_exit,退出,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+epaysdk_exit_liveness_warming,是否退出身份验证？,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+epaysdk_expand,详情,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+epaysdk_expire,有效期,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+epaysdk_expire_desc,有效期是打印在信用卡正面卡号下方，标准格式为月份在前，年份在后的一串数字。,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+epaysdk_expire_tips,有效期说明,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+epaysdk_failed_no_safe_phone,未绑定密保手机号,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+epaysdk_forward_resolve,前往解决,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+epaysdk_frozen,您的账号当前已冻结，请下载网易支付APP提交账户信息进行申诉，申诉通过后账号即可解冻,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+epaysdk_general_self_check_fail,将军令校验失败,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+epaysdk_gift_card,礼品卡,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+epaysdk_give_up,放弃,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+epaysdk_go_addcard,前往绑定银行卡,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+epaysdk_go_ahead_bind_card,继续绑卡,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+epaysdk_go_modify,去修改,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+epaysdk_go_re_add_card,前往重新添卡,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+epaysdk_go_verify,去验证,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+epaysdk_i_agree,我同意,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+epaysdk_i_known,我知道了,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+epaysdk_id_verify,身份验证,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+epaysdk_input_origin_pwd_check_id,请输入原支付密码，以验证身份,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+epaysdk_input_sms_code,请输入短信验证码,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+epaysdk_input_sms_code_2verify_id,输入短信验证码以验证身份,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+epaysdk_input_valid_code,请输入正确的验证码,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+epaysdk_input_xx,请输入%s,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+epaysdk_input_xx_2verify_id,输入%s以验证身份,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+epaysdk_jifen_discount,使用%1$s积分抵¥%2$s,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+epaysdk_jifen_discount_desc,%1$s总积分为%2$s,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+epaysdk_jifen_unused,%1$s%2$s积分未使用,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+epaysdk_kaola_safepay,考拉安全支付,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+epaysdk_known,知道了,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+epaysdk_login,登录,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+epaysdk_login_account_hint,请输入网易邮箱/通行证账号,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+epaysdk_login_other_account,登录其他账号,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+epaysdk_login_pwd_hint,请输入登录密码,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+epaysdk_modify_immediately,立即修改,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+epaysdk_modify_success,修改成功,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+epaysdk_ne_freephone_call_xx,网易免费电话将会拨至：%s,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+epaysdk_ness_gift_card,网易礼品卡,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+epaysdk_no,否,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+epaysdk_no_discount,不使用网易支付优惠,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+epaysdk_no_sms_addcard_warming,为保障您的账户资金安全，请先绑定银行卡验证身份,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+epaysdk_ok,确定,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+epaysdk_order_amount,订单金额,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+epaysdk_outer_frozen,您的账号已被冻结，详情请联系网易支付客服400-088-1188,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+epaysdk_pay,付 款,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+epaysdk_pay_account,付款账号,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+epaysdk_pay_addcard_then_pay,完成添卡并支付,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+epaysdk_pay_chooser_jifen_desp,积分%1$s可抵¥%2$s,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+epaysdk_pay_discount_label,立减¥%s,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+epaysdk_pay_merchant_format,向%s付款,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+epaysdk_pay_random_discount,随机立减,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+epaysdk_pay_random_huiyou,随机优惠,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+epaysdk_pay_result_jifen_desp,%1$s%2$s积分抵¥%3$s,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+epaysdk_pay_success,支付成功,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+epaysdk_pay_with_new_card,使用新卡支付,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+epaysdk_pay_youhui,优惠,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+epaysdk_permission_open_warming,请授权手机的相关权限，以完成下一步流程操作,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+epaysdk_phone,手机号说明,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+epaysdk_phone_desc,银行预留的手机号是办理该银行卡时所填写的手机号码。没有预留手机号、忘记手机号、或手机已停用，请联系银行客服更新处理。,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+epaysdk_phone_desc_kl,银行预留的手机号是办理该银行卡时所填写的手机号，如忘记、停用或无预留手机号码，请拨打银行客服电话进行更新处理。,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+epaysdk_please_fill_bankinfo,请填写银行预留信息，后续只能添加该持卡人银行卡,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+epaysdk_pls_input_tail_cardnum,请输入尾号%s的银行卡号,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+epaysdk_pls_input_verify_code,请输入验证码,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+epaysdk_pls_input_voice_code,请输入语音验证码,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+epaysdk_pls_pick_credit_date,请选择信用卡有效期,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+epaysdk_prepay_unusable_warm,以下礼品卡不可在本次交易中使用,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+epaysdk_prepaycard_detail,礼品卡详情,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+epaysdk_psw_set_tips_1,请设置6位数字支付密码，不可与银行取款密码、生日、手机号码、其他平台支付密码相同,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+epaysdk_psw_set_tips_2,请确认6位数字支付密码,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+epaysdk_psw_swipe_face,验证实名信息+人脸识别,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+epaysdk_psw_verification_choose,请选择任一种方式进行身份验证,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+epaysdk_psw_verify_sms_card,短信验证码+银行卡信息,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+epaysdk_quit_addcard_warming,放弃绑定银行卡？,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+epaysdk_reacquire,重新获取,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+epaysdk_realname_no_sms_tips,1.请检查短信是否被手机安全软件拦截\n2.请确保手机未欠费\n3.获取更多帮助，请拨打客服电话\n %1$s,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+epaysdk_recommand_phone_no,上次使用的手机 %s,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+epaysdk_recording_finger,指纹支付暂时锁定，密码校验成功后将重新启用,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+epaysdk_report_loss,你的网易支付账号挂失中，如非本人操作，请登录 epay.163.com 查看详情,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+epaysdk_report_loss_timeout,你的网易支付账号挂失已过期，请登录 epay.163.com 查看详情,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+epaysdk_reset,重新设置,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+epaysdk_resign_card_error_warming,卡号输入不正确，请输入尾号%s的银行卡号,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+epaysdk_risk_auto_check_tips,已安装%s，自动校验动态密码,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+epaysdk_risk_god_like,大神,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+epaysdk_risk_jiangjunling,将军令,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+epaysdk_sdk_ver_suc,验证成功,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+epaysdk_sending,发送中...,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+epaysdk_sms_verify_code,短信验证码,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+epaysdk_switch,切换,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+epaysdk_switch_account_desc,切换付款账号时，收货账号不变,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+epaysdk_switch_pay_account,切换付款账号,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+epaysdk_try_again,再试一次,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+epaysdk_unavailable_finger,未授予指纹权限，不可使用指纹,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+epaysdk_up_limit,提升额度,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+epaysdk_use_ease_card,使用礼品卡,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+epaysdk_use_epay_random_youhui,使用网易支付 随机优惠,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+epaysdk_vcode_sent2_phone_,验证码已发送至手机号：,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+epaysdk_vcode_will_wend2_,短信验证码将发至：,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+epaysdk_verify_code_empty_warning,请先获取验证码,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+epaysdk_verify_rightnow,立即验证,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+epaysdk_voice_verify_code,语音验证码,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+epaysdk_webview_error_url,服务异常，如需帮助请电话咨询网易支付客服400-088-1188,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+epaysdk_wrong_short_pwd,您设置的密码重复或连续数字过多，安全性太弱，请重新设置,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+epaysdk_xx_will_send2_xx,%1$s将发至：%2$s,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+epaysdk_xypay_unuseable,信用付不可用,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+epaysdk_yes,是,,Account / Payment SDK,resources.arsc,Extracted from APK resources
+yd_privacy_agree,请同意服务条款,,System/SDK,resources.arsc,Extracted from APK resources
+go_back_input_id,返回身份证输入,,System/SDK,resources.arsc,Extracted from APK resources
+go_to_customer_service,前往客服提交资料,,System/SDK,resources.arsc,Extracted from APK resources
+go_to_verify_appeal,人脸识别申诉指引,,System/SDK,resources.arsc,Extracted from APK resources
+init_fail,初始化失败，请返回重新操作,,System/SDK,resources.arsc,Extracted from APK resources
+libbase_camera_audio_permission_utils_go_to_set_up,前往设置,,System/SDK,resources.arsc,Extracted from APK resources
+libbase_camera_audio_permission_utils_not_set_up_temporarily,暂不设置,,System/SDK,resources.arsc,Extracted from APK resources
+libbase_camera_audio_permission_utils_please_open_n_permission_of_netease_god_to_use_microphone_in_settings,请在设置中开启网易大神对麦克风的\n使用权限,,System/SDK,resources.arsc,Extracted from APK resources
+libbase_camera_audio_permission_utils_unable_to_use_voice,无法使用语音,,System/SDK,resources.arsc,Extracted from APK resources
+libpermission_permission_utils_please_authorize_storage_permissions,请授权存储权限,,System/SDK,resources.arsc,Extracted from APK resources
+list_load_footer_no_more,没有更多了,,System/SDK,resources.arsc,Extracted from APK resources
+list_load_loading_text,正在加载…,,System/SDK,resources.arsc,Extracted from APK resources
+main_normal_web_activity_album,相册,,System/SDK,resources.arsc,Extracted from APK resources
+main_normal_web_activity_camera,相机,,System/SDK,resources.arsc,Extracted from APK resources
+main_normal_web_activity_cancel,取消,Cancel,Button,resources.arsc,Extracted from APK resources
+main_normal_web_activity_cannot_take_pictures__you_do_not_grant_permission_to_take_pictures_,"无法拍照,您未授予拍照权限",,System/SDK,resources.arsc,Extracted from APK resources
+main_normal_web_activity_please_choose_way_to_upload_pictures_,请选择图片上传方式,,System/SDK,resources.arsc,Extracted from APK resources
+main_normal_web_activity_save_failed,保存失败,,System/SDK,resources.arsc,Extracted from APK resources
+main_normal_web_activity_save_successfully,保存成功,,System/SDK,resources.arsc,Extracted from APK resources
+main_normal_web_activity_save_to_cell_phone,保存到手机,,System/SDK,resources.arsc,Extracted from APK resources
+main_normal_web_activity_to_set_up,去设置,,System/SDK,resources.arsc,Extracted from APK resources
+main_normal_web_activity_web_links,网页链接,,System/SDK,resources.arsc,Extracted from APK resources
+net_error,网络错误，请重新尝试,,System/SDK,resources.arsc,Extracted from APK resources
+ok,确定,,System/SDK,resources.arsc,Extracted from APK resources
+permission_apply,权限申请,,System/SDK,resources.arsc,Extracted from APK resources
+permission_apply_goto_app_settings,去设置,,System/SDK,resources.arsc,Extracted from APK resources
+permission_audio_need,在“权限-麦克风”允许我们访问您的麦克风，即可进入拍摄。,,System/SDK,resources.arsc,Extracted from APK resources
+permission_audio_need_for_record,在“权限-麦克风”允许我们访问您的麦克风，即可进入录音。,,System/SDK,resources.arsc,Extracted from APK resources
+permission_camera_need,在“权限-相机”允许我们访问您的相机，即可进入拍摄。,,System/SDK,resources.arsc,Extracted from APK resources
+permission_camera_need_for_take_avator,在“权限-相机”允许我们访问您的相机。,,System/SDK,resources.arsc,Extracted from APK resources
+permission_read_need,在“权限-存储”允许我们读写您的手机存储器，即可进入拍摄。,,System/SDK,resources.arsc,Extracted from APK resources
+permission_to_setting,去设置,,System/SDK,resources.arsc,Extracted from APK resources
+permission_write_need,在“权限-存储”允许我们读写您的手机存储器，即可进入拍摄。,,System/SDK,resources.arsc,Extracted from APK resources
+remain_count_tip,还剩%s重填机会,,System/SDK,resources.arsc,Extracted from APK resources
+request_failed,请求失败，请重新尝试,,System/SDK,resources.arsc,Extracted from APK resources
+server_busy,系统繁忙，请稍后再试,,System/SDK,resources.arsc,Extracted from APK resources
+serviceshortvideo_activity_loop_upload_give_up_uploading,放弃上传,,System/SDK,resources.arsc,Extracted from APK resources
+serviceshortvideo_activity_loop_upload_recognition_is_complete__please_wait_for_upload_to_complete,"识别完成, 请等待上传",,System/SDK,resources.arsc,Extracted from APK resources
+serviceshortvideo_activity_loop_upload_uploading,正在上传,,System/SDK,resources.arsc,Extracted from APK resources
+serviceshortvideo_face_detect_activity__0_seconds_,(0秒),,System/SDK,resources.arsc,Extracted from APK resources
+serviceshortvideo_face_detect_activity_close,关闭,,System/SDK,resources.arsc,Extracted from APK resources
+serviceshortvideo_face_detect_activity_failed_to_open_camera,相机打开失败,,System/SDK,resources.arsc,Extracted from APK resources
+serviceshortvideo_face_detect_activity_failed_to_open_recording,录音打开失败,,System/SDK,resources.arsc,Extracted from APK resources
+serviceshortvideo_face_detect_activity_failed_to_start_preview,相机初始化失败，请重新进入,,System/SDK,resources.arsc,Extracted from APK resources
+serviceshortvideo_face_detect_activity_in_screen_,录屏中，,,System/SDK,resources.arsc,Extracted from APK resources
+serviceshortvideo_face_detect_activity_please_aim_at_face__i_will_record_screen_to_recognize_face,请对准面部，即将录屏识别人脸,,System/SDK,resources.arsc,Extracted from APK resources
+serviceshortvideo_face_detect_activity_please_aim_at_your_face_and_start_recognizing_your_face_,请对准面部，开始识别人脸,,System/SDK,resources.arsc,Extracted from APK resources
+serviceshortvideo_face_detect_activity_please_aim_at_your_face_and_start_recognizing_your_face_for_light,请将脸部对准识别区域,,System/SDK,resources.arsc,Extracted from APK resources
+serviceshortvideo_face_detect_activity_please_close,请将脸部靠近识别区域,,System/SDK,resources.arsc,Extracted from APK resources
+serviceshortvideo_face_detect_activity_please_open_storage_permissions,请打开存储权限,,System/SDK,resources.arsc,Extracted from APK resources
+serviceshortvideo_face_detect_activity_restart_hint,请尽量保持头部与手机静止,,System/SDK,resources.arsc,Extracted from APK resources
+serviceshortvideo_face_detect_activity_restart_once,再试一次,,System/SDK,resources.arsc,Extracted from APK resources
+serviceshortvideo_face_detect_activity_tips_1,请保持人脸在检测框内,,System/SDK,resources.arsc,Extracted from APK resources
+serviceshortvideo_face_detect_activity_tips_10,请眨眨眼,,System/SDK,resources.arsc,Extracted from APK resources
+serviceshortvideo_face_detect_activity_tips_10_mouse,请张开嘴,,System/SDK,resources.arsc,Extracted from APK resources
+serviceshortvideo_face_detect_activity_tips_2,未检测到人脸,,System/SDK,resources.arsc,Extracted from APK resources
+serviceshortvideo_face_detect_activity_tips_3,请靠近一点,,System/SDK,resources.arsc,Extracted from APK resources
+serviceshortvideo_face_detect_activity_tips_30,已超时，请重试,,System/SDK,resources.arsc,Extracted from APK resources
+serviceshortvideo_face_detect_activity_tips_4,请保持一个人脸在屏幕内,,System/SDK,resources.arsc,Extracted from APK resources
+serviceshortvideo_face_detect_activity_tips_5,光线不足,,System/SDK,resources.arsc,Extracted from APK resources
+serviceshortvideo_face_detect_activity_tips_6,光线过强,,System/SDK,resources.arsc,Extracted from APK resources
+serviceshortvideo_face_detect_activity_tips_60,请保持静止,,System/SDK,resources.arsc,Extracted from APK resources
+serviceshortvideo_face_detect_activity_tips_70,请勿遮挡,,System/SDK,resources.arsc,Extracted from APK resources
+serviceshortvideo_face_detect_activity_tips_80,请面向屏幕,,System/SDK,resources.arsc,Extracted from APK resources
+serviceshortvideo_face_detect_light_soon,屏幕即将闪烁，请保持姿势不变,,System/SDK,resources.arsc,Extracted from APK resources
+serviceshortvideo_face_detect_view_model_blink,眨眼,,System/SDK,resources.arsc,Extracted from APK resources
+serviceshortvideo_face_detect_view_model_nod,点头,,System/SDK,resources.arsc,Extracted from APK resources
+serviceshortvideo_face_detect_view_model_please,请,,System/SDK,resources.arsc,Extracted from APK resources
+serviceshortvideo_face_detect_view_model_shaking_head,摇头,,System/SDK,resources.arsc,Extracted from APK resources
+serviceshortvideo_loop_upload_activity_continue_uploading,继续上传,,System/SDK,resources.arsc,Extracted from APK resources
+serviceshortvideo_loop_upload_activity_determine,确定,,System/SDK,resources.arsc,Extracted from APK resources
+serviceshortvideo_loop_upload_activity_face_recognition______________,人脸识别中...,,System/SDK,resources.arsc,Extracted from APK resources
+serviceshortvideo_loop_upload_activity_file_does_not_exist,文件不存在,,System/SDK,resources.arsc,Extracted from APK resources
+serviceshortvideo_loop_upload_activity_give_up_uploading,放弃上传,,System/SDK,resources.arsc,Extracted from APK resources
+serviceshortvideo_loop_upload_activity_please_re_operate_or_replace_equipment_as_required,请重新按要求操作或者更换设备尝试,,System/SDK,resources.arsc,Extracted from APK resources
+serviceshortvideo_loop_upload_activity_please_try_to_replace_network_environment_or_retry_equipment_,请尝试更换网络环境或设备重试,,System/SDK,resources.arsc,Extracted from APK resources
+serviceshortvideo_loop_upload_activity_recognition_failure,识别失败,,System/SDK,resources.arsc,Extracted from APK resources
+serviceshortvideo_loop_upload_activity_upload_completed,上传完成,,System/SDK,resources.arsc,Extracted from APK resources
+serviceshortvideo_loop_upload_activity_upload_failure,上传失败,,System/SDK,resources.arsc,Extracted from APK resources
+serviceshortvideo_loop_upload_activity_want_to_give_up_uploading_,要放弃上传吗？,,System/SDK,resources.arsc,Extracted from APK resources
+uploading_progress,正在上传 %d %%,,System/SDK,resources.arsc,Extracted from APK resources
+video_take_fail,拍摄失败,,System/SDK,resources.arsc,Extracted from APK resources
+subscribe_message,订阅消息,,System/SDK,resources.arsc,Extracted from APK resources
+protocol_issuer_name,杭州网易雷火科技有限公司,,System/SDK,resources.arsc,Extracted from APK resources
+ntunisdk_scan_quick_qr,快捷扫码,,System/SDK,resources.arsc,Extracted from APK resources
+ntunisdk_scan_quick_qr_disabled,快捷扫码,,System/SDK,resources.arsc,Extracted from APK resources
+ntunisdk_scan_quick_qr_long,快捷扫码,,System/SDK,resources.arsc,Extracted from APK resources
+crop__done,決定,,System/SDK,resources.arsc,Extracted from APK resources
+crop__pick_error,画像が見つかりません,,System/SDK,resources.arsc,Extracted from APK resources
+crop__saving,保存中…,,System/SDK,resources.arsc,Extracted from APK resources
+crop__wait,お待ちください…,,System/SDK,resources.arsc,Extracted from APK resources
+need_write_external_storage,[ファイルを保存する]という権限がオフとなっています。アカウントやゲームの進行状況、設定内容などのデータ保存·読取を行うには、設定->権限からオンにする必要があります。こちらはほかの内容を書き込めないので、ご安心下さい。,,System/SDK,resources.arsc,Extracted from APK resources
+need_write_external_storage_tips,ゲームアカウント、ゲーム進度およびゲーム設定情報などの内容の保存と読み込みのため、ストレージデバイスへの読み書きを求めています。同時に、他のデバイス情報を読み込まないことを保証します。もしあなたがこの機能を許可しないと、アカウントのセキュリティなどのため、本ゲームは起動できません。,,System/SDK,resources.arsc,Extracted from APK resources
+neox_abort,終了,,System/SDK,resources.arsc,Extracted from APK resources
+neox_available,利用可能,,System/SDK,resources.arsc,Extracted from APK resources
+neox_back,戻る,,System/SDK,resources.arsc,Extracted from APK resources
+neox_confirm,確認,Confirm,Button,resources.arsc,Extracted from APK resources
+neox_dumpview_confirm,確認,Confirm,Button,resources.arsc,Extracted from APK resources
+neox_dumpview_label,システムの不具合が発生し、エラー報告送信しますか？,,System/SDK,resources.arsc,Extracted from APK resources
+neox_forward,進む,,System/SDK,resources.arsc,Extracted from APK resources
+neox_ignore,無視,,System/SDK,resources.arsc,Extracted from APK resources
+neox_launcher_adjust_res,解像度を調整,,System/SDK,resources.arsc,Extracted from APK resources
+neox_launcher_auto_res,解像度を自動調整,,System/SDK,resources.arsc,Extracted from APK resources
+neox_launcher_check_update,アップデート確認中,,System/SDK,resources.arsc,Extracted from APK resources
+neox_launcher_continue,更新を続ける,,System/SDK,resources.arsc,Extracted from APK resources
+neox_launcher_copying,初回スタート、解凍しています,,System/SDK,resources.arsc,Extracted from APK resources
+neox_launcher_data_dir,パケット位置,,System/SDK,resources.arsc,Extracted from APK resources
+neox_launcher_device_test,機能テスト,,System/SDK,resources.arsc,Extracted from APK resources
+neox_launcher_external_sd,外部ストレージ,,System/SDK,resources.arsc,Extracted from APK resources
+neox_launcher_failure,更新エラー,,System/SDK,resources.arsc,Extracted from APK resources
+neox_launcher_failure_checkupdate,アップデート失敗、ゲームを再起動する,,System/SDK,resources.arsc,Extracted from APK resources
+neox_launcher_failure_engine,バージョンが古いので、最新バージョンにアップデートしましょう,,System/SDK,resources.arsc,Extracted from APK resources
+neox_launcher_internal_sd,内部ストレージ,,System/SDK,resources.arsc,Extracted from APK resources
+neox_launcher_no_enough_space,容量不足ので、内部メモリを整理し、または外部SDカードをごチェックください,,System/SDK,resources.arsc,Extracted from APK resources
+neox_launcher_not_wifi,WIFIに接続していないので、更新しますか？,,System/SDK,resources.arsc,Extracted from APK resources
+neox_launcher_stop,更新停止,,System/SDK,resources.arsc,Extracted from APK resources
+neox_launcher_updating,アップデート中,,System/SDK,resources.arsc,Extracted from APK resources
+neox_launcher_warn,ご注意,,System/SDK,resources.arsc,Extracted from APK resources
+neox_pick_image,画像を選択,,System/SDK,resources.arsc,Extracted from APK resources
+neox_refresh,更新,,System/SDK,resources.arsc,Extracted from APK resources
+neox_retry,もう一度試してみます,,System/SDK,resources.arsc,Extracted from APK resources
+neox_setting,設置,,System/SDK,resources.arsc,Extracted from APK resources
+neox_unavailable,利用不可能,,System/SDK,resources.arsc,Extracted from APK resources
+neox_welcomeview_start_engine,エンジンを起動する,,System/SDK,resources.arsc,Extracted from APK resources
+neox_welcomeview_total_update_file_num,更新する必要があるファイルの総数,,System/SDK,resources.arsc,Extracted from APK resources
+neox_welcomeview_updated_file_num,更新されたファイル数,,System/SDK,resources.arsc,Extracted from APK resources
+obb_access_failed,ファイルへのアクセスが拒否されました,,System/SDK,resources.arsc,Extracted from APK resources
+obb_access_message,外部ストレージにアクセスできません,,System/SDK,resources.arsc,Extracted from APK resources
+obb_download_btn_pause,一時停止,,OBB Downloader,resources.arsc,Extracted from APK resources
+obb_download_btn_resume,再開,,OBB Downloader,resources.arsc,Extracted from APK resources
+obb_download_title_complete,完了,,OBB Downloader,resources.arsc,Extracted from APK resources
+obb_download_title_coping,ファイルコピー中,,OBB Downloader,resources.arsc,Extracted from APK resources
+obb_download_title_downloading,ダウンロード中,,OBB Downloader,resources.arsc,Extracted from APK resources
+obb_download_title_failed,ダウンロード失敗,,OBB Downloader,resources.arsc,Extracted from APK resources
+obb_download_title_paused,ダウンロード一時停止,,OBB Downloader,resources.arsc,Extracted from APK resources
+abc_action_bar_home_description,ホームに戻る,,System/SDK,resources.arsc,Extracted from APK resources
+abc_action_bar_up_description,前に戻る,,System/SDK,resources.arsc,Extracted from APK resources
+abc_action_menu_overflow_description,その他のオプション,,System/SDK,resources.arsc,Extracted from APK resources
+abc_action_mode_done,完了,,System/SDK,resources.arsc,Extracted from APK resources
+abc_activity_chooser_view_see_all,すべて表示,,System/SDK,resources.arsc,Extracted from APK resources
+abc_activitychooserview_choose_application,アプリの選択,,System/SDK,resources.arsc,Extracted from APK resources
+abc_search_hint,検索…,,System/SDK,resources.arsc,Extracted from APK resources
+abc_searchview_description_clear,検索キーワードを削除,,System/SDK,resources.arsc,Extracted from APK resources
+abc_searchview_description_query,検索キーワード,,System/SDK,resources.arsc,Extracted from APK resources
+abc_searchview_description_search,検索,,System/SDK,resources.arsc,Extracted from APK resources
+abc_searchview_description_submit,検索キーワードを送信,,System/SDK,resources.arsc,Extracted from APK resources
+abc_searchview_description_voice,音声検索,,System/SDK,resources.arsc,Extracted from APK resources
+abc_shareactionprovider_share_with,共有,,System/SDK,resources.arsc,Extracted from APK resources
+abc_shareactionprovider_share_with_application,%sと共有,,System/SDK,resources.arsc,Extracted from APK resources
+abc_toolbar_collapse_description,折りたたむ,,System/SDK,resources.arsc,Extracted from APK resources
+search_menu_title,検索,,System/SDK,resources.arsc,Extracted from APK resources
+netease_permissionkit_sdk__continue,続ける,,System/SDK,resources.arsc,Extracted from APK resources
+netease_permissionkit_sdk__goto_settings_tip,システム設定で必要な権限を許可してください。,,System/SDK,resources.arsc,Extracted from APK resources
+netease_permissionkit_sdk__refuse_tip,権限がないため、この機能は正常に使用できません。,,System/SDK,resources.arsc,Extracted from APK resources
+confirm_device_credential_password,パスワードを使用,Confirm,Button,resources.arsc,Extracted from APK resources
+default_error_msg,不明なエラーです,,System/SDK,resources.arsc,Extracted from APK resources
+fingerprint_dialog_touch_sensor,指紋認証センサーをタップ,,System/SDK,resources.arsc,Extracted from APK resources
+fingerprint_error_hw_not_available,指紋認証ハードウェアは使用できません。,,System/SDK,resources.arsc,Extracted from APK resources
+fingerprint_error_hw_not_present,このデバイスには指紋認証センサーがありません,,System/SDK,resources.arsc,Extracted from APK resources
+fingerprint_error_lockout,入力回数が上限を超えました。しばらくしてからもう一度お試しください。,,System/SDK,resources.arsc,Extracted from APK resources
+fingerprint_error_no_fingerprints,指紋が登録されていません。,,System/SDK,resources.arsc,Extracted from APK resources
+fingerprint_error_user_canceled,指紋認証操作がユーザーによりキャンセルされました。,Cancel,Button,resources.arsc,Extracted from APK resources
+fingerprint_not_recognized,認識されませんでした,,System/SDK,resources.arsc,Extracted from APK resources
+generic_error_no_device_credential,PIN、パターン、パスワードが設定されていません。,,System/SDK,resources.arsc,Extracted from APK resources
+generic_error_user_canceled,認証はユーザーによりキャンセルされました。,Cancel,Button,resources.arsc,Extracted from APK resources
+ntunisdk_scan_camera_tips,アプリがカメラにアクセスすることを許可してください,,System/SDK,resources.arsc,Extracted from APK resources
+ntunisdk_scan_need_camera_permission,あなたはQRコードをスキャンするので、このアプリはあなたのカメラにアクセスする必要があります。,,System/SDK,resources.arsc,Extracted from APK resources
+ntunisdk_scan_not_valid_qr,有効なQRコードではありません,,System/SDK,resources.arsc,Extracted from APK resources
+ntunisdk_scan_permission_rationale_tip,許可が与えられていないため、カメラにアクセスできません。アプリ設定でカメラの許可を許可してください,,System/SDK,resources.arsc,Extracted from APK resources
+ntunisdk_scan_qrcode_quit_app_warn,エミュレータにログインしました。アプリを終了しますか？,,System/SDK,resources.arsc,Extracted from APK resources
+ntunisdk_scan_qrcode_scan_retry,QRコードエラー。もう一度エミュレータのQRコードをスキャンしてログインしてください。,,System/SDK,resources.arsc,Extracted from APK resources
+ntunisdk_scan_quit_app,アプリを終了,,System/SDK,resources.arsc,Extracted from APK resources
+ntunisdk_scan_refuse_external_storage,アクセス権限がないため、コードのスキャンができません。アクセスを許可してください。,,System/SDK,resources.arsc,Extracted from APK resources
+ntunisdk_scan_request_external_storage,コードをスキャンする必要があるため、アルバムへのアクセスを許可してください。,,System/SDK,resources.arsc,Extracted from APK resources
+ntunisdk_scan_start_game,ゲームを起動,,System/SDK,resources.arsc,Extracted from APK resources
+ntunisdk_scan_storage_tips,アプリがストレージにアクセスすることを許可してください,,System/SDK,resources.arsc,Extracted from APK resources
+ntunisdk_scan_tips,QRコードを揃えてスキャンしてください。,,System/SDK,resources.arsc,Extracted from APK resources
+ntunisdk_scan_touch_screen_to_continue,画面をタップしてスキャンを続ける,,System/SDK,resources.arsc,Extracted from APK resources
+need_write_external_storage,您已经关闭了[存储设备文件]的权限，由于需要保存与读取登录账号，游戏进度，游戏设定信息等内容，所以需要在设定->权限中允许这个权限。我们保证不会读写手机其他位置的内容。,,System/SDK,resources.arsc,Extracted from APK resources
+need_write_external_storage_tips,由于需要保存与读取游戏账号，游戏进度以及游戏设定信息等内容，所以我们需要[读写存储设备]的权限，同时我们也保证不会读取手机其他位置的内容。如果您拒绝了这个权限，由于账号安全等方面的考虑，将不能运行本游戏。,,System/SDK,resources.arsc,Extracted from APK resources
+neox_abort,中止,,System/SDK,resources.arsc,Extracted from APK resources
+neox_available,可用,,System/SDK,resources.arsc,Extracted from APK resources
+neox_back,後退,,System/SDK,resources.arsc,Extracted from APK resources
+neox_cancel,取消,Cancel,Button,resources.arsc,Extracted from APK resources
+neox_close,关闭,,System/SDK,resources.arsc,Extracted from APK resources
+neox_confirm,确定,Confirm,Button,resources.arsc,Extracted from APK resources
+neox_dumpview_cancel,取消,Cancel,Button,resources.arsc,Extracted from APK resources
+neox_dumpview_confirm,确认,Confirm,Button,resources.arsc,Extracted from APK resources
+neox_dumpview_label,非常抱歉，我们的程序刚刚发生了一个崩溃，发送错误报告？,,System/SDK,resources.arsc,Extracted from APK resources
+neox_exit_game_tip,确定要退出游戏？,Confirm to exit?,Dialog Message,resources.arsc,Extracted from APK resources
+neox_exit_game_title,退出游戏,Exit Game,Dialog Title,resources.arsc,Extracted from APK resources
+neox_forward,前進,,System/SDK,resources.arsc,Extracted from APK resources
+neox_ignore,忽略,,System/SDK,resources.arsc,Extracted from APK resources
+neox_launcher_adjust_res,调整分辨率,,System/SDK,resources.arsc,Extracted from APK resources
+neox_launcher_asset_size_to_copy,需要复制的Asset大小,,System/SDK,resources.arsc,Extracted from APK resources
+neox_launcher_auto_res,自适应分辨率,,System/SDK,resources.arsc,Extracted from APK resources
+neox_launcher_check_update,检查更新中....,,System/SDK,resources.arsc,Extracted from APK resources
+neox_launcher_continue,继续更新,,System/SDK,resources.arsc,Extracted from APK resources
+neox_launcher_copy_data,安装数据包,,System/SDK,resources.arsc,Extracted from APK resources
+neox_launcher_copying,首次启动，正在努力解压资源...,,System/SDK,resources.arsc,Extracted from APK resources
+neox_launcher_data_dir,数据包位置,,System/SDK,resources.arsc,Extracted from APK resources
+neox_launcher_data_sd,data目录,,System/SDK,resources.arsc,Extracted from APK resources
+neox_launcher_device_test,机能测试,,System/SDK,resources.arsc,Extracted from APK resources
+neox_launcher_external_sd,外置存储,,System/SDK,resources.arsc,Extracted from APK resources
+neox_launcher_failure,更新失败,,System/SDK,resources.arsc,Extracted from APK resources
+neox_launcher_failure_checkupdate,"检查更新失败,请重新启动游戏",,System/SDK,resources.arsc,Extracted from APK resources
+neox_launcher_failure_engine,"游戏版本过旧,请下载最新版本",,System/SDK,resources.arsc,Extracted from APK resources
+neox_launcher_internal_sd,内置存储,,System/SDK,resources.arsc,Extracted from APK resources
+neox_launcher_multithread_gpures,多线程GLES,,System/SDK,resources.arsc,Extracted from APK resources
+neox_launcher_multithread_render,多线程渲染,,System/SDK,resources.arsc,Extracted from APK resources
+neox_launcher_no_enough_space,"空间不足, 请清理内存卡或检查SD卡是否已插入",,System/SDK,resources.arsc,Extracted from APK resources
+neox_launcher_not_wifi,"你没有使用WIFI,是否继续更新",,System/SDK,resources.arsc,Extracted from APK resources
+neox_launcher_start_game,启动游戏,,System/SDK,resources.arsc,Extracted from APK resources
+neox_launcher_stop,停止更新,,System/SDK,resources.arsc,Extracted from APK resources
+neox_launcher_updating,正在更新,,System/SDK,resources.arsc,Extracted from APK resources
+neox_launcher_warn,警告,,System/SDK,resources.arsc,Extracted from APK resources
+neox_no,否,,System/SDK,resources.arsc,Extracted from APK resources
+neox_pick_from_camera,相机,,System/SDK,resources.arsc,Extracted from APK resources
+neox_pick_from_library,相册,,System/SDK,resources.arsc,Extracted from APK resources
+neox_pick_image,选择图像,,System/SDK,resources.arsc,Extracted from APK resources
+neox_refresh,刷新,,System/SDK,resources.arsc,Extracted from APK resources
+neox_retry,重试,,System/SDK,resources.arsc,Extracted from APK resources
+neox_setting,设置,,System/SDK,resources.arsc,Extracted from APK resources
+neox_unavailable,不可用,,System/SDK,resources.arsc,Extracted from APK resources
+neox_welcomeview_rsync_all,Rsync同步所有文件,,System/SDK,resources.arsc,Extracted from APK resources
+neox_welcomeview_rsync_script,Rsync仅同步脚本文件,,System/SDK,resources.arsc,Extracted from APK resources
+neox_welcomeview_start_engine,启动游戏引擎,,System/SDK,resources.arsc,Extracted from APK resources
+neox_welcomeview_total_update_file_num,需要更新的文件总数,,System/SDK,resources.arsc,Extracted from APK resources
+neox_welcomeview_updated_file_num,已更新文件数量,,System/SDK,resources.arsc,Extracted from APK resources
+neox_yes,是,,System/SDK,resources.arsc,Extracted from APK resources
+need_write_external_storage,您已經關閉了[儲存裝置檔案]的權限，由於需要儲存與讀取登入帳號、遊戲進度、遊戲設定資訊等內容，所以需要在設定->權限中允許這個權限。我們保證不會讀取手機其他位置的內容。,,System/SDK,resources.arsc,Extracted from APK resources
+need_write_external_storage_tips,由於需要儲存與讀取遊戲帳號、遊戲進度以及遊戲設定資訊等內容，我們需要[讀寫儲存裝置]的權限，同時我們也保證不會讀取手機其他位置的內容。如果您拒絕了這個權限，基於帳號安全等考慮，將無法執行本遊戲。,,System/SDK,resources.arsc,Extracted from APK resources
+neox_close,關閉,,System/SDK,resources.arsc,Extracted from APK resources
+neox_confirm,確定,Confirm,Button,resources.arsc,Extracted from APK resources
+neox_dumpview_label,非常抱歉，我們的系統發生了故障，是否傳送錯誤報告？,,System/SDK,resources.arsc,Extracted from APK resources
+neox_exit_game_tip,確定要退出游戲？,Confirm to exit?,Dialog Message,resources.arsc,Extracted from APK resources
+neox_exit_game_title,退出游戲,Exit Game,Dialog Title,resources.arsc,Extracted from APK resources
+neox_launcher_adjust_res,調整解析度,,System/SDK,resources.arsc,Extracted from APK resources
+neox_launcher_asset_size_to_copy,需要複製的Asset大小,,System/SDK,resources.arsc,Extracted from APK resources
+neox_launcher_auto_res,自動調整解析度,,System/SDK,resources.arsc,Extracted from APK resources
+neox_launcher_check_update,檢查更新中...,,System/SDK,resources.arsc,Extracted from APK resources
+neox_launcher_continue,繼續更新,,System/SDK,resources.arsc,Extracted from APK resources
+neox_launcher_copy_data,安裝資料包,,System/SDK,resources.arsc,Extracted from APK resources
+neox_launcher_copying,首次啟動，正在努力解壓縮檔案...,,System/SDK,resources.arsc,Extracted from APK resources
+neox_launcher_data_dir,資料包位置,,System/SDK,resources.arsc,Extracted from APK resources
+neox_launcher_data_sd,資料目錄,,System/SDK,resources.arsc,Extracted from APK resources
+neox_launcher_device_test,性能測試,,System/SDK,resources.arsc,Extracted from APK resources
+neox_launcher_external_sd,外部儲存,,System/SDK,resources.arsc,Extracted from APK resources
+neox_launcher_failure,更新失敗,,System/SDK,resources.arsc,Extracted from APK resources
+neox_launcher_failure_checkupdate,檢查更新失敗，請重新啟動遊戲,,System/SDK,resources.arsc,Extracted from APK resources
+neox_launcher_failure_engine,遊戲版本過舊，請下載最新版本,,System/SDK,resources.arsc,Extracted from APK resources
+neox_launcher_internal_sd,內部儲存,,System/SDK,resources.arsc,Extracted from APK resources
+neox_launcher_multithread_gpures,多執行緒GLES,,System/SDK,resources.arsc,Extracted from APK resources
+neox_launcher_multithread_render,多執行緒渲染,,System/SDK,resources.arsc,Extracted from APK resources
+neox_launcher_no_enough_space,空間不足，請清理記憶體或檢查SD卡是否已插入,,System/SDK,resources.arsc,Extracted from APK resources
+neox_launcher_not_wifi,您沒有使用WiFi，是否繼續更新,,System/SDK,resources.arsc,Extracted from APK resources
+neox_launcher_start_game,啟動遊戲,,System/SDK,resources.arsc,Extracted from APK resources
+neox_pick_from_camera,相機,,System/SDK,resources.arsc,Extracted from APK resources
+neox_pick_from_library,相簿,,System/SDK,resources.arsc,Extracted from APK resources
+neox_pick_image,選擇影像,,System/SDK,resources.arsc,Extracted from APK resources
+neox_retry,重試,,System/SDK,resources.arsc,Extracted from APK resources
+neox_setting,設定,,System/SDK,resources.arsc,Extracted from APK resources
+neox_welcomeview_rsync_all,Rsync同步所有檔案,,System/SDK,resources.arsc,Extracted from APK resources
+neox_welcomeview_rsync_script,Rsync僅同步腳本檔案,,System/SDK,resources.arsc,Extracted from APK resources
+neox_welcomeview_start_engine,啟動遊戲引擎,,System/SDK,resources.arsc,Extracted from APK resources
+neox_welcomeview_total_update_file_num,需要更新的檔案總數,,System/SDK,resources.arsc,Extracted from APK resources
+neox_welcomeview_updated_file_num,已更新檔案數量,,System/SDK,resources.arsc,Extracted from APK resources
+obb_access_failed,檔案存取失敗,,System/SDK,resources.arsc,Extracted from APK resources
+obb_access_message,無法存取外部記憶體,,System/SDK,resources.arsc,Extracted from APK resources
+obb_download_btn_pause,暫停,,OBB Downloader,resources.arsc,Extracted from APK resources
+obb_download_btn_resume,繼續,,OBB Downloader,resources.arsc,Extracted from APK resources
+obb_download_btn_retry,重試,,OBB Downloader,resources.arsc,Extracted from APK resources
+obb_download_title_complete,完成,,OBB Downloader,resources.arsc,Extracted from APK resources
+obb_download_title_coping,複製檔案中…,,OBB Downloader,resources.arsc,Extracted from APK resources
+obb_download_title_downloading,下載中…,,OBB Downloader,resources.arsc,Extracted from APK resources
+obb_download_title_failed,下載失敗,,OBB Downloader,resources.arsc,Extracted from APK resources
+obb_download_title_paused,下載暫停,,OBB Downloader,resources.arsc,Extracted from APK resources
+unisdk_lbs_permission_deny,定位所需要的權限被拒絕授予，您的定位功能將無法使用,,System/SDK,resources.arsc,Extracted from APK resources
+unisdk_lbs_permission_deny_dialog_pos_btn,前往設置,,System/SDK,resources.arsc,Extracted from APK resources
+unisdk_lbs_permission_deny_more,定位所需要的權限被拒絕授予，您的定位功能將無法使用。若您之後有需要，請自行到應用程式的設置界面內開啟,,System/SDK,resources.arsc,Extracted from APK resources
+unisdk_lbs_permission_message,由於需要獲取您的位置信息，需要申請設備的定位權限,,System/SDK,resources.arsc,Extracted from APK resources
+unisdk_lbs_permission_tips,接下来使用的功能需要去獲取您的位置信息，所以遊戲會嘗試申請設備的定位權限,,System/SDK,resources.arsc,Extracted from APK resources
+unisdk_lbs_permission_to_setting_ression,定位所需要的權限被拒絕授予，定位功能將無法使用。您可前往設置界面開啟權限。,,System/SDK,resources.arsc,Extracted from APK resources
+unisdk_protocol_title,用戶協議,,System/SDK,resources.arsc,Extracted from APK resources
+unisdk_protocol_confirm,確定,Confirm,Button,resources.arsc,Extracted from APK resources
+unisdk_protocol_accept,接受,,System/SDK,resources.arsc,Extracted from APK resources
+unisdk_protocol_reject,拒絕,,System/SDK,resources.arsc,Extracted from APK resources
+abc_action_bar_home_description,瀏覽主頁,,System/SDK,resources.arsc,Extracted from APK resources
+abc_action_bar_up_description,向上瀏覽,,System/SDK,resources.arsc,Extracted from APK resources
+abc_action_menu_overflow_description,更多選項,,System/SDK,resources.arsc,Extracted from APK resources
+abc_action_mode_done,完成,,System/SDK,resources.arsc,Extracted from APK resources
+abc_activity_chooser_view_see_all,查看全部,,System/SDK,resources.arsc,Extracted from APK resources
+abc_activitychooserview_choose_application,選擇應用程式,,System/SDK,resources.arsc,Extracted from APK resources
+abc_capital_off,關閉,,System/SDK,resources.arsc,Extracted from APK resources
+abc_capital_on,開啟,,System/SDK,resources.arsc,Extracted from APK resources
+abc_menu_delete_shortcut_label,刪除,,System/SDK,resources.arsc,Extracted from APK resources
+abc_menu_enter_shortcut_label,Enter 鍵,,System/SDK,resources.arsc,Extracted from APK resources
+abc_menu_space_shortcut_label,空白鍵,,System/SDK,resources.arsc,Extracted from APK resources
+abc_search_hint,搜尋…,,System/SDK,resources.arsc,Extracted from APK resources
+abc_searchview_description_clear,清除查詢,,System/SDK,resources.arsc,Extracted from APK resources
+abc_searchview_description_query,搜尋查詢,,System/SDK,resources.arsc,Extracted from APK resources
+abc_searchview_description_search,搜尋,,System/SDK,resources.arsc,Extracted from APK resources
+abc_searchview_description_submit,提交查詢,,System/SDK,resources.arsc,Extracted from APK resources
+abc_searchview_description_voice,語音搜尋,,System/SDK,resources.arsc,Extracted from APK resources
+abc_shareactionprovider_share_with,分享對象,,System/SDK,resources.arsc,Extracted from APK resources
+abc_shareactionprovider_share_with_application,使用「%s」分享,,System/SDK,resources.arsc,Extracted from APK resources
+abc_toolbar_collapse_description,收合,,System/SDK,resources.arsc,Extracted from APK resources
+search_menu_title,搜尋,,System/SDK,resources.arsc,Extracted from APK resources
+netease_permissionkit_sdk__cancel,取消,Cancel,Button,resources.arsc,Extracted from APK resources
+netease_permissionkit_sdk__continue,繼續,,System/SDK,resources.arsc,Extracted from APK resources
+netease_permissionkit_sdk__goto_settings,去設置,,System/SDK,resources.arsc,Extracted from APK resources
+netease_permissionkit_sdk__goto_settings_tip,請在系統設置中開啟功能需要的權限。,,System/SDK,resources.arsc,Extracted from APK resources
+netease_permissionkit_sdk__refuse_tip,由於缺少權限，功能無法正常運行。,,System/SDK,resources.arsc,Extracted from APK resources
+confirm_device_credential_password,使用密碼,Confirm,Button,resources.arsc,Extracted from APK resources
+default_error_msg,不明錯誤,,System/SDK,resources.arsc,Extracted from APK resources
+fingerprint_dialog_touch_sensor,請輕觸指紋感應器,,System/SDK,resources.arsc,Extracted from APK resources
+fingerprint_error_hw_not_available,無法使用指紋硬件。,,System/SDK,resources.arsc,Extracted from APK resources
+fingerprint_error_hw_not_present,此裝置沒有指紋感應器,,System/SDK,resources.arsc,Extracted from APK resources
+fingerprint_error_lockout,嘗試次數過多。請稍後再試。,,System/SDK,resources.arsc,Extracted from APK resources
+fingerprint_error_no_fingerprints,尚未註冊任何指紋。,,System/SDK,resources.arsc,Extracted from APK resources
+fingerprint_error_user_canceled,使用者已取消指紋操作。,Cancel,Button,resources.arsc,Extracted from APK resources
+fingerprint_not_recognized,未能識別,,System/SDK,resources.arsc,Extracted from APK resources
+generic_error_no_device_credential,未設定 PIN、圖案或密碼。,,System/SDK,resources.arsc,Extracted from APK resources
+generic_error_no_keyguard,這部裝置不支援 PIN、圖案或密碼。,,System/SDK,resources.arsc,Extracted from APK resources
+generic_error_user_canceled,使用者已取消驗證。,Cancel,Button,resources.arsc,Extracted from APK resources
+unisdk_protocol_cancel,取消,Cancel,Button,resources.arsc,Extracted from APK resources
+unisdk_protocol_network_error,網路狀況不佳，請檢查網路狀態後重試？,,System/SDK,resources.arsc,Extracted from APK resources
+unisdk_protocol_reject_confirm_back,返回,Confirm,Button,resources.arsc,Extracted from APK resources
+unisdk_protocol_reject_confirm_msg,是否確認拒絕協議？拒絕後將無法繼續遊戲,Confirm,Button,resources.arsc,Extracted from APK resources
+unisdk_protocol_reject_confirm_ok,確認,Confirm,Button,resources.arsc,Extracted from APK resources
+unisdk_protocol_retry,重試,,System/SDK,resources.arsc,Extracted from APK resources
+ntunisdk_scan_camera_permission_cancel,取消,Cancel,Button,resources.arsc,Extracted from APK resources
+ntunisdk_scan_camera_permission_sure,確定,,System/SDK,resources.arsc,Extracted from APK resources
+ntunisdk_scan_camera_tips,請打開此應用的攝像頭權限,,System/SDK,resources.arsc,Extracted from APK resources
+ntunisdk_scan_fail,掃碼失敗,,System/SDK,resources.arsc,Extracted from APK resources
+ntunisdk_scan_head_tv,掃描,,System/SDK,resources.arsc,Extracted from APK resources
+ntunisdk_scan_need_camera_permission,需要相機權限來掃描二維碼,,System/SDK,resources.arsc,Extracted from APK resources
+ntunisdk_scan_not_valid_qr,未發現有效二維碼,,System/SDK,resources.arsc,Extracted from APK resources
+ntunisdk_scan_permission_rationale_tip,請到應用設置裡面開啟拍照權限,,System/SDK,resources.arsc,Extracted from APK resources
+ntunisdk_scan_permission_retry,重試,,System/SDK,resources.arsc,Extracted from APK resources
+ntunisdk_scan_permission_setting,去設置,,System/SDK,resources.arsc,Extracted from APK resources
+ntunisdk_scan_qrcode_quit_app_warn,已登入PC端，是否退出應用？,,System/SDK,resources.arsc,Extracted from APK resources
+ntunisdk_scan_qrcode_scan_retry,二維碼識別失敗，請掃描桌面PC端登入二維碼。,,System/SDK,resources.arsc,Extracted from APK resources
+ntunisdk_scan_quit_app,退出應用,,System/SDK,resources.arsc,Extracted from APK resources
+ntunisdk_scan_refuse_external_storage,缺少相簿的訪問權限，無法通過照片掃碼，請授予權限。,,System/SDK,resources.arsc,Extracted from APK resources
+ntunisdk_scan_request_external_storage,要掃描照片上的二維碼，請允許訪問相簿。,,System/SDK,resources.arsc,Extracted from APK resources
+ntunisdk_scan_start_game,啟動遊戲,,System/SDK,resources.arsc,Extracted from APK resources
+ntunisdk_scan_storage_tips,請打開此應用的存儲權限,,System/SDK,resources.arsc,Extracted from APK resources
+ntunisdk_scan_tips,請將取景框對準二維碼進行掃描,,System/SDK,resources.arsc,Extracted from APK resources
+ntunisdk_scan_touch_screen_to_continue,點擊屏幕繼續掃描,,System/SDK,resources.arsc,Extracted from APK resources
+neox_exit_game_tip,是否要立即离开瓦坎达战场？,Confirm to exit?,Dialog Message,resources.arsc,Extracted from APK resources
+unisdk_lbs_permission_deny,定位所需要的权限被拒绝授予，您的定位功能将无法使用,,System/SDK,resources.arsc,Extracted from APK resources
+unisdk_lbs_permission_deny_dialog_pos_btn,前往设置,,System/SDK,resources.arsc,Extracted from APK resources
+unisdk_lbs_permission_deny_more,定位所需要的权限被拒绝授予，您的定位功能将无法使用。若您之后有需要，请自行到应用的设置界面内开启,,System/SDK,resources.arsc,Extracted from APK resources
+unisdk_lbs_permission_message,由于需要获取您的位置信息，需要申请设备的定位权限,,System/SDK,resources.arsc,Extracted from APK resources
+unisdk_lbs_permission_tips,接下来使用的功能需要去获取您的位置信息，因而游戏会尝试申请设备的定位权限,,System/SDK,resources.arsc,Extracted from APK resources
+unisdk_lbs_permission_to_setting_ression,定位所需要的权限被拒绝授予，定位功能将无法使用。您可前往设置界面开启权限。,,System/SDK,resources.arsc,Extracted from APK resources
+abc_action_bar_home_description,转到首页,,System/SDK,resources.arsc,Extracted from APK resources
+abc_action_bar_up_description,转到上一层级,,System/SDK,resources.arsc,Extracted from APK resources
+abc_action_menu_overflow_description,更多选项,,System/SDK,resources.arsc,Extracted from APK resources
+abc_activitychooserview_choose_application,选择应用,,System/SDK,resources.arsc,Extracted from APK resources
+abc_capital_off,关闭,,System/SDK,resources.arsc,Extracted from APK resources
+abc_capital_on,开启,,System/SDK,resources.arsc,Extracted from APK resources
+abc_menu_delete_shortcut_label,Delete 键,,System/SDK,resources.arsc,Extracted from APK resources
+abc_menu_enter_shortcut_label,Enter 键,,System/SDK,resources.arsc,Extracted from APK resources
+abc_menu_space_shortcut_label,空格键,,System/SDK,resources.arsc,Extracted from APK resources
+abc_search_hint,搜索…,,System/SDK,resources.arsc,Extracted from APK resources
+abc_searchview_description_clear,清除查询,,System/SDK,resources.arsc,Extracted from APK resources
+abc_searchview_description_query,搜索查询,,System/SDK,resources.arsc,Extracted from APK resources
+abc_searchview_description_search,搜索,,System/SDK,resources.arsc,Extracted from APK resources
+abc_searchview_description_submit,提交查询,,System/SDK,resources.arsc,Extracted from APK resources
+abc_searchview_description_voice,语音搜索,,System/SDK,resources.arsc,Extracted from APK resources
+abc_shareactionprovider_share_with,分享对象,,System/SDK,resources.arsc,Extracted from APK resources
+abc_shareactionprovider_share_with_application,与%s分享,,System/SDK,resources.arsc,Extracted from APK resources
+abc_toolbar_collapse_description,收起,,System/SDK,resources.arsc,Extracted from APK resources
+search_menu_title,搜索,,System/SDK,resources.arsc,Extracted from APK resources
+uni_gm_camera_permission_cancel,取消,Cancel,Button,resources.arsc,Extracted from APK resources
+uni_gm_camera_permission_sure,确定,,System/SDK,resources.arsc,Extracted from APK resources
+uni_gm_f_close,关闭,,System/SDK,resources.arsc,Extracted from APK resources
+uni_gm_f_close_cancel,取消,Cancel,Button,resources.arsc,Extracted from APK resources
+uni_gm_f_close_confirm1,确认关闭消息悬浮球?,Confirm,Button,resources.arsc,Extracted from APK resources
+uni_gm_f_close_confirm2,(有新消息时重新显示),Confirm,Button,resources.arsc,Extracted from APK resources
+uni_gm_f_close_sure,确定,,System/SDK,resources.arsc,Extracted from APK resources
+uni_gm_need_camera_permission,需要相机权限用于拍照,,System/SDK,resources.arsc,Extracted from APK resources
+uni_gm_permission_tip,请到应用设置里面开启拍照权限,,System/SDK,resources.arsc,Extracted from APK resources
+netease_permissionkit_sdk__continue,继续,,System/SDK,resources.arsc,Extracted from APK resources
+netease_permissionkit_sdk__goto_settings,去设置,,System/SDK,resources.arsc,Extracted from APK resources
+netease_permissionkit_sdk__goto_settings_tip,请在系统设置中开启功能需要的权限。,,System/SDK,resources.arsc,Extracted from APK resources
+netease_permissionkit_sdk__refuse_tip,由于缺少权限，功能无法正常运行。,,System/SDK,resources.arsc,Extracted from APK resources
+ngvoice_cancel,取消,Cancel,Button,resources.arsc,Extracted from APK resources
+ngvoice_confirm,确定,Confirm,Button,resources.arsc,Extracted from APK resources
+ng_wv_alipay_not_installed,您未安装支付宝~请安装支付宝应用后再进行支付，或根据页面提示进行网页支付。,,System/SDK,resources.arsc,Extracted from APK resources
+ng_wv_app_not_installed,您所打开的第三方App未安装！,,System/SDK,resources.arsc,Extracted from APK resources
+ng_wv_cancel,取消,Cancel,Button,resources.arsc,Extracted from APK resources
+ng_wv_continue,继续,,System/SDK,resources.arsc,Extracted from APK resources
+ng_wv_open_position_tips,去设置里面开启位置信息权限,,System/SDK,resources.arsc,Extracted from APK resources
+ng_wv_open_storage_tips,去设置里面开启存储权限,,System/SDK,resources.arsc,Extracted from APK resources
+ng_wv_position_description,为了避免定位失败，请授予访问位置信息的权限,,System/SDK,resources.arsc,Extracted from APK resources
+ng_wv_storage_description,为了避免保存图片失败，请授予存储权限。,,System/SDK,resources.arsc,Extracted from APK resources
+ng_wv_wechat_not_installed,您未安装微信~ 请安装微信并支付。,,System/SDK,resources.arsc,Extracted from APK resources
+confirm_device_credential_password,使用密码,Confirm,Button,resources.arsc,Extracted from APK resources
+default_error_msg,未知错误,,System/SDK,resources.arsc,Extracted from APK resources
+fingerprint_dialog_touch_sensor,请轻触指纹传感器,,System/SDK,resources.arsc,Extracted from APK resources
+fingerprint_error_hw_not_available,指纹硬件无法使用。,,System/SDK,resources.arsc,Extracted from APK resources
+fingerprint_error_hw_not_present,此设备没有指纹传感器,,System/SDK,resources.arsc,Extracted from APK resources
+fingerprint_error_lockout,尝试次数过多，请稍后重试。,,System/SDK,resources.arsc,Extracted from APK resources
+fingerprint_error_no_fingerprints,未注册任何指纹。,,System/SDK,resources.arsc,Extracted from APK resources
+fingerprint_error_user_canceled,用户取消了指纹操作。,Cancel,Button,resources.arsc,Extracted from APK resources
+fingerprint_not_recognized,无法识别,,System/SDK,resources.arsc,Extracted from APK resources
+generic_error_no_device_credential,未设置 PIN 码、解锁图案或密码。,,System/SDK,resources.arsc,Extracted from APK resources
+generic_error_no_keyguard,此设备不支持 PIN 码、解锁图案或密码。,,System/SDK,resources.arsc,Extracted from APK resources
+generic_error_user_canceled,用户已取消身份验证。,Cancel,Button,resources.arsc,Extracted from APK resources
+unisdk_protocol_network_error,加载用户协议失败，是否重试？,,System/SDK,resources.arsc,Extracted from APK resources
+unisdk_protocol_reject_confirm_msg,是否确认拒绝协议？拒绝后将无法继续游戏,Confirm,Button,resources.arsc,Extracted from APK resources
+unisdk_protocol_reject_confirm_ok,确认,Confirm,Button,resources.arsc,Extracted from APK resources
+unisdk_protocol_retry,重试,,System/SDK,resources.arsc,Extracted from APK resources
+ntunisdk_scan_camera_permission_sure,确定,,System/SDK,resources.arsc,Extracted from APK resources
+ntunisdk_scan_camera_tips,请打开此应用的摄像头权限,,System/SDK,resources.arsc,Extracted from APK resources
+ntunisdk_scan_fail,扫码失败,,System/SDK,resources.arsc,Extracted from APK resources
+ntunisdk_scan_head_tv,扫一扫,,System/SDK,resources.arsc,Extracted from APK resources
+ntunisdk_scan_need_camera_permission,需要相机权限来扫描二维码,,System/SDK,resources.arsc,Extracted from APK resources
+ntunisdk_scan_not_valid_qr,未识别到有效二维码,,System/SDK,resources.arsc,Extracted from APK resources
+ntunisdk_scan_permission_rationale_tip,请到应用设置里面开启拍照权限,,System/SDK,resources.arsc,Extracted from APK resources
+ntunisdk_scan_permission_retry,重试,,System/SDK,resources.arsc,Extracted from APK resources
+ntunisdk_scan_permission_setting,去设置,,System/SDK,resources.arsc,Extracted from APK resources
+ntunisdk_scan_qrcode_quit_app_warn,已登录桌面模拟器，是否退出应用？,,System/SDK,resources.arsc,Extracted from APK resources
+ntunisdk_scan_qrcode_scan_retry,二维码识别失败，请扫描桌面模拟器二维码。,,System/SDK,resources.arsc,Extracted from APK resources
+ntunisdk_scan_quit_app,退出应用,,System/SDK,resources.arsc,Extracted from APK resources
+ntunisdk_scan_refuse_external_storage,缺少相册的访问权限，无法通过图片扫码，请授予权限。,,System/SDK,resources.arsc,Extracted from APK resources
+ntunisdk_scan_request_external_storage,要通过图片扫码，请允许访问相册。,,System/SDK,resources.arsc,Extracted from APK resources
+ntunisdk_scan_start_game,启动游戏,,System/SDK,resources.arsc,Extracted from APK resources
+ntunisdk_scan_storage_tips,请打开此应用的存储权限,,System/SDK,resources.arsc,Extracted from APK resources
+ntunisdk_scan_tips,请将取景框对准二维码进行扫描,,System/SDK,resources.arsc,Extracted from APK resources
+ntunisdk_scan_touch_screen_to_continue,轻触屏幕继续扫描,,System/SDK,resources.arsc,Extracted from APK resources
+need_write_external_storage,你已經關閉了「写入设备存储」的權限，由於需要保存與讀取登錄帳號，遊戲進度，遊戲設定訊息等內容，所以需要在：設定->權限中允許該權限。我們保證不會讀寫手機其他位置的內容。,,System/SDK,resources.arsc,Extracted from APK resources
+need_write_external_storage_tips,由於需要保存與讀取遊戲帳號，遊戲進度以及遊戲設定資訊等內容，所以我們需要[存取儲存裝置]的權限，同時我們也保證不會讀取手機其他位置的內容。如果您拒絕了這個權限，由於帳號安全等方面的考慮，將不能運行本遊戲,,System/SDK,resources.arsc,Extracted from APK resources
+neox_abort,終止,,System/SDK,resources.arsc,Extracted from APK resources
+neox_dumpview_label,非常抱歉，我們的系統剛剛發生了一個崩壞，發送錯誤報告？,,System/SDK,resources.arsc,Extracted from APK resources
+neox_launcher_adjust_res,調整分辨率,,System/SDK,resources.arsc,Extracted from APK resources
+neox_launcher_auto_res,自適應分辨率,,System/SDK,resources.arsc,Extracted from APK resources
+neox_launcher_check_update,檢查更新中....,,System/SDK,resources.arsc,Extracted from APK resources
+neox_launcher_copy_data,安裝數據包,,System/SDK,resources.arsc,Extracted from APK resources
+neox_launcher_copying,首次啟動，正在努力解壓縮...,,System/SDK,resources.arsc,Extracted from APK resources
+neox_launcher_data_dir,數據包位置,,System/SDK,resources.arsc,Extracted from APK resources
+neox_launcher_data_sd,data目錄,,System/SDK,resources.arsc,Extracted from APK resources
+neox_launcher_device_test,機能測試,,System/SDK,resources.arsc,Extracted from APK resources
+neox_launcher_external_sd,外置儲存,,System/SDK,resources.arsc,Extracted from APK resources
+neox_launcher_internal_sd,內置儲存,,System/SDK,resources.arsc,Extracted from APK resources
+neox_launcher_multithread_gpures,多線程GLES,,System/SDK,resources.arsc,Extracted from APK resources
+neox_launcher_multithread_render,多線程渲染,,System/SDK,resources.arsc,Extracted from APK resources
+neox_launcher_no_enough_space,空間不足，請清理內存或檢查SD卡是否已插入,,System/SDK,resources.arsc,Extracted from APK resources
+neox_launcher_not_wifi,你沒有使用WIFI，是否繼續更新？,,System/SDK,resources.arsc,Extracted from APK resources
+neox_pick_image,選擇圖像,,System/SDK,resources.arsc,Extracted from APK resources
+neox_welcomeview_rsync_all,同步所有文件,,System/SDK,resources.arsc,Extracted from APK resources
+neox_welcomeview_rsync_script,僅同步腳本文件,,System/SDK,resources.arsc,Extracted from APK resources
+neox_welcomeview_total_update_file_num,需要更新的文件總數,,System/SDK,resources.arsc,Extracted from APK resources
+neox_welcomeview_updated_file_num,已更新文件數量,,System/SDK,resources.arsc,Extracted from APK resources
+unisdk_protocol_title,利用規約,,System/SDK,resources.arsc,Extracted from APK resources
+unisdk_protocol_confirm,確認,Confirm,Button,resources.arsc,Extracted from APK resources
+unisdk_protocol_accept,同意する,,System/SDK,resources.arsc,Extracted from APK resources
+unisdk_protocol_network_error,ネットワークが不安定です。確認の後もう一度お試しください,,System/SDK,resources.arsc,Extracted from APK resources
+unisdk_protocol_reject_confirm_back,戻る,Confirm,Button,resources.arsc,Extracted from APK resources
+unisdk_protocol_reject_confirm_msg,この利用規約に同意されない場合、本ゲームをご利用いただくことはできません。よろしいでしょうか？,Confirm,Button,resources.arsc,Extracted from APK resources
+unisdk_protocol_reject_confirm_ok,アプリ終了,Confirm,Button,resources.arsc,Extracted from APK resources
+unisdk_lbs_permission_deny_more,定位所需要的權限被拒絕授予，您的定位功能將無法使用。若您之後有需要，請自行到設置界面內開啟,,System/SDK,resources.arsc,Extracted from APK resources
+abc_action_bar_home_description,瀏覽首頁,,System/SDK,resources.arsc,Extracted from APK resources
+abc_menu_delete_shortcut_label,Delete 鍵,,System/SDK,resources.arsc,Extracted from APK resources
+abc_menu_space_shortcut_label,空格鍵,,System/SDK,resources.arsc,Extracted from APK resources
+abc_shareactionprovider_share_with_application,與「%s」分享,,System/SDK,resources.arsc,Extracted from APK resources
+default_error_msg,不明的錯誤,,System/SDK,resources.arsc,Extracted from APK resources
+fingerprint_error_hw_not_available,指紋硬體無法使用。,,System/SDK,resources.arsc,Extracted from APK resources
+fingerprint_error_hw_not_present,這個裝置沒有指紋感應器,,System/SDK,resources.arsc,Extracted from APK resources
+fingerprint_error_lockout,嘗試次數過多，請稍後再試。,,System/SDK,resources.arsc,Extracted from APK resources
+fingerprint_error_no_fingerprints,未登錄任何指紋。,,System/SDK,resources.arsc,Extracted from APK resources
+fingerprint_error_user_canceled,使用者已取消指紋驗證作業。,Cancel,Button,resources.arsc,Extracted from APK resources
+fingerprint_not_recognized,無法辨識,,System/SDK,resources.arsc,Extracted from APK resources
+generic_error_no_device_credential,未設定 PIN 碼、解鎖圖案或密碼。,,System/SDK,resources.arsc,Extracted from APK resources
+generic_error_no_keyguard,這部裝置不支援 PIN 碼、解鎖圖案或密碼。,,System/SDK,resources.arsc,Extracted from APK resources
+generic_error_user_canceled,使用者已取消驗證作業。,Cancel,Button,resources.arsc,Extracted from APK resources
