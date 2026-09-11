@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+# Version: 1.0.0 — Production release
 """Offline hall, energy-core preset unlocking, and complete local AI combat engine for NeoX Python 2.7 runtime."""
 
 import os
