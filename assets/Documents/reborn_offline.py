@@ -11,7 +11,7 @@ NAME_PATH = "/sdcard/Android/data/com.netease.g104.cn/files/Netease/g104/Documen
 XML_PREFS_PATH = "/data/data/com.netease.g104.cn/shared_prefs/reborn_login.xml"
 CMD_PATH = "/sdcard/Android/data/com.netease.g104.cn/files/Netease/g104/Documents/cmd.py"
 FPS_PATH = "/sdcard/Android/data/com.netease.g104.cn/files/Netease/g104/Documents/reborn_fps.txt"
-ENABLE_LIVE_REPL = True  # Release build: no runtime command execution channel
+ENABLE_LIVE_REPL = False  # Production: REPL disabled to prevent 0.5s polling stutter
 
 _running = False
 _player = None
@@ -1098,12 +1098,7 @@ def auto_translate_sweep():
         _ACTIVE_PANELS = alive[-30:]
     except Exception:
         pass
-    finally:
-        try:
-            import mbengine.common.Timer as Timer
-            Timer.addTimer(0.8, auto_translate_sweep)
-        except Exception:
-            pass
+    # Production: no self-rescheduling — sweep runs once at startup only
 
 
 def check_command():
@@ -1119,13 +1114,10 @@ def check_command():
             exec(compile(code_str, "cmd.py", "exec"), globals(), globals())
             log("Live REPL cmd executed successfully.")
     except Exception:
-        log("Live REPL error:", traceback.format_exc())
-    finally:
-        try:
-            import mbengine.common.Timer as Timer
-            Timer.addTimer(0.5, check_command)
-        except Exception:
-            pass
+        pass
+    # Production: not rescheduled (ENABLE_LIVE_REPL=False)
+
+
 
 
 class EmptyData(object):
