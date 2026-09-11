@@ -20,3 +20,15 @@ __pycache__/
 *.pyc
 *.keystore
 .agents/
+
+# Large analysis artifacts and extracted binaries
+npk_analysis/
+smali_classes*/
+lib/
+libAndroidCrashHandler.so
+orig_resources.arsc
+dump_orig.txt
+dump_rebuilt.txt
+
+# Debug/development scripts (not released)
+reborn_offline_en.py
