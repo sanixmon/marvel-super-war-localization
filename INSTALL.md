@@ -132,3 +132,23 @@ Script ini berdiri sendiri — tidak perlu file tambahan.
 
 - Localization data sourced from Marvel Super War's own English string tables and community-sourced hero name mappings.
 - Developed for offline/custom server builds only. Not affiliated with NetEase or Marvel.
+
+---
+
+## Screenshots · Tangkapan Layar
+
+<table>
+<tr>
+<td align="center"><img src="docs/screenshots/01_hero_profile_thor.jpg" width="320"/><br/><b>Hero Profile — Thor</b></td>
+<td align="center"><img src="docs/screenshots/02_game_mode_select.jpg" width="320"/><br/><b>Game Mode Select</b></td>
+</tr>
+<tr>
+<td align="center"><img src="docs/screenshots/03_hero_select_spiderman.jpg" width="320"/><br/><b>Hero Select — Spider-Man</b></td>
+<td align="center"><img src="docs/screenshots/04_equipment_plan.jpg" width="320"/><br/><b>Equipment Plan Panel</b></td>
+</tr>
+<tr>
+<td colspan="2" align="center"><img src="docs/screenshots/05_match_loading_heroes.jpg" width="660"/><br/><b>Match Loading — 10 Heroes Named in English</b></td>
+</tr>
+</table>
+
+> More screenshots → [docs/screenshots/](docs/screenshots/)
