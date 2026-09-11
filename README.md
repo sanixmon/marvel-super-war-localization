@@ -25,7 +25,7 @@ English patch for **Marvel Super War** (`com.netease.g104.cn`) offline / custom 
    ```text
    /sdcard/Android/data/com.netease.g104.cn/files/Netease/g104/Documents/reborn_offline.py
    ```
-   > ⚠️ **Catatan penting / Important:** Pastikan folder `reborn_offline.py.tmp` di dalam folder `Documents` **tetap ada** (jangan dihapus) agar game tidak menimpa script.
+   > 🛡️ **Anti-Overwrite Trick:** Pastikan folder kosong bernama `reborn_offline.py.tmp` ada di dalam direktori `Documents/` agar game tidak menimpa mod. Jika belum ada, buat folder baru dengan nama tersebut (panduan lengkap: [Bahasa Indonesia](INSTALL_ID.md#%EF%B8%8F-cara-membuat-folder-anti-overwrite-tmp) · [English](INSTALL_EN.md#%EF%B8%8F-how-to-create-the-anti-overwrite-folder-tmp)).
 3. **Launch the game!** Lobby and heroes will automatically load in English.
 
 ---

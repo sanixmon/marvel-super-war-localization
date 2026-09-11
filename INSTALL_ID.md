@@ -31,8 +31,37 @@ Pindahkan file ke path berikut di HP kamu:
 /sdcard/Android/data/com.netease.g104.cn/files/Netease/g104/Documents/reborn_offline.py
 ```
 
-> **⚠️ Penting:** Folder `.tmp` di dalam direktori `Documents/` harus tetap ada.  
-> Jangan hapus atau ubah nama folder `reborn_offline.py.tmp` jika ada.
+> **⚠️ Penting — Trik Anti-Overwrite:**  
+> Game dapat otomatis menimpa mod jika folder `reborn_offline.py.tmp` tidak ada. Ikuti langkah di bawah untuk membuatnya jika belum ada.
+
+### 🛡️ Cara Membuat Folder Anti-Overwrite (`.tmp`)
+
+Game NetEase mencoba mendownload ulang file asli ke temporary file bernama `reborn_offline.py.tmp` sebelum menimpa mod. Dengan membuat **FOLDER** (direktori) bernama persis `reborn_offline.py.tmp`, game akan terblokir dan gagal menimpa mod kita!
+
+**Langkah membuat lewat File Manager (ZArchiver / MT Manager / File Manager HP):**
+1. Buka folder game:  
+   `/sdcard/Android/data/com.netease.g104.cn/files/Netease/g104/Documents/`
+2. Cek apakah folder bernama `reborn_offline.py.tmp` sudah ada.
+3. **Jika belum ada:**
+   - Tekan tombol **+** (Tambah) atau ikon menu titik tiga.
+   - Pilih **Buat Folder Baru** (*New Folder*).
+   - Beri nama persis:  
+     `reborn_offline.py.tmp`
+   - Simpan. Pastikan tipenya adalah **FOLDER / Direktori**, bukan file teks biasa.
+
+**Atau lewat Terminal / Termux:**
+```bash
+mkdir -p "/sdcard/Android/data/com.netease.g104.cn/files/Netease/g104/Documents/reborn_offline.py.tmp"
+```
+
+Struktur folder akhir di dalam `Documents/`:
+```text
+Documents/
+├── reborn_offline.py       ← File script mod
+└── reborn_offline.py.tmp/  ← Folder kosong (penahan overwrite)
+```
+
+---
 
 **3. Jalankan game**
 
