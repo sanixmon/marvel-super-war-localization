@@ -33,3 +33,5 @@ dump_rebuilt.txt
 # Debug/development scripts (not released)
 reborn_offline_en.py
 Screenshots/
+upload_and_link.sh
+gdrive_link.txt
