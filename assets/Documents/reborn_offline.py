@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# Version: 1.0.0 — Production release
+# Version: 1.0.1 - Production release (reliable lobby sweep)
 """Offline hall, energy-core preset unlocking, and complete local AI combat engine for NeoX Python 2.7 runtime."""
 
 import os
@@ -2336,6 +2336,10 @@ def do_enter_hall():
 
         try:
             import mbengine.common.Timer as Timer
+            Timer.addTimer(1.0, auto_translate_sweep)
+            Timer.addTimer(2.0, auto_translate_sweep)
+            Timer.addTimer(3.5, auto_translate_sweep)
+            Timer.addTimer(5.0, auto_translate_sweep)
             Timer.addTimer(1.5, patch_gdata_translations)
             Timer.addTimer(3.0, patch_gdata_translations)
         except Exception:
