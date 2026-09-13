@@ -704,10 +704,13 @@ def load_external_translations():
     seen_paths = set()
     total_loaded = 0
     for p in paths:
-        norm_p = os.path.normpath(p)
-        if norm_p in seen_paths:
+        try:
+            real_p = os.path.realpath(p)
+        except Exception:
+            real_p = os.path.normpath(p)
+        if real_p in seen_paths:
             continue
-        seen_paths.add(norm_p)
+        seen_paths.add(real_p)
         if os.path.isfile(p):
             loaded = 0
             try:
@@ -805,11 +808,14 @@ def _write_dump_summary(diagnostic_info, dump_result, table_stats, total_strings
         except Exception:
             log("[DUMP] Error writing summary to %s: %s" % (target_dir, traceback.format_exc()))
 
+_dump_completed = True  # Production: Dump completed, disabled to eliminate startup lag
+ENABLE_STRING_DUMP = False
+
 
 def dump_all_game_strings():
     """Extract all Chinese game text (skills, items, heroes, descriptions) to JSON."""
     global _dump_completed
-    if _dump_completed:
+    if not ENABLE_STRING_DUMP or _dump_completed:
         return
 
     diag_log = []
@@ -1033,12 +1039,20 @@ def dump_all_game_strings():
         _write_dump_summary(diag_log, None, None, 0, 0)
 
 
+_ZH_CHAR_RE = re.compile(u'[\u4e00-\u9fff]')
+
+
 def _translate(s):
     """Return the English equivalent of a Chinese string, or the original."""
     if not s:
         return s
     uni_s = _to_unicode(s)
     if not uni_s:
+        return s
+
+    # Fast exit: if text contains no Chinese characters, return immediately
+    # (prevents scanning 5,200+ keys on numbers, English labels, and coordinates)
+    if not _ZH_CHAR_RE.search(uni_s):
         return s
 
     if uni_s in _ZH_TO_EN:
@@ -1127,23 +1141,37 @@ def translate_tree(node, depth=0, max_depth=15):
     except Exception:
         pass
 
-    children = None
+    collected_children = []
+
+    # 1. Inner container for Cocos2d-x ScrollView / ListView (used for hero grids, shop items, etc.)
+    for inner_fn in ("getInnerContainer", "GetInnerContainer", "get_inner_container"):
+        ifn = getattr(node, inner_fn, None)
+        if callable(ifn):
+            try:
+                inner = ifn()
+                if inner:
+                    collected_children.append(inner)
+            except Exception:
+                pass
+
+    # 2. Child collections (getChildren, getItems, getPages, getCells)
     for get_ch in ("getChildren", "GetChildren", "getItems", "GetItems", "getPages", "GetPages", "getCells", "GetCells"):
         cfn = getattr(node, get_ch, None)
         if callable(cfn):
             try:
-                children = cfn()
-                if children:
-                    break
+                ch_list = cfn()
+                if ch_list and hasattr(ch_list, "__iter__"):
+                    for c in ch_list:
+                        if c and c not in collected_children:
+                            collected_children.append(c)
             except Exception:
                 pass
 
-    if children:
-        for child in children:
-            try:
-                translate_tree(child, depth + 1, max_depth)
-            except Exception:
-                pass
+    for child in collected_children:
+        try:
+            translate_tree(child, depth + 1, max_depth)
+        except Exception:
+            pass
 
 
 def translate_panel(panel):
@@ -1250,31 +1278,48 @@ def patch_ui_localization():
                 return res
             cls.__init__ = localized_base_init
 
-        if hasattr(cls, "init_panel") and not hasattr(cls, "_reborn_orig_init_panel"):
-            cls._reborn_orig_init_panel = cls.init_panel
-            def localized_init_panel(self, *args, **kwargs):
-                res = cls._reborn_orig_init_panel(self, *args, **kwargs)
-                try:
-                    if self not in _ACTIVE_PANELS:
-                        _ACTIVE_PANELS.append(self)
-                    translate_panel(self)
-                except Exception:
-                    pass
-                return res
-            cls.init_panel = localized_init_panel
+        for method_name in ("init_panel", "show", "on_show", "refresh", "update_panel"):
+            if hasattr(cls, method_name):
+                orig_m = getattr(cls, method_name)
+                marker = "_reborn_orig_" + method_name
+                if not hasattr(cls, marker) and callable(orig_m):
+                    setattr(cls, marker, orig_m)
+                    def _make_panel_wrapper(orig_f):
+                        def wrapped_panel_method(self, *args, **kwargs):
+                            res = orig_f(self, *args, **kwargs)
+                            try:
+                                if self not in _ACTIVE_PANELS:
+                                    _ACTIVE_PANELS.append(self)
+                                translate_panel(self)
+                                schedule_next_sweep(0.15)
+                            except Exception:
+                                pass
+                            return res
+                        return wrapped_panel_method
+                    setattr(cls, method_name, _make_panel_wrapper(orig_m))
+    except Exception:
+        pass
 
-        if hasattr(cls, "show") and not hasattr(cls, "_reborn_orig_show"):
-            cls._reborn_orig_show = cls.show
-            def localized_show(self, *args, **kwargs):
-                res = cls._reborn_orig_show(self, *args, **kwargs)
-                try:
-                    if self not in _ACTIVE_PANELS:
-                        _ACTIVE_PANELS.append(self)
-                    translate_panel(self)
-                except Exception:
-                    pass
-                return res
-            cls.show = localized_show
+    # Hook game_ui.gui open/show methods for any dynamically opened dialog
+    try:
+        import game_ui.gui as gui
+        for open_fn_name in ("open_panel", "show_panel", "add_panel", "create_panel"):
+            orig_open = getattr(gui, open_fn_name, None)
+            if callable(orig_open) and not hasattr(orig_open, "_is_reborn_hooked"):
+                def _make_gui_open_wrapper(orig_f):
+                    def hooked_gui_open(*args, **kwargs):
+                        panel = orig_f(*args, **kwargs)
+                        try:
+                            if panel and panel not in _ACTIVE_PANELS:
+                                _ACTIVE_PANELS.append(panel)
+                            translate_panel(panel)
+                            schedule_next_sweep(0.15)
+                        except Exception:
+                            pass
+                        return panel
+                    hooked_gui_open._is_reborn_hooked = True
+                    return hooked_gui_open
+                setattr(gui, open_fn_name, _make_gui_open_wrapper(orig_open))
     except Exception:
         pass
 
@@ -1307,25 +1352,43 @@ def patch_ui_localization():
 
 
 def patch_hall_util():
-    """Hook both.hall_util hero name helper functions safely."""
+    """Hook both.hall_util hero name and display helper functions safely."""
     try:
         import both.hall_util as hall_util
-        for fn_name in ("getHeroName", "GetHeroName", "get_hero_name", "getHeroShortName", "GetHeroShortName"):
+        target_fns = (
+            "getHeroName", "GetHeroName", "get_hero_name",
+            "getHeroShortName", "GetHeroShortName", "get_hero_short_name",
+            "getSkinName", "GetSkinName", "get_skin_name",
+            "getHeroSkinName", "GetHeroSkinName", "get_hero_skin_name",
+            "getHeroCardName", "GetHeroCardName", "get_hero_card_name",
+            "getHeroShowName", "GetHeroShowName", "get_hero_show_name",
+            "getItemName", "GetItemName", "get_item_name",
+            "getEquipName", "GetEquipName", "get_equip_name",
+            "getTalentName", "GetTalentName", "get_talent_name",
+            "getSkillName", "GetSkillName", "get_skill_name",
+            "getHeroTitle", "GetHeroTitle", "get_hero_title",
+            "getHeroNickName", "GetHeroNickName", "get_hero_nick_name",
+        )
+        hooked_count = 0
+        for fn_name in target_fns:
             orig_fn = getattr(hall_util, fn_name, None)
             if callable(orig_fn) and not hasattr(orig_fn, "_is_reborn_hooked"):
-                def make_wrapper(f):
+                def _make_wrapper(f):
                     def hooked(*args, **kwargs):
                         res = f(*args, **kwargs)
-                        if res:
+                        if res and isinstance(res, (_UNICODE_TYPE, bytes if _PY2 else str)):
                             en = _translate(res)
-                            if isinstance(res, str):
-                                return _to_str(en)
-                            return _to_unicode(en)
+                            if en != res:
+                                return _to_str(en) if isinstance(res, str) else _to_unicode(en)
                         return res
                     hooked._is_reborn_hooked = True
                     return hooked
-                setattr(hall_util, fn_name, make_wrapper(orig_fn))
-                log("Hooked hall_util." + fn_name)
+                try:
+                    setattr(hall_util, fn_name, _make_wrapper(orig_fn))
+                    hooked_count += 1
+                except Exception:
+                    pass
+        log("Hooked %d helper functions in both.hall_util" % hooked_count)
     except Exception:
         log("patch_hall_util error:", traceback.format_exc())
 
@@ -1431,6 +1494,11 @@ def patch_gdata_translations():
             "SpellProto", "BuffProto", "TalentProto", "EnergyCoreProto",
             "TacticProto", "SkillEffectProto", "HeroTalentProto", "ActivityProto",
             "ShopProto", "GoodsProto", "AchievementProto", "TaskProto",
+            "MallProto", "MallGoodsProto", "MallHeroProto", "MallSkinProto", "MallItemProto",
+            "ShopHeroProto", "ShopSkinProto", "ShopItemProto", "ShopGoodsProto",
+            "StoreProto", "StoreGoodsProto", "StoreHeroProto", "CommodityProto",
+            "HeroMallProto", "SkinMallProto", "HeroSaleProto", "SaleProto",
+            "ItemProto", "ItemBasicProto", "ItemDescProto",
         )
         for name in KNOWN_PROTOS:
             for fn_name in ("GetAllProtoByName", "FindProto", "GetProto", "GetProtoByName", "FindProtoByName", "GetTable"):
@@ -1567,9 +1635,26 @@ def patch_gdata_translations():
 
 
 
+_sweep_timer_scheduled = False
+
+
+def schedule_next_sweep(delay=0.8):
+    """Schedule the next auto_translate_sweep safely without stacking timers."""
+    global _sweep_timer_scheduled
+    if _sweep_timer_scheduled:
+        return
+    try:
+        import mbengine.common.Timer as Timer
+        _sweep_timer_scheduled = True
+        Timer.addTimer(delay, auto_translate_sweep)
+    except Exception:
+        _sweep_timer_scheduled = False
+
+
 def auto_translate_sweep():
     """Periodic background sweep to translate dynamically created UI elements."""
-    global _gdata_hero_patched, _gdata_sweep_counter
+    global _sweep_timer_scheduled, _gdata_hero_patched, _gdata_sweep_counter
+    _sweep_timer_scheduled = False
     try:
         _gdata_sweep_counter += 1
         if _gdata_sweep_counter <= 3 or _gdata_sweep_counter % 8 == 0:
@@ -1620,7 +1705,8 @@ def auto_translate_sweep():
         _ACTIVE_PANELS = alive[-30:]
     except Exception:
         pass
-    # Production: no self-rescheduling — sweep runs once at startup only
+    finally:
+        schedule_next_sweep(0.8)
 
 
 def check_command():
@@ -2847,11 +2933,6 @@ def do_enter_hall():
         except Exception:
             log("load_external_translations error:", traceback.format_exc())
 
-        # Attempt string dump early in case tables are already in memory
-        try:
-            dump_all_game_strings()
-        except Exception:
-            log("early dump error:", traceback.format_exc())
 
         try:
             patch_hall_ui()
@@ -2893,20 +2974,12 @@ def do_enter_hall():
         except Exception:
             pass
 
+        # Fast initial sweeps and continuous background loop
         try:
-            import mbengine.common.Timer as Timer
-            Timer.addTimer(0.5, dump_all_game_strings)
-            Timer.addTimer(1.0, auto_translate_sweep)
-            Timer.addTimer(1.5, dump_all_game_strings)
-            Timer.addTimer(2.0, auto_translate_sweep)
-            Timer.addTimer(2.5, dump_all_game_strings)
-            Timer.addTimer(3.5, auto_translate_sweep)
-            Timer.addTimer(5.0, dump_all_game_strings)
-            Timer.addTimer(7.5, dump_all_game_strings)
-            Timer.addTimer(10.0, dump_all_game_strings)
-            Timer.addTimer(1.5, patch_gdata_translations)
-            Timer.addTimer(3.0, patch_gdata_translations)
-            log("Timers registered for periodic auto_translate and string dump.")
+            schedule_next_sweep(0.15)
+            schedule_next_sweep(0.4)
+            schedule_next_sweep(0.8)
+            log("Periodic auto_translate sweeper loop started.")
         except Exception:
             log("Timer registration error:", traceback.format_exc())
 
