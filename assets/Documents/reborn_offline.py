@@ -8,11 +8,34 @@ import sys
 import gc
 import re
 
+DOC_DIRS = (
+    "/sdcard/Android/data/com.netease.g104.cn/files/Netease/g104/Documents",
+    "/storage/emulated/0/Android/data/com.netease.g104.cn/files/Netease/g104/Documents",
+)
+
+try:
+    _UNICODE_TYPE = unicode
+    _PY2 = True
+except NameError:
+    _UNICODE_TYPE = str
+    _PY2 = False
+
 NAME_PATH = "/sdcard/Android/data/com.netease.g104.cn/files/Netease/g104/Documents/player_name.txt"
 XML_PREFS_PATH = "/data/data/com.netease.g104.cn/shared_prefs/reborn_login.xml"
 CMD_PATH = "/sdcard/Android/data/com.netease.g104.cn/files/Netease/g104/Documents/cmd.py"
 FPS_PATH = "/sdcard/Android/data/com.netease.g104.cn/files/Netease/g104/Documents/reborn_fps.txt"
 ENABLE_LIVE_REPL = False  # Production: REPL disabled to prevent 0.5s polling stutter
+
+# Anti-overwrite self-defense: block APK extractLatestScript from overwriting this mod
+for _d in DOC_DIRS:
+    try:
+        _tmp_path = os.path.join(_d, "reborn_offline.py.tmp")
+        if os.path.isfile(_tmp_path):
+            os.remove(_tmp_path)
+        if not os.path.exists(_tmp_path):
+            os.makedirs(_tmp_path)
+    except Exception:
+        pass
 
 _running = False
 _player = None
@@ -20,13 +43,41 @@ _account = None
 _offline_rule_overrides = {}
 
 
-
 def log(*args):
-    msg = "[REBORN_OFFLINE] " + " ".join([str(v) for v in args])
     try:
-        print(msg)
+        parts = []
+        for v in args:
+            if isinstance(v, _UNICODE_TYPE):
+                try:
+                    parts.append(v.encode("utf-8"))
+                except Exception:
+                    parts.append(str(v))
+            else:
+                parts.append(str(v))
+        msg = "[REBORN_OFFLINE] " + " ".join(parts)
+        try:
+            print(msg)
+        except Exception:
+            pass
+        for _d in DOC_DIRS:
+            try:
+                if not os.path.isdir(_d):
+                    try:
+                        os.makedirs(_d)
+                    except Exception:
+                        pass
+                _logfile = os.path.join(_d, "reborn_debug.log")
+                with open(_logfile, "a") as f:
+                    f.write(msg + "\n")
+                break
+            except Exception:
+                pass
     except Exception:
         pass
+
+
+log("=== REBORN MOD SCRIPT LOADED ===")
+log("Python version:", sys.version)
 
 
 _ZH_TO_EN = {
@@ -665,35 +716,125 @@ def load_external_translations():
 
 _dump_completed = False
 
+
+def _write_dump_summary(diagnostic_info, dump_result, table_stats, total_strings, total_tables):
+    import json
+    for target_dir in DOC_DIRS:
+        try:
+            if not os.path.isdir(target_dir):
+                try:
+                    os.makedirs(target_dir)
+                except Exception:
+                    pass
+
+            summary_path = os.path.join(target_dir, "dump_summary.txt")
+            with open(summary_path, "wb") as f:
+                f.write("=== MARVEL SUPER WAR PROTO DUMP SUMMARY ===\n")
+                if total_strings > 0:
+                    f.write("Status: SUCCESS - Strings extracted!\n")
+                else:
+                    f.write("Status: IN PROGRESS / TABLES EMPTY AT CALL TIME\n")
+                f.write("Total unique Chinese strings: %d\n" % total_strings)
+                f.write("Total tables scanned: %d\n" % total_tables)
+                if table_stats:
+                    f.write("\n--- Extracted Table Details ---\n")
+                    for t, cnt in sorted(table_stats.items(), key=lambda x: -x[1]):
+                        f.write("- %s: %d Chinese text entries\n" % (t, cnt))
+                f.write("\n--- Diagnostic Log ---\n")
+                for line in diagnostic_info:
+                    try:
+                        if isinstance(line, _UNICODE_TYPE):
+                            line = line.encode("utf-8")
+                        f.write(str(line) + "\n")
+                    except Exception:
+                        pass
+
+            log("[DUMP] Written dump_summary.txt to %s" % target_dir)
+
+            if dump_result and total_strings > 0:
+                json_path = os.path.join(target_dir, "gdata_dump.json")
+                txt_path = os.path.join(target_dir, "unique_chinese_strings.txt")
+
+                try:
+                    with open(json_path, "wb") as f:
+                        f.write(json.dumps(dump_result, ensure_ascii=False, indent=2).encode("utf-8"))
+                    log("[DUMP] Successfully saved JSON to %s" % json_path)
+                except Exception:
+                    log("[DUMP] Failed to save JSON:", traceback.format_exc())
+
+                try:
+                    with open(txt_path, "wb") as f:
+                        for s in dump_result["unique_strings"]:
+                            if isinstance(s, _UNICODE_TYPE):
+                                s = s.encode("utf-8")
+                            f.write(s + "\n")
+                    log("[DUMP] Successfully saved TXT to %s" % txt_path)
+                except Exception:
+                    log("[DUMP] Failed to save TXT:", traceback.format_exc())
+
+            break
+        except Exception:
+            log("[DUMP] Error writing summary to %s: %s" % (target_dir, traceback.format_exc()))
+
+
 def dump_all_game_strings():
     """Extract all Chinese game text (skills, items, heroes, descriptions) to JSON."""
     global _dump_completed
     if _dump_completed:
         return
 
+    diag_log = []
+    def dlog(msg):
+        log("[DUMP] " + str(msg))
+        diag_log.append(str(msg))
+
+    dlog("Starting in-engine Proto Table String Dumper...")
+
     try:
         import game_env
         inst = game_env.GetInstance()
+        dlog("game_env.GetInstance(): %s" % repr(inst))
         if not inst:
+            dlog("game_env instance is None.")
+            _write_dump_summary(diag_log, None, None, 0, 0)
             return
+
         gdata = getattr(inst, "game_data", None)
         if not gdata:
+            dlog("inst.game_data is None. Checking alternatives...")
+            try:
+                import both.hall_util as hall_util
+                gdata = getattr(hall_util, "gdata", None)
+            except Exception:
+                pass
+
+        if not gdata:
+            dlog("gdata could not be found.")
+            _write_dump_summary(diag_log, None, None, 0, 0)
             return
 
-        log("[DUMP] Starting in-engine Proto Table String Dumper...")
+        dlog("Found gdata: %s (type: %s)" % (repr(gdata), type(gdata)))
 
         all_tables = {}
-        for attr in ("_all_proto", "_protos", "protos", "proto_dict", "_proto_dict", "data", "_data"):
-            d = getattr(gdata, attr, None)
-            if isinstance(d, dict):
-                for k, v in d.items():
-                    if k not in all_tables:
-                        try:
-                            iter(v)
-                            all_tables[k] = v
-                        except TypeError:
-                            pass
 
+        # 1. Attribute dicts on gdata
+        for attr in ("_all_proto", "_protos", "protos", "proto_dict", "_proto_dict", "data", "_data", "_proto_data", "all_proto"):
+            d = getattr(gdata, attr, None)
+            if d is not None:
+                dlog("Checking gdata.%s (type: %s)" % (attr, type(d)))
+                if isinstance(d, dict):
+                    for k, v in d.items():
+                        if k not in all_tables:
+                            all_tables[k] = v
+                elif hasattr(d, "keys") and callable(d.keys):
+                    try:
+                        for k in d.keys():
+                            if k not in all_tables:
+                                all_tables[k] = d[k]
+                    except Exception:
+                        pass
+
+        # 2. Known proto names via GetAllProtoByName / FindProto / GetProto
         KNOWN_PROTOS = (
             "SkillDescProto", "SkillProto", "EquipProto", "EquipSchemeProto",
             "HeroProto", "HeroBasicProto", "HeroSkinProto", "HeroInfoProto",
@@ -701,9 +842,10 @@ def dump_all_game_strings():
             "EnergyCoreProto", "TacticProto", "SpellProto", "BuffProto",
             "AIMapProto", "MapInfoProto", "MapRuleProto", "MatchUIProto",
             "AchievementProto", "TaskProto", "ActivityProto", "ShopProto", "GoodsProto",
+            "TalentProto", "HeroTalentProto", "SkillEffectProto", "SkinProto",
         )
         for name in KNOWN_PROTOS:
-            for fn_name in ("GetAllProtoByName", "FindProto"):
+            for fn_name in ("GetAllProtoByName", "FindProto", "GetProto", "GetProtoByName", "FindProtoByName", "GetTable"):
                 m = getattr(gdata, fn_name, None)
                 if callable(m):
                     try:
@@ -714,7 +856,7 @@ def dump_all_game_strings():
                     except Exception:
                         pass
 
-        log("[DUMP] Found %d proto tables to scan." % len(all_tables))
+        dlog("Total proto tables to scan: %d (%s)" % (len(all_tables), ", ".join(list(all_tables.keys())[:15])))
 
         zh_re = re.compile(u'[\u4e00-\u9fff]')
         dump_result = {
@@ -734,9 +876,45 @@ def dump_all_game_strings():
 
         for tname, tbl in all_tables.items():
             t_strings = {}
-            try:
-                rows = list(tbl.items())
-            except Exception:
+            rows = []
+
+            # Method A: .items()
+            if hasattr(tbl, "items") and callable(tbl.items):
+                try:
+                    rows = list(tbl.items())
+                except Exception:
+                    rows = []
+
+            # Method B: .keys()
+            if not rows and hasattr(tbl, "keys") and callable(tbl.keys):
+                try:
+                    for k in tbl.keys():
+                        try:
+                            rows.append((k, tbl[k]))
+                        except Exception:
+                            pass
+                except Exception:
+                    pass
+
+            # Method C: iteration
+            if not rows:
+                try:
+                    for k in tbl:
+                        try:
+                            rows.append((k, tbl[k]))
+                        except Exception:
+                            pass
+                except Exception:
+                    pass
+
+            # Method D: .values()
+            if not rows and hasattr(tbl, "values") and callable(tbl.values):
+                try:
+                    rows = list(enumerate(tbl.values()))
+                except Exception:
+                    pass
+
+            if not rows:
                 continue
 
             for row_id, row in rows:
@@ -745,13 +923,22 @@ def dump_all_game_strings():
                 row_dict = {}
 
                 keys_to_try = set(fields_to_check)
-                if hasattr(row, 'keys') and callable(row.keys):
+                if isinstance(row, dict):
+                    keys_to_try.update(row.keys())
+                elif hasattr(row, "keys") and callable(row.keys):
                     try:
                         keys_to_try.update(list(row.keys()))
                     except Exception:
                         pass
-                if hasattr(row, '__dict__'):
+                if hasattr(row, "__dict__"):
                     keys_to_try.update(list(row.__dict__.keys()))
+
+                try:
+                    for a in dir(row):
+                        if not a.startswith("_"):
+                            keys_to_try.add(a)
+                except Exception:
+                    pass
 
                 for f in keys_to_try:
                     val = None
@@ -766,12 +953,30 @@ def dump_all_game_strings():
                             pass
                     if not val:
                         continue
-                    u_val = _to_unicode(val)
-                    if u_val and zh_re.search(u_val):
-                        clean_text = u_val.strip()
-                        if clean_text:
-                            row_dict[str(f)] = clean_text
-                            unique_set.add(clean_text)
+
+                    if isinstance(val, (_UNICODE_TYPE, bytes if _PY2 else str)):
+                        u_val = _to_unicode(val)
+                        if u_val and zh_re.search(u_val):
+                            clean_text = u_val.strip()
+                            if clean_text:
+                                row_dict[str(f)] = clean_text
+                                unique_set.add(clean_text)
+                    elif isinstance(val, (list, tuple)):
+                        for elem in val:
+                            if isinstance(elem, (_UNICODE_TYPE, bytes if _PY2 else str)):
+                                u_elem = _to_unicode(elem)
+                                if u_elem and zh_re.search(u_elem):
+                                    clean_text = u_elem.strip()
+                                    if clean_text:
+                                        unique_set.add(clean_text)
+                    elif isinstance(val, dict):
+                        for sub_k, sub_v in val.items():
+                            if isinstance(sub_v, (_UNICODE_TYPE, bytes if _PY2 else str)):
+                                u_sub = _to_unicode(sub_v)
+                                if u_sub and zh_re.search(u_sub):
+                                    clean_text = u_sub.strip()
+                                    if clean_text:
+                                        unique_set.add(clean_text)
 
                 if row_dict:
                     t_strings[str(row_id)] = row_dict
@@ -779,58 +984,24 @@ def dump_all_game_strings():
             if t_strings:
                 dump_result["tables"][str(tname)] = t_strings
                 table_stats[str(tname)] = len(t_strings)
-                log("[DUMP] Table %s: extracted %d items with Chinese text" % (tname, len(t_strings)))
+                dlog("Table %s: extracted %d items with Chinese text" % (tname, len(t_strings)))
 
-        if len(unique_set) == 0:
-            log("[DUMP] No Chinese strings found yet (tables might still be loading).")
-            return
+        dlog("Scan finished. Total unique strings: %d across %d tables" % (len(unique_set), len(table_stats)))
 
-        _dump_completed = True
         dump_result["unique_strings"] = sorted(list(unique_set), key=lambda x: -len(x))
         dump_result["total_unique_strings"] = len(unique_set)
         dump_result["table_counts"] = table_stats
 
-        log("[DUMP] COMPLETE! Total unique Chinese strings collected: %d across %d tables" %
-            (len(unique_set), len(table_stats)))
+        _write_dump_summary(diag_log, dump_result, table_stats, len(unique_set), len(all_tables))
 
-        import json
-        doc_dir = "/sdcard/Android/data/com.netease.g104.cn/files/Netease/g104/Documents"
-        fallback_dir = "/storage/emulated/0/Android/data/com.netease.g104.cn/files/Netease/g104/Documents"
+        if len(unique_set) > 0:
+            _dump_completed = True
+            log("[DUMP] DUMP COMPLETED SUCCESSFULLY! %d unique strings saved." % len(unique_set))
 
-        for target_dir in (doc_dir, fallback_dir):
-            if os.path.isdir(target_dir):
-                json_path = os.path.join(target_dir, "gdata_dump.json")
-                txt_path = os.path.join(target_dir, "unique_chinese_strings.txt")
-                summary_path = os.path.join(target_dir, "dump_summary.txt")
-
-                try:
-                    with open(json_path, "wb") as f:
-                        f.write(json.dumps(dump_result, ensure_ascii=False, indent=2).encode("utf-8"))
-                    log("[DUMP] Successfully saved JSON to %s" % json_path)
-                except Exception:
-                    log("[DUMP] Failed to save JSON: %s" % traceback.format_exc())
-
-                try:
-                    with open(txt_path, "wb") as f:
-                        for s in dump_result["unique_strings"]:
-                            f.write((s + "\n").encode("utf-8"))
-                    log("[DUMP] Successfully saved TXT to %s" % txt_path)
-                except Exception:
-                    log("[DUMP] Failed to save TXT: %s" % traceback.format_exc())
-
-                try:
-                    with open(summary_path, "wb") as f:
-                        f.write("=== MARVEL SUPER WAR PROTO DUMP SUMMARY ===\n")
-                        f.write("Total unique Chinese strings: %d\n" % len(unique_set))
-                        f.write("Total tables with strings: %d\n\n" % len(table_stats))
-                        for t, cnt in sorted(table_stats.items(), key=lambda x: -x[1]):
-                            f.write("- %s: %d entries\n" % (t, cnt))
-                    log("[DUMP] Successfully saved summary to %s" % summary_path)
-                except Exception:
-                    pass
-                break
     except Exception:
-        log("[DUMP] Fatal error during dump_all_game_strings:", traceback.format_exc())
+        err_msg = traceback.format_exc()
+        dlog("FATAL ERROR during dump_all_game_strings: " + err_msg)
+        _write_dump_summary(diag_log, None, None, 0, 0)
 
 
 def _translate(s):
@@ -2530,51 +2701,98 @@ def do_enter_hall():
     if _running:
         return
     _running = True
+    log("Executing do_enter_hall...")
     try:
         player_name = read_player_name()
-        load_external_translations()
-        patch_hall_ui()
-        patch_ui_localization()
-        patch_hall_util()
-        build_offline_profile(player_name)
-        install_frame_rate_support()
-        patch_gdata_translations()
+        try:
+            load_external_translations()
+        except Exception:
+            log("load_external_translations error:", traceback.format_exc())
+
+        # Attempt string dump early in case tables are already in memory
+        try:
+            dump_all_game_strings()
+        except Exception:
+            log("early dump error:", traceback.format_exc())
+
+        try:
+            patch_hall_ui()
+        except Exception:
+            log("patch_hall_ui error:", traceback.format_exc())
+
+        try:
+            patch_ui_localization()
+        except Exception:
+            log("patch_ui_localization error:", traceback.format_exc())
+
+        try:
+            patch_hall_util()
+        except Exception:
+            log("patch_hall_util error:", traceback.format_exc())
+
+        try:
+            build_offline_profile(player_name)
+        except Exception:
+            log("build_offline_profile error:", traceback.format_exc())
+
+        try:
+            install_frame_rate_support()
+        except Exception:
+            log("install_frame_rate_support error:", traceback.format_exc())
+
+        try:
+            patch_gdata_translations()
+        except Exception:
+            log("patch_gdata_translations error:", traceback.format_exc())
 
         import game_hall.hall_main as hall_main
         hall_main.Start()
-        log("hall started")
-
-        patch_gdata_translations()
-        auto_translate_sweep()
+        log("hall started successfully")
 
         try:
-            import mbengine.common.Timer as Timer
-            Timer.addTimer(1.0, auto_translate_sweep)
-            Timer.addTimer(2.0, auto_translate_sweep)
-            Timer.addTimer(2.5, dump_all_game_strings)
-            Timer.addTimer(3.5, auto_translate_sweep)
-            Timer.addTimer(4.5, dump_all_game_strings)
-            Timer.addTimer(5.0, auto_translate_sweep)
-            Timer.addTimer(1.5, patch_gdata_translations)
-            Timer.addTimer(3.0, patch_gdata_translations)
+            patch_gdata_translations()
+            auto_translate_sweep()
         except Exception:
             pass
 
-        if ENABLE_LIVE_REPL:
+        try:
             import mbengine.common.Timer as Timer
-            Timer.addTimer(0.5, check_command)
-            log("Live REPL timer loop started!")
+            Timer.addTimer(0.5, dump_all_game_strings)
+            Timer.addTimer(1.0, auto_translate_sweep)
+            Timer.addTimer(1.5, dump_all_game_strings)
+            Timer.addTimer(2.0, auto_translate_sweep)
+            Timer.addTimer(2.5, dump_all_game_strings)
+            Timer.addTimer(3.5, auto_translate_sweep)
+            Timer.addTimer(5.0, dump_all_game_strings)
+            Timer.addTimer(7.5, dump_all_game_strings)
+            Timer.addTimer(10.0, dump_all_game_strings)
+            Timer.addTimer(1.5, patch_gdata_translations)
+            Timer.addTimer(3.0, patch_gdata_translations)
+            log("Timers registered for periodic auto_translate and string dump.")
+        except Exception:
+            log("Timer registration error:", traceback.format_exc())
+
+        if ENABLE_LIVE_REPL:
+            try:
+                import mbengine.common.Timer as Timer
+                Timer.addTimer(0.5, check_command)
+                log("Live REPL timer loop started!")
+            except Exception:
+                pass
     except Exception:
         _running = False
-        log("hall startup error", traceback.format_exc())
+        log("hall startup fatal error:", traceback.format_exc())
 
 
 def enter_offline():
+    log("enter_offline called")
     try:
         import mbengine.common.Timer as Timer
         Timer.addTimer(0.1, do_enter_hall)
+        log("Timer scheduled for do_enter_hall")
     except Exception:
-        log("timer error", traceback.format_exc())
+        log("Timer import or addTimer failed, executing do_enter_hall directly:", traceback.format_exc())
+        do_enter_hall()
 
 
 enter_offline()
