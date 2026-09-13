@@ -704,10 +704,13 @@ def load_external_translations():
     seen_paths = set()
     total_loaded = 0
     for p in paths:
-        norm_p = os.path.normpath(p)
-        if norm_p in seen_paths:
+        try:
+            real_p = os.path.realpath(p)
+        except Exception:
+            real_p = os.path.normpath(p)
+        if real_p in seen_paths:
             continue
-        seen_paths.add(norm_p)
+        seen_paths.add(real_p)
         if os.path.isfile(p):
             loaded = 0
             try:
@@ -743,7 +746,15 @@ def load_external_translations():
         log("Master localization dictionary active with %d entries" % len(_ZH_TO_EN))
 
 
-_dump_completed = False
+# Load external translations immediately at module import so dictionary is hot before UI starts
+try:
+    load_external_translations()
+except Exception:
+    pass
+
+
+_dump_completed = True  # Production: Dump completed, disabled to eliminate startup lag
+ENABLE_STRING_DUMP = False
 
 
 def _write_dump_summary(diagnostic_info, dump_result, table_stats, total_strings, total_tables):
@@ -1085,10 +1096,54 @@ def _safe_set_text(node, setter_name, en_text):
     return False
 
 
+_HOOKED_WIDGET_CLASSES = set()
+
+def hook_widget_class(cls):
+    """Hook text setter methods on a widget class to automatically translate incoming text."""
+    if not cls or cls in _HOOKED_WIDGET_CLASSES:
+        return
+    _HOOKED_WIDGET_CLASSES.add(cls)
+
+    for setter_name in (
+        "setString", "SetString", "setText", "SetText",
+        "setTitleText", "SetTitleText", "setTitle", "SetTitle",
+        "setPlaceHolder", "SetPlaceHolder", "set_string", "set_text"
+    ):
+        orig_setter = getattr(cls, setter_name, None)
+        if callable(orig_setter) and not hasattr(orig_setter, "_is_reborn_hooked"):
+            def _bind_setter(orig_fn):
+                def hooked_setter(self, text, *args, **kwargs):
+                    if text:
+                        try:
+                            if isinstance(text, (_UNICODE_TYPE, bytes if _PY2 else str)):
+                                en_text = _translate(text)
+                                if en_text != text:
+                                    if isinstance(text, str):
+                                        text = _to_str(en_text)
+                                    else:
+                                        text = _to_unicode(en_text)
+                        except Exception:
+                            pass
+                    return orig_fn(self, text, *args, **kwargs)
+                hooked_setter._is_reborn_hooked = True
+                return hooked_setter
+            try:
+                setattr(cls, setter_name, _bind_setter(orig_setter))
+            except Exception:
+                pass
+
+
 def translate_node(node):
     """Translate text content of an individual UI node or widget."""
     if not node:
         return
+
+    # Automatically hook this node's class so all future setString/setText calls auto-translate
+    try:
+        hook_widget_class(node.__class__)
+    except Exception:
+        pass
+
     for get_fn, set_fn in (
         ("getString", "setString"),
         ("GetString", "SetString"),
@@ -1117,6 +1172,15 @@ def translate_node(node):
             except Exception:
                 pass
 
+    # Check child text attributes on composite item cells
+    for attr in ("lab_name", "lab_title", "txt_name", "txt_title", "label", "text_label", "_label", "_text"):
+        sub = getattr(node, attr, None)
+        if sub:
+            try:
+                translate_node(sub)
+            except Exception:
+                pass
+
 
 def translate_tree(node, depth=0, max_depth=15):
     """Recursively traverse and translate a UI node hierarchy."""
@@ -1126,6 +1190,17 @@ def translate_tree(node, depth=0, max_depth=15):
         translate_node(node)
     except Exception:
         pass
+
+    # Check inner container for ScrollView, ListView, TableView (crucial for shop items)
+    for inner_fn in ("getInnerContainer", "GetInnerContainer", "getContainer", "GetContainer"):
+        ifn = getattr(node, inner_fn, None)
+        if callable(ifn):
+            try:
+                inner = ifn()
+                if inner:
+                    translate_tree(inner, depth + 1, max_depth)
+            except Exception:
+                pass
 
     children = None
     for get_ch in ("getChildren", "GetChildren", "getItems", "GetItems", "getPages", "GetPages", "getCells", "GetCells"):
@@ -1305,27 +1380,52 @@ def patch_ui_localization():
         except Exception:
             pass
 
+    # Hook Mall, Shop, Store, and Hero dialog panels
+    for dlg_name in (
+        "hero.hero_display_skin", "hero.hero_main", "hero.hero_list", "hero.hero_detail", "hero.hero_card",
+        "mall.mall_main", "mall.mall_hero", "mall.mall_skin", "mall.mall_item", "mall.mall_goods",
+        "shop.shop_main", "shop.shop_hero", "shop.shop_skin", "shop.shop_item", "shop.shop_goods",
+        "store.store_main", "store.store_hero", "store.store_skin",
+        "equip_shop.equip_main", "talent.talent_main"
+    ):
+        try:
+            mod = __import__("game_ui.dialog." + dlg_name, fromlist=["Panel", "BasePanel"])
+            for cls_name in ("Panel", "BasePanel", "HeroPanel", "MallPanel", "ShopPanel", "StorePanel"):
+                cls = getattr(mod, cls_name, None)
+                if cls:
+                    hook_component_init(cls)
+        except Exception:
+            pass
+
 
 def patch_hall_util():
-    """Hook both.hall_util hero name helper functions safely."""
+    """Hook both.hall_util helper functions safely to translate any returned Chinese text."""
     try:
         import both.hall_util as hall_util
-        for fn_name in ("getHeroName", "GetHeroName", "get_hero_name", "getHeroShortName", "GetHeroShortName"):
+        hook_count = 0
+        for fn_name in dir(hall_util):
+            if fn_name.startswith("_"):
+                continue
             orig_fn = getattr(hall_util, fn_name, None)
             if callable(orig_fn) and not hasattr(orig_fn, "_is_reborn_hooked"):
-                def make_wrapper(f):
-                    def hooked(*args, **kwargs):
-                        res = f(*args, **kwargs)
-                        if res:
-                            en = _translate(res)
-                            if isinstance(res, str):
-                                return _to_str(en)
-                            return _to_unicode(en)
-                        return res
-                    hooked._is_reborn_hooked = True
-                    return hooked
-                setattr(hall_util, fn_name, make_wrapper(orig_fn))
-                log("Hooked hall_util." + fn_name)
+                lower = fn_name.lower()
+                if any(k in lower for k in ("name", "hero", "skin", "item", "equip", "talent", "title", "desc", "tips")):
+                    def _make_fn_wrapper(f):
+                        def hooked(*args, **kwargs):
+                            res = f(*args, **kwargs)
+                            if res and isinstance(res, (_UNICODE_TYPE, bytes if _PY2 else str)):
+                                en = _translate(res)
+                                if en != res:
+                                    return _to_str(en) if isinstance(res, str) else _to_unicode(en)
+                            return res
+                        hooked._is_reborn_hooked = True
+                        return hooked
+                    try:
+                        setattr(hall_util, fn_name, _make_fn_wrapper(orig_fn))
+                        hook_count += 1
+                    except Exception:
+                        pass
+        log("Hooked %d helper functions in both.hall_util" % hook_count)
     except Exception:
         log("patch_hall_util error:", traceback.format_exc())
 
@@ -1426,11 +1526,17 @@ def patch_gdata_translations():
         KNOWN_PROTOS = (
             "HeroSkinProto", "SkinProto", "HeroProto", "HeroBasicProto",
             "HeroInfoProto", "HeroDataProto", "HeroCardProto", "HeroBaseProto",
+            "HeroCfgProto", "HeroConfigProto", "HeroDescProto", "HeroShowProto",
             "EquipProto", "EquipSchemeProto", "SkillProto", "SkillDescProto",
             "MatchUIProto", "MapInfoProto", "MapRuleProto", "AIMapProto",
             "SpellProto", "BuffProto", "TalentProto", "EnergyCoreProto",
             "TacticProto", "SkillEffectProto", "HeroTalentProto", "ActivityProto",
             "ShopProto", "GoodsProto", "AchievementProto", "TaskProto",
+            "MallProto", "MallGoodsProto", "MallHeroProto", "MallSkinProto", "MallItemProto",
+            "ShopHeroProto", "ShopSkinProto", "ShopItemProto", "ShopGoodsProto",
+            "StoreProto", "StoreGoodsProto", "StoreHeroProto", "CommodityProto",
+            "HeroMallProto", "SkinMallProto", "HeroSaleProto", "SaleProto",
+            "ItemProto", "ItemBasicProto", "ItemDescProto",
         )
         for name in KNOWN_PROTOS:
             for fn_name in ("GetAllProtoByName", "FindProto", "GetProto", "GetProtoByName", "FindProtoByName", "GetTable"):
@@ -2847,12 +2953,6 @@ def do_enter_hall():
         except Exception:
             log("load_external_translations error:", traceback.format_exc())
 
-        # Attempt string dump early in case tables are already in memory
-        try:
-            dump_all_game_strings()
-        except Exception:
-            log("early dump error:", traceback.format_exc())
-
         try:
             patch_hall_ui()
         except Exception:
@@ -2878,10 +2978,11 @@ def do_enter_hall():
         except Exception:
             log("install_frame_rate_support error:", traceback.format_exc())
 
+        # Pre-patch all game data tables BEFORE hall starts so UI renders in English instantly
         try:
             patch_gdata_translations()
         except Exception:
-            log("patch_gdata_translations error:", traceback.format_exc())
+            log("pre-hall patch_gdata_translations error:", traceback.format_exc())
 
         import game_hall.hall_main as hall_main
         hall_main.Start()
@@ -2893,20 +2994,23 @@ def do_enter_hall():
         except Exception:
             pass
 
+        # Continuous background translation loop: runs every 0.8s so any new screen
+        # (Shop, Mall, Heroes, Match UI) is translated instantly without delay
         try:
             import mbengine.common.Timer as Timer
-            Timer.addTimer(0.5, dump_all_game_strings)
-            Timer.addTimer(1.0, auto_translate_sweep)
-            Timer.addTimer(1.5, dump_all_game_strings)
-            Timer.addTimer(2.0, auto_translate_sweep)
-            Timer.addTimer(2.5, dump_all_game_strings)
-            Timer.addTimer(3.5, auto_translate_sweep)
-            Timer.addTimer(5.0, dump_all_game_strings)
-            Timer.addTimer(7.5, dump_all_game_strings)
-            Timer.addTimer(10.0, dump_all_game_strings)
-            Timer.addTimer(1.5, patch_gdata_translations)
-            Timer.addTimer(3.0, patch_gdata_translations)
-            log("Timers registered for periodic auto_translate and string dump.")
+
+            def auto_translate_timer_loop():
+                try:
+                    auto_translate_sweep()
+                except Exception:
+                    pass
+                try:
+                    Timer.addTimer(0.8, auto_translate_timer_loop)
+                except Exception:
+                    pass
+
+            Timer.addTimer(0.3, auto_translate_timer_loop)
+            log("Continuous auto_translate_timer_loop started (0.8s interval).")
         except Exception:
             log("Timer registration error:", traceback.format_exc())
 
