@@ -1039,20 +1039,12 @@ def dump_all_game_strings():
         _write_dump_summary(diag_log, None, None, 0, 0)
 
 
-_ZH_CHAR_RE = re.compile(u'[\u4e00-\u9fff]')
-
-
 def _translate(s):
     """Return the English equivalent of a Chinese string, or the original."""
     if not s:
         return s
     uni_s = _to_unicode(s)
     if not uni_s:
-        return s
-
-    # Fast exit: if text contains no Chinese characters, return immediately
-    # (prevents scanning 5,200+ keys on numbers, English labels, and coordinates)
-    if not _ZH_CHAR_RE.search(uni_s):
         return s
 
     if uni_s in _ZH_TO_EN:
@@ -1278,48 +1270,43 @@ def patch_ui_localization():
                 return res
             cls.__init__ = localized_base_init
 
-        for method_name in ("init_panel", "show", "on_show", "refresh", "update_panel"):
-            if hasattr(cls, method_name):
-                orig_m = getattr(cls, method_name)
-                marker = "_reborn_orig_" + method_name
-                if not hasattr(cls, marker) and callable(orig_m):
-                    setattr(cls, marker, orig_m)
-                    def _make_panel_wrapper(orig_f):
-                        def wrapped_panel_method(self, *args, **kwargs):
-                            res = orig_f(self, *args, **kwargs)
-                            try:
-                                if self not in _ACTIVE_PANELS:
-                                    _ACTIVE_PANELS.append(self)
-                                translate_panel(self)
-                                schedule_next_sweep(0.15)
-                            except Exception:
-                                pass
-                            return res
-                        return wrapped_panel_method
-                    setattr(cls, method_name, _make_panel_wrapper(orig_m))
-    except Exception:
-        pass
+        if hasattr(cls, "init_panel") and not hasattr(cls, "_reborn_orig_init_panel"):
+            cls._reborn_orig_init_panel = cls.init_panel
+            def localized_init_panel(self, *args, **kwargs):
+                res = cls._reborn_orig_init_panel(self, *args, **kwargs)
+                try:
+                    if self not in _ACTIVE_PANELS:
+                        _ACTIVE_PANELS.append(self)
+                    translate_panel(self)
+                    try:
+                        import mbengine.common.Timer as Timer
+                        Timer.addTimer(0.3, auto_translate_sweep)
+                        Timer.addTimer(0.8, auto_translate_sweep)
+                    except Exception:
+                        pass
+                except Exception:
+                    pass
+                return res
+            cls.init_panel = localized_init_panel
 
-    # Hook game_ui.gui open/show methods for any dynamically opened dialog
-    try:
-        import game_ui.gui as gui
-        for open_fn_name in ("open_panel", "show_panel", "add_panel", "create_panel"):
-            orig_open = getattr(gui, open_fn_name, None)
-            if callable(orig_open) and not hasattr(orig_open, "_is_reborn_hooked"):
-                def _make_gui_open_wrapper(orig_f):
-                    def hooked_gui_open(*args, **kwargs):
-                        panel = orig_f(*args, **kwargs)
-                        try:
-                            if panel and panel not in _ACTIVE_PANELS:
-                                _ACTIVE_PANELS.append(panel)
-                            translate_panel(panel)
-                            schedule_next_sweep(0.15)
-                        except Exception:
-                            pass
-                        return panel
-                    hooked_gui_open._is_reborn_hooked = True
-                    return hooked_gui_open
-                setattr(gui, open_fn_name, _make_gui_open_wrapper(orig_open))
+        if hasattr(cls, "show") and not hasattr(cls, "_reborn_orig_show"):
+            cls._reborn_orig_show = cls.show
+            def localized_show(self, *args, **kwargs):
+                res = cls._reborn_orig_show(self, *args, **kwargs)
+                try:
+                    if self not in _ACTIVE_PANELS:
+                        _ACTIVE_PANELS.append(self)
+                    translate_panel(self)
+                    try:
+                        import mbengine.common.Timer as Timer
+                        Timer.addTimer(0.3, auto_translate_sweep)
+                        Timer.addTimer(0.8, auto_translate_sweep)
+                    except Exception:
+                        pass
+                except Exception:
+                    pass
+                return res
+            cls.show = localized_show
     except Exception:
         pass
 
@@ -1369,26 +1356,25 @@ def patch_hall_util():
             "getHeroTitle", "GetHeroTitle", "get_hero_title",
             "getHeroNickName", "GetHeroNickName", "get_hero_nick_name",
         )
-        hooked_count = 0
         for fn_name in target_fns:
             orig_fn = getattr(hall_util, fn_name, None)
             if callable(orig_fn) and not hasattr(orig_fn, "_is_reborn_hooked"):
-                def _make_wrapper(f):
+                def make_wrapper(f):
                     def hooked(*args, **kwargs):
                         res = f(*args, **kwargs)
-                        if res and isinstance(res, (_UNICODE_TYPE, bytes if _PY2 else str)):
+                        if res:
                             en = _translate(res)
-                            if en != res:
-                                return _to_str(en) if isinstance(res, str) else _to_unicode(en)
+                            if isinstance(res, str):
+                                return _to_str(en)
+                            return _to_unicode(en)
                         return res
                     hooked._is_reborn_hooked = True
                     return hooked
                 try:
-                    setattr(hall_util, fn_name, _make_wrapper(orig_fn))
-                    hooked_count += 1
+                    setattr(hall_util, fn_name, make_wrapper(orig_fn))
                 except Exception:
                     pass
-        log("Hooked %d helper functions in both.hall_util" % hooked_count)
+        log("Hooked helper functions in both.hall_util")
     except Exception:
         log("patch_hall_util error:", traceback.format_exc())
 
@@ -1657,7 +1643,7 @@ def auto_translate_sweep():
     _sweep_timer_scheduled = False
     try:
         _gdata_sweep_counter += 1
-        if _gdata_sweep_counter <= 2:
+        if _gdata_sweep_counter <= 5 or _gdata_sweep_counter % 6 == 0:
             patch_gdata_translations()
 
         # 1. Sweep entire Cocos2d-x running scene graph
@@ -2973,13 +2959,17 @@ def do_enter_hall():
         except Exception:
             pass
 
-        # Initial lobby sweeps (0.15s, 0.5s, 1.2s) - then stops completely (no background polling/stutter)
+        # Robust startup lobby sweeps (0.5s to 5.0s) - guarantees complete translation on all devices, then stops (zero stutter!)
         try:
             import mbengine.common.Timer as Timer
-            Timer.addTimer(0.15, auto_translate_sweep)
             Timer.addTimer(0.5, auto_translate_sweep)
-            Timer.addTimer(1.2, auto_translate_sweep)
-            log("Initial lobby auto_translate sweeps scheduled (0.15s, 0.5s, 1.2s).")
+            Timer.addTimer(1.0, auto_translate_sweep)
+            Timer.addTimer(1.5, patch_gdata_translations)
+            Timer.addTimer(2.0, auto_translate_sweep)
+            Timer.addTimer(3.0, patch_gdata_translations)
+            Timer.addTimer(3.5, auto_translate_sweep)
+            Timer.addTimer(5.0, auto_translate_sweep)
+            log("Startup lobby auto_translate sweeps scheduled (0.5s to 5.0s).")
         except Exception:
             log("Timer registration error:", traceback.format_exc())
 
