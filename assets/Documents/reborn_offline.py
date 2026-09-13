@@ -621,6 +621,218 @@ def _to_str(val):
         return ""
 
 
+def load_external_translations():
+    """Load external English translations from loc_en.json if present on sdcard."""
+    global _SORTED_ZH_KEYS
+    import json
+    paths = (
+        "/sdcard/Android/data/com.netease.g104.cn/files/Netease/g104/Documents/loc_en.json",
+        "/storage/emulated/0/Android/data/com.netease.g104.cn/files/Netease/g104/Documents/loc_en.json",
+        "/sdcard/Android/data/com.netease.g104.cn/files/Netease/g104/Documents/loc_en.txt",
+    )
+    loaded = 0
+    for p in paths:
+        if os.path.isfile(p):
+            try:
+                with open(p, "rb") as f:
+                    content = f.read()
+                if p.endswith(".json"):
+                    data = json.loads(content)
+                    if isinstance(data, dict):
+                        for k, v in data.items():
+                            uk = _to_unicode(k)
+                            uv = _to_unicode(v)
+                            if uk and uv:
+                                _ZH_TO_EN[uk] = uv
+                                loaded += 1
+                elif p.endswith(".txt"):
+                    for line in content.splitlines():
+                        line = line.strip()
+                        if line and "\t" in line:
+                            parts = line.split("\t", 1)
+                            uk = _to_unicode(parts[0].strip())
+                            uv = _to_unicode(parts[1].strip())
+                            if uk and uv:
+                                _ZH_TO_EN[uk] = uv
+                                loaded += 1
+                if loaded > 0:
+                    log("Loaded %d additional translations from %s" % (loaded, p))
+                    _SORTED_ZH_KEYS = tuple(sorted(_ZH_TO_EN.keys(), key=lambda k: -len(k)))
+                    break
+            except Exception:
+                log("Error loading external translation from %s:" % p, traceback.format_exc())
+
+
+_dump_completed = False
+
+def dump_all_game_strings():
+    """Extract all Chinese game text (skills, items, heroes, descriptions) to JSON."""
+    global _dump_completed
+    if _dump_completed:
+        return
+
+    try:
+        import game_env
+        inst = game_env.GetInstance()
+        if not inst:
+            return
+        gdata = getattr(inst, "game_data", None)
+        if not gdata:
+            return
+
+        log("[DUMP] Starting in-engine Proto Table String Dumper...")
+
+        all_tables = {}
+        for attr in ("_all_proto", "_protos", "protos", "proto_dict", "_proto_dict", "data", "_data"):
+            d = getattr(gdata, attr, None)
+            if isinstance(d, dict):
+                for k, v in d.items():
+                    if k not in all_tables:
+                        try:
+                            iter(v)
+                            all_tables[k] = v
+                        except TypeError:
+                            pass
+
+        KNOWN_PROTOS = (
+            "SkillDescProto", "SkillProto", "EquipProto", "EquipSchemeProto",
+            "HeroProto", "HeroBasicProto", "HeroSkinProto", "HeroInfoProto",
+            "HeroCardProto", "HeroDataProto", "HeroBaseProto", "CoreProto",
+            "EnergyCoreProto", "TacticProto", "SpellProto", "BuffProto",
+            "AIMapProto", "MapInfoProto", "MapRuleProto", "MatchUIProto",
+            "AchievementProto", "TaskProto", "ActivityProto", "ShopProto", "GoodsProto",
+        )
+        for name in KNOWN_PROTOS:
+            for fn_name in ("GetAllProtoByName", "FindProto"):
+                m = getattr(gdata, fn_name, None)
+                if callable(m):
+                    try:
+                        p = m(name)
+                        if p is not None:
+                            all_tables[name] = p
+                            break
+                    except Exception:
+                        pass
+
+        log("[DUMP] Found %d proto tables to scan." % len(all_tables))
+
+        zh_re = re.compile(u'[\u4e00-\u9fff]')
+        dump_result = {
+            "version": "1.0",
+            "tables": {},
+            "unique_strings": []
+        }
+        unique_set = set()
+        table_stats = {}
+
+        fields_to_check = (
+            "name", "skill_name", "hero_name", "desc", "description", "describe",
+            "show_name", "skin_name", "title", "short_name", "story", "tips",
+            "intro", "effect_desc", "passive_desc", "special_desc", "simple_desc",
+            "skill_desc", "talent_desc", "core_desc", "detail", "sub_title", "explain"
+        )
+
+        for tname, tbl in all_tables.items():
+            t_strings = {}
+            try:
+                rows = list(tbl.items())
+            except Exception:
+                continue
+
+            for row_id, row in rows:
+                if row is None:
+                    continue
+                row_dict = {}
+
+                keys_to_try = set(fields_to_check)
+                if hasattr(row, 'keys') and callable(row.keys):
+                    try:
+                        keys_to_try.update(list(row.keys()))
+                    except Exception:
+                        pass
+                if hasattr(row, '__dict__'):
+                    keys_to_try.update(list(row.__dict__.keys()))
+
+                for f in keys_to_try:
+                    val = None
+                    try:
+                        val = row[f]
+                    except Exception:
+                        pass
+                    if val is None:
+                        try:
+                            val = getattr(row, f, None)
+                        except Exception:
+                            pass
+                    if not val:
+                        continue
+                    u_val = _to_unicode(val)
+                    if u_val and zh_re.search(u_val):
+                        clean_text = u_val.strip()
+                        if clean_text:
+                            row_dict[str(f)] = clean_text
+                            unique_set.add(clean_text)
+
+                if row_dict:
+                    t_strings[str(row_id)] = row_dict
+
+            if t_strings:
+                dump_result["tables"][str(tname)] = t_strings
+                table_stats[str(tname)] = len(t_strings)
+                log("[DUMP] Table %s: extracted %d items with Chinese text" % (tname, len(t_strings)))
+
+        if len(unique_set) == 0:
+            log("[DUMP] No Chinese strings found yet (tables might still be loading).")
+            return
+
+        _dump_completed = True
+        dump_result["unique_strings"] = sorted(list(unique_set), key=lambda x: -len(x))
+        dump_result["total_unique_strings"] = len(unique_set)
+        dump_result["table_counts"] = table_stats
+
+        log("[DUMP] COMPLETE! Total unique Chinese strings collected: %d across %d tables" %
+            (len(unique_set), len(table_stats)))
+
+        import json
+        doc_dir = "/sdcard/Android/data/com.netease.g104.cn/files/Netease/g104/Documents"
+        fallback_dir = "/storage/emulated/0/Android/data/com.netease.g104.cn/files/Netease/g104/Documents"
+
+        for target_dir in (doc_dir, fallback_dir):
+            if os.path.isdir(target_dir):
+                json_path = os.path.join(target_dir, "gdata_dump.json")
+                txt_path = os.path.join(target_dir, "unique_chinese_strings.txt")
+                summary_path = os.path.join(target_dir, "dump_summary.txt")
+
+                try:
+                    with open(json_path, "wb") as f:
+                        f.write(json.dumps(dump_result, ensure_ascii=False, indent=2).encode("utf-8"))
+                    log("[DUMP] Successfully saved JSON to %s" % json_path)
+                except Exception:
+                    log("[DUMP] Failed to save JSON: %s" % traceback.format_exc())
+
+                try:
+                    with open(txt_path, "wb") as f:
+                        for s in dump_result["unique_strings"]:
+                            f.write((s + "\n").encode("utf-8"))
+                    log("[DUMP] Successfully saved TXT to %s" % txt_path)
+                except Exception:
+                    log("[DUMP] Failed to save TXT: %s" % traceback.format_exc())
+
+                try:
+                    with open(summary_path, "wb") as f:
+                        f.write("=== MARVEL SUPER WAR PROTO DUMP SUMMARY ===\n")
+                        f.write("Total unique Chinese strings: %d\n" % len(unique_set))
+                        f.write("Total tables with strings: %d\n\n" % len(table_stats))
+                        for t, cnt in sorted(table_stats.items(), key=lambda x: -x[1]):
+                            f.write("- %s: %d entries\n" % (t, cnt))
+                    log("[DUMP] Successfully saved summary to %s" % summary_path)
+                except Exception:
+                    pass
+                break
+    except Exception:
+        log("[DUMP] Fatal error during dump_all_game_strings:", traceback.format_exc())
+
+
 def _translate(s):
     """Return the English equivalent of a Chinese string, or the original."""
     if not s:
@@ -2320,6 +2532,7 @@ def do_enter_hall():
     _running = True
     try:
         player_name = read_player_name()
+        load_external_translations()
         patch_hall_ui()
         patch_ui_localization()
         patch_hall_util()
@@ -2338,7 +2551,9 @@ def do_enter_hall():
             import mbengine.common.Timer as Timer
             Timer.addTimer(1.0, auto_translate_sweep)
             Timer.addTimer(2.0, auto_translate_sweep)
+            Timer.addTimer(2.5, dump_all_game_strings)
             Timer.addTimer(3.5, auto_translate_sweep)
+            Timer.addTimer(4.5, dump_all_game_strings)
             Timer.addTimer(5.0, auto_translate_sweep)
             Timer.addTimer(1.5, patch_gdata_translations)
             Timer.addTimer(3.0, patch_gdata_translations)
