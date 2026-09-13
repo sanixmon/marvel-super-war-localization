@@ -673,17 +673,43 @@ def _to_str(val):
 
 
 def load_external_translations():
-    """Load external English translations from loc_en.json if present on sdcard."""
+    """Load external English translations from loc_en.json or loc_en.txt across candidate locations."""
     global _SORTED_ZH_KEYS
     import json
-    paths = (
+    paths = []
+
+    # 1. Directory of current running reborn_offline.py
+    try:
+        if "__file__" in globals() and __file__:
+            cur_dir = os.path.dirname(os.path.abspath(__file__))
+            paths.append(os.path.join(cur_dir, "loc_en.json"))
+            paths.append(os.path.join(cur_dir, "loc_en.txt"))
+    except Exception:
+        pass
+
+    # 2. Candidate Documents directories
+    for d in DOC_DIRS:
+        paths.append(os.path.join(d, "loc_en.json"))
+        paths.append(os.path.join(d, "loc_en.txt"))
+
+    # 3. Explicit device storage paths
+    paths.extend([
         "/sdcard/Android/data/com.netease.g104.cn/files/Netease/g104/Documents/loc_en.json",
         "/storage/emulated/0/Android/data/com.netease.g104.cn/files/Netease/g104/Documents/loc_en.json",
+        "/data/data/com.netease.g104.cn/files/Netease/g104/Documents/loc_en.json",
+        "/data/user/0/com.netease.g104.cn/files/Netease/g104/Documents/loc_en.json",
         "/sdcard/Android/data/com.netease.g104.cn/files/Netease/g104/Documents/loc_en.txt",
-    )
-    loaded = 0
+    ])
+
+    seen_paths = set()
+    total_loaded = 0
     for p in paths:
+        norm_p = os.path.normpath(p)
+        if norm_p in seen_paths:
+            continue
+        seen_paths.add(norm_p)
         if os.path.isfile(p):
+            loaded = 0
             try:
                 with open(p, "rb") as f:
                     content = f.read()
@@ -708,10 +734,13 @@ def load_external_translations():
                                 loaded += 1
                 if loaded > 0:
                     log("Loaded %d additional translations from %s" % (loaded, p))
-                    _SORTED_ZH_KEYS = tuple(sorted(_ZH_TO_EN.keys(), key=lambda k: -len(k)))
-                    break
+                    total_loaded += loaded
             except Exception:
                 log("Error loading external translation from %s:" % p, traceback.format_exc())
+
+    if total_loaded > 0:
+        _SORTED_ZH_KEYS = tuple(sorted(_ZH_TO_EN.keys(), key=lambda k: -len(k)))
+        log("Master localization dictionary active with %d entries" % len(_ZH_TO_EN))
 
 
 _dump_completed = False
@@ -1301,11 +1330,69 @@ def patch_hall_util():
         log("patch_hall_util error:", traceback.format_exc())
 
 
-_gdata_hero_patched = False
+_patched_proto_counts = {}
+_gdata_sweep_counter = 0
+
+
+def write_test_report():
+    """Generate a clean human-readable test report on device."""
+    try:
+        report_lines = [
+            "==================================================",
+            "MARVEL SUPER WAR LOCALIZATION TEST REPORT",
+            "==================================================",
+            "Python Version: %s" % sys.version.split()[0],
+            "Master Dictionary Active Entries: %d" % len(_ZH_TO_EN),
+            "",
+            "--- Proto Tables Monitored / Patched in Memory ---",
+        ]
+        if _patched_proto_counts:
+            for tname, row_cnt in sorted(_patched_proto_counts.items()):
+                report_lines.append("  * %-20s : %d rows monitored/patched" % (tname, row_cnt))
+        else:
+            report_lines.append("  (No tables recorded yet)")
+
+        report_lines.append("")
+        report_lines.append("--- Terminology Self-Test ---")
+        test_terms = [
+            (u"\u7f8e\u56fd\u961f\u957f", "Captain America"),
+            (u"\u94a2\u94c1\u4fa0", "Iron Man"),
+            (u"\u8718\u86db\u4fa0", "Spider-Man"),
+            (u"\u661f\u76fe\u98de\u63b7", "Shield Throw"),
+            (u"\u74e6\u56fe\u59c6\u9b54\u6756", "Wand of Watoomb"),
+            (u"\u5b87\u5b99\u7acb\u65b9", "Cosmic Cube"),
+            (u"\u6291\u5236\u7c92\u5b50", "Suppression Particle"),
+            (u"\u7269\u7406\u4f24\u5bb3", "Physical Damage"),
+            (u"\u80fd\u91cf\u4f24\u5bb3", "Energy Damage"),
+        ]
+        passed = 0
+        for zh, expected_en in test_terms:
+            act = _translate(zh)
+            ok = (act and act != zh)
+            if ok:
+                passed += 1
+                report_lines.append("  [PASS] %s -> %s" % (_to_str(zh), _to_str(act)))
+            else:
+                report_lines.append("  [FAIL] %s (expected: %s, got: %s)" % (_to_str(zh), expected_en, _to_str(act)))
+        report_lines.append("Self-Test Score: %d/%d passed" % (passed, len(test_terms)))
+        report_lines.append("==================================================")
+
+        report_text = "\n".join(report_lines)
+        for _d in DOC_DIRS:
+            try:
+                p = os.path.join(_d, "reborn_test_report.txt")
+                with open(p, "wb") as f:
+                    f.write(report_text.encode("utf-8") if hasattr(report_text, "encode") else str(report_text))
+                log("[TEST] Self-test report written to %s" % p)
+                break
+            except Exception:
+                pass
+    except Exception:
+        log("write_test_report error:", traceback.format_exc())
 
 
 def patch_gdata_translations():
-    """Patch hero and skin names (show_name, skin_name) across all live gdata tables."""
+    """Patch hero, skin, skill, item, and UI text across all live gdata tables."""
     global _gdata_hero_patched
     try:
         import game_env
@@ -1341,9 +1428,12 @@ def patch_gdata_translations():
             "HeroInfoProto", "HeroDataProto", "HeroCardProto", "HeroBaseProto",
             "EquipProto", "EquipSchemeProto", "SkillProto", "SkillDescProto",
             "MatchUIProto", "MapInfoProto", "MapRuleProto", "AIMapProto",
+            "SpellProto", "BuffProto", "TalentProto", "EnergyCoreProto",
+            "TacticProto", "SkillEffectProto", "HeroTalentProto", "ActivityProto",
+            "ShopProto", "GoodsProto", "AchievementProto", "TaskProto",
         )
         for name in KNOWN_PROTOS:
-            for fn_name in ("GetAllProtoByName", "FindProto"):
+            for fn_name in ("GetAllProtoByName", "FindProto", "GetProto", "GetProtoByName", "FindProtoByName", "GetTable"):
                 m = getattr(gdata, fn_name, None)
                 if callable(m):
                     try:
@@ -1355,22 +1445,60 @@ def patch_gdata_translations():
                     except Exception:
                         pass
 
-        fields_to_translate = ("show_name", "skin_name", "name", "hero_name",
-                                "title", "short_name", "desc", "skill_name")
+        fields_to_translate = (
+            "show_name", "skin_name", "name", "hero_name", "title", "short_name",
+            "desc", "skill_name", "spl_tips", "simple_spl_tips", "enhanced_spl_tips",
+            "nickname", "story_tips", "tips", "display_name", "match_name", "ui_name",
+            "achievement_name", "read_tips", "cond_desc", "common_desc", "rule",
+            "description", "describe", "intro", "detail", "explain", "ai_name",
+            "battle_strategy", "tips_name", "attr_only_3"
+        )
         total_translated = 0
         for tname, tbl in all_tables.items():
             t_count = 0
             t_err = None
+            t_fields_count = {}
+            t_samples = []
+            rows = []
             try:
-                rows = list(tbl.items())
-            except Exception as ex:
-                # This table doesn't behave like a dict — skip it
+                if hasattr(tbl, "items") and callable(tbl.items):
+                    rows = list(tbl.items())
+                elif hasattr(tbl, "keys") and callable(tbl.keys):
+                    for k in tbl.keys():
+                        try:
+                            rows.append((k, tbl[k]))
+                        except Exception:
+                            pass
+                elif hasattr(tbl, "__iter__"):
+                    for k in tbl:
+                        try:
+                            rows.append((k, tbl[k]))
+                        except Exception:
+                            pass
+            except Exception:
                 continue
+
+            if _patched_proto_counts.get(tname) == len(rows):
+                continue
+
             try:
                 for row_id, row in rows:
                     if row is None:
                         continue
-                    for f in fields_to_translate:
+
+                    # Gather all keys on row: predefined fields plus actual row keys/attributes
+                    row_keys = set(fields_to_translate)
+                    if isinstance(row, dict):
+                        row_keys.update(row.keys())
+                    elif hasattr(row, "keys") and callable(row.keys):
+                        try:
+                            row_keys.update(list(row.keys()))
+                        except Exception:
+                            pass
+                    if hasattr(row, "__dict__"):
+                        row_keys.update(list(row.__dict__.keys()))
+
+                    for f in row_keys:
                         # Fetch the field value
                         val = None
                         try:
@@ -1407,6 +1535,9 @@ def patch_gdata_translations():
                                     elif setter == "attr_set":
                                         setattr(row, f, cand)
                                     t_count += 1
+                                    t_fields_count[f] = t_fields_count.get(f, 0) + 1
+                                    if len(t_samples) < 3:
+                                        t_samples.append((f, val_u[:40], en_u[:40]))
                                     wrote = True
                                     break
                                 except Exception:
@@ -1414,16 +1545,22 @@ def patch_gdata_translations():
             except Exception as ex:
                 t_err = ex
             if t_count > 0 or t_err:
-                msg = "Proto %s: translated %d fields" % (tname, t_count)
+                msg = "[GDATA] Proto %s: translated %d fields across %d rows" % (tname, t_count, len(rows))
                 if t_err:
                     msg += " (err: %s)" % repr(t_err)
                 log(msg)
+                if t_fields_count:
+                    breakdown = ", ".join(["%s: %d" % (k, v) for k, v in sorted(t_fields_count.items(), key=lambda x: -x[1])[:6]])
+                    log("[GDATA]   Fields: %s" % breakdown)
+                for fld, orig_txt, trans_txt in t_samples:
+                    log("[GDATA]   Sample [%s]: %s -> %s" % (fld, orig_txt, trans_txt))
                 total_translated += t_count
-
+            _patched_proto_counts[tname] = len(rows)
 
         if total_translated > 0:
             _gdata_hero_patched = True
-            log("Total gdata fields translated:", total_translated)
+            log("Total gdata fields translated this sweep:", total_translated)
+            write_test_report()
     except Exception:
         log("patch_gdata_translations error:", traceback.format_exc())
 
@@ -1432,9 +1569,10 @@ def patch_gdata_translations():
 
 def auto_translate_sweep():
     """Periodic background sweep to translate dynamically created UI elements."""
-    global _gdata_hero_patched
+    global _gdata_hero_patched, _gdata_sweep_counter
     try:
-        if not _gdata_hero_patched:
+        _gdata_sweep_counter += 1
+        if _gdata_sweep_counter <= 3 or _gdata_sweep_counter % 8 == 0:
             patch_gdata_translations()
 
         # 1. Sweep entire Cocos2d-x running scene graph

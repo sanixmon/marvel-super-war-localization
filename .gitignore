@@ -34,5 +34,7 @@ dump_rebuilt.txt
 reborn_offline_en.py
 Screenshots/
 upload_and_link.sh
-gdrive_link.txt
 *.so
+gdrive_link.txt
+extracted_dump/
+marvel_vfs_patch.zip
