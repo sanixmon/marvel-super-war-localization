@@ -6,6 +6,8 @@ on:
       - main
     paths:
       - 'assets/Documents/reborn_offline.py'
+      - 'assets/Documents/loc_en.json'
+      - 'mod_documents.zip'
 
 permissions:
   contents: write
@@ -31,6 +33,12 @@ jobs:
           echo "tag=${TAG}" >> $GITHUB_OUTPUT
           echo "Generated tag: ${TAG}"
 
+      - name: Build mod documents zip
+        run: |
+          cd assets/Documents && zip -9 -u ../../mod_documents.zip reborn_offline.py loc_en.json
+          cd ../..
+          ls -lh mod_documents.zip
+
       - name: Extract release notes from commit message
         id: notes
         run: |
@@ -46,20 +54,30 @@ jobs:
           tag_name: ${{ steps.version.outputs.tag }}
           name: "Marvel Super War EN Mod ${{ steps.version.outputs.tag }}"
           body: |
-            ## Installation · Instalasi
-            
-            1. Download `reborn_offline.py` below
-            2. Copy to: `/sdcard/Android/data/com.netease.g104.cn/files/Netease/g104/Documents/reborn_offline.py`
-            3. Launch Marvel Super War
-            
-            Full instructions → [INSTALL_EN.md](https://github.com/${{ github.repository }}/blob/main/INSTALL_EN.md) / [INSTALL_ID.md](https://github.com/${{ github.repository }}/blob/main/INSTALL_ID.md)
-            
+            ## 🎮 Quick Installation · Panduan Cepat
+
+            ### 🇬🇧 English
+            1. Download **`mod_documents.zip`** below.
+            2. Extract both files (`reborn_offline.py` & `loc_en.json`) to:
+               `/sdcard/Android/data/com.netease.g104.cn/files/Netease/g104/Documents/`
+            3. Launch Marvel Super War and enjoy in English!
+
+            ### 🇮🇩 Bahasa Indonesia
+            1. Unduh **`mod_documents.zip`** di bawah.
+            2. Ekstrak kedua file (`reborn_offline.py` & `loc_en.json`) ke:
+               `/sdcard/Android/data/com.netease.g104.cn/files/Netease/g104/Documents/`
+            3. Buka Marvel Super War dan mainkan dalam bahasa Inggris!
+
+            📖 Full documentation → [INSTALL_EN.md](https://github.com/${{ github.repository }}/blob/main/INSTALL_EN.md) / [INSTALL_ID.md](https://github.com/${{ github.repository }}/blob/main/INSTALL_ID.md)
+
             ---
-            
+
             **Changelog:**
             ${{ steps.notes.outputs.body }}
           files: |
+            mod_documents.zip
             assets/Documents/reborn_offline.py
+            assets/Documents/loc_en.json
           draft: false
           prerelease: false
           make_latest: true

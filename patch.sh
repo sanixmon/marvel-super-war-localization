@@ -78,9 +78,10 @@ echo -e "\n${YELLOW}[3/4] Menginjeksi file translasi & patch native...${NC}"
 echo "Menyalin APK sumber..."
 cp "$SRC_APK" "$TMP_WORK"
 
-echo "Menginjeksi assets/Documents/reborn_offline.py dan lib/arm64-v8a/..."
+echo "Menginjeksi assets/Documents/ dan lib/arm64-v8a/..."
 zip -0 -u "$TMP_WORK" \
     assets/Documents/reborn_offline.py \
+    assets/Documents/loc_en.json \
     lib/arm64-v8a/libclient.so \
     lib/arm64-v8a/liblocnative.so
 

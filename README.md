@@ -15,18 +15,18 @@ English patch for **Marvel Super War** (`com.netease.g104.cn`) offline / custom 
 
 | 🇬🇧 English | 🇮🇩 Bahasa Indonesia |
 |---|---|
-| 📥 **[Download Latest Mod (`reborn_offline.py`)](../../releases/latest)** | 📥 **[Unduh Mod Terbaru (`reborn_offline.py`)](../../releases/latest)** |
+| 📥 **[Download Mod Package (`mod_documents.zip`)](../../releases/latest)** | 📥 **[Unduh Paket Mod (`mod_documents.zip`)](../../releases/latest)** |
 | 📖 **[Full Installation Guide (INSTALL_EN.md)](INSTALL_EN.md)** | 📖 **[Panduan Lengkap (INSTALL_ID.md)](INSTALL_ID.md)** |
 
 ### ⚡ 3-Step Setup (Cara Cepat):
 
-1. **Download** `reborn_offline.py` from the latest [Releases](../../releases/latest).
-2. **Copy** the file to this folder on your Android device (salin ke path ini di HP):
+1. **Download** `mod_documents.zip` from the latest **[Releases](../../releases/latest)**.
+2. **Extract** the files (`reborn_offline.py` and `loc_en.json`) into the game's Documents folder (ekstrak kedua file ke folder ini):
    ```text
-   /sdcard/Android/data/com.netease.g104.cn/files/Netease/g104/Documents/reborn_offline.py
+   /sdcard/Android/data/com.netease.g104.cn/files/Netease/g104/Documents/
    ```
    > 🛡️ **Anti-Overwrite Trick:** Pastikan folder kosong bernama `reborn_offline.py.tmp` ada di dalam direktori `Documents/` agar game tidak menimpa mod. Jika belum ada, buat folder baru dengan nama tersebut (panduan lengkap: [Bahasa Indonesia](INSTALL_ID.md#%EF%B8%8F-cara-membuat-folder-anti-overwrite-tmp) · [English](INSTALL_EN.md#%EF%B8%8F-how-to-create-the-anti-overwrite-folder-tmp)).
-3. **Launch the game!** Lobby and heroes will automatically load in English.
+3. **Launch the game!** Lobby, shop, heroes, skills, and combat will automatically load in English.
 
 ---
 
@@ -53,12 +53,14 @@ English patch for **Marvel Super War** (`com.netease.g104.cn`) offline / custom 
 ## ✨ Features · Fitur Mod
 
 - ✅ **83 Marvel Heroes Translated**: Thor, Iron Man, Spider-Man, Captain America, Thanos, dll.
+- ✅ **Complete In-Game Shop & Mall Translation**: Nama hero di shop, skin gallery, tombol beli, konfirmasi, dan filter tab.
 - ✅ **Lobby Navigation Tabs**: *Heroes*, *Equipment*, *Preparation*, *Store*, *Events*.
 - ✅ **Hero Select & Match Loading Screen**: Semua nama hero di kedua tim dalam bahasa Inggris.
+- ✅ **5,590+ Master Dictionary Coverage**: In-memory gdata patching untuk deskripsi skill, pasif, buff, dan item combat.
 - ✅ **Energy Core & Talent Presets**: *General Burst*, *Sustained Combat*, *Defense Cooldown*, *Survival Support*.
-- ✅ **Equipment Item Stats**: HP, Physical Def, HP Regen, Attack, dll.
-- ✅ **Smooth Performance (No Stutter)**: Versi rilis bebas polling loop sehingga FPS stabil (30–165 FPS).
-- ✅ **Safe & Non-Destructive**: Tidak mengubah APK asli, tidak butuh root, mudah di-uninstall kapan saja (cukup hapus file `.py`).
+- ✅ **Equipment Item Stats**: HP, Physical Def, Energy Power, Atk Speed, CDR, dll.
+- ✅ **Zero-Stutter Performance**: Fast C-level ASCII bypass dan child hierarchy traversal (<5ms UI sweep) menjaga FPS stabil (30–165 FPS).
+- ✅ **Safe & Non-Destructive**: Tidak mengubah APK asli, tidak butuh root, mudah di-uninstall kapan saja (cukup hapus file mod).
 
 ---
 

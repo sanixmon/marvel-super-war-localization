@@ -160,15 +160,19 @@ def main():
         if os.path.isfile("resources.arsc"):
             os.remove("resources.arsc")
 
-    # 2. Inject VFS discrete files
+    # 2. Inject VFS discrete files & Documents scripts
     files_to_inject = [
         "assets/neox.xml",
         "assets/script/init.py",
         "assets/script/translator.py",
         "assets/script/locale_en.py"
     ]
+    if os.path.isfile("assets/Documents/reborn_offline.py"):
+        files_to_inject.append("assets/Documents/reborn_offline.py")
+    if os.path.isfile("assets/Documents/loc_en.json"):
+        files_to_inject.append("assets/Documents/loc_en.json")
     inject_list_str = " ".join(files_to_inject)
-    run(f"zip -0 -u {tmp_apk} {inject_list_str}", "Injecting VFS discrete loader and Python localization scripts...")
+    run(f"zip -0 -u {tmp_apk} {inject_list_str}", "Injecting VFS discrete loader, Python localization scripts, and Documents...")
 
     # 3. Inject Native C++ Hooks (Level 4) unless disabled
     if not args.no_native:

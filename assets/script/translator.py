@@ -83,6 +83,10 @@ def translate(s):
     if not uni_s:
         return s
 
+    # Instant C-level ASCII check: if no characters >= 0x2e80, cannot match any Chinese entry
+    if ord(max(uni_s)) < 0x2e80:
+        return s
+
     if uni_s in _ZH_TO_EN:
         return _ZH_TO_EN[uni_s]
 
@@ -96,11 +100,17 @@ def translate(s):
     if no_space in _ZH_TO_EN:
         return _ZH_TO_EN[no_space]
 
+    has_cjk = any((0x3000 <= ord(c) <= 0x9fff) or (0xf900 <= ord(c) <= 0xffff) for c in uni_s)
+    if not has_cjk:
+        return s
+
     modified = False
     for zh in _SORTED_ZH_KEYS:
         if zh in uni_s:
             uni_s = uni_s.replace(zh, _ZH_TO_EN[zh])
             modified = True
+            if ord(max(uni_s)) < 0x2e80:
+                break
 
     return uni_s if modified else s
 
@@ -160,30 +170,51 @@ def translate_node(node):
                 pass
 
 
-def translate_tree(node, depth=0, max_depth=15):
+def translate_tree(node, depth=0, max_depth=15, visited=None):
     """Recursively traverse and translate a UI node hierarchy."""
     if not node or depth > max_depth:
         return
+    if visited is None:
+        visited = set()
+    node_id = id(node)
+    if node_id in visited:
+        return
+    visited.add(node_id)
+
     try:
         translate_node(node)
     except Exception:
         pass
 
-    children = None
-    for get_ch in ("getChildren", "GetChildren", "getItems", "GetItems", "getPages", "GetPages", "getCells", "GetCells"):
-        cfn = getattr(node, get_ch, None)
-        if callable(cfn):
+    # 1. Inner container for Cocos2d-x ScrollView / ListView / TableView
+    for inner_fn in ("getInnerContainer", "GetInnerContainer", "get_inner_container"):
+        ifn = getattr(node, inner_fn, None)
+        if callable(ifn):
             try:
-                children = cfn()
-                if children:
+                inner = ifn()
+                if inner:
+                    translate_tree(inner, depth + 1, max_depth, visited)
                     break
             except Exception:
                 pass
 
-    if children:
-        for child in children:
+    # 2. Child collections (getChildren, getItems, getPages, getCells)
+    for get_ch in ("getChildren", "GetChildren", "getItems", "GetItems", "getPages", "GetPages", "getCells", "GetCells"):
+        cfn = getattr(node, get_ch, None)
+        if callable(cfn):
             try:
-                translate_tree(child, depth + 1, max_depth)
+                ch_list = cfn()
+                if ch_list:
+                    found_any = False
+                    for child in ch_list:
+                        found_any = True
+                        try:
+                            if child:
+                                translate_tree(child, depth + 1, max_depth, visited)
+                        except Exception:
+                            pass
+                    if found_any:
+                        break
             except Exception:
                 pass
 
@@ -192,6 +223,7 @@ def translate_panel(panel):
     """Translate all widgets on a panel or component instance."""
     if not panel:
         return
+    visited = set()
     for attr in (
         "panel", "_panel", "root_node", "_root_node", "nod_root",
         "node", "_node", "ui_node", "_ui_node", "widget", "_widget",
@@ -202,12 +234,12 @@ def translate_panel(panel):
         root = getattr(panel, attr, None)
         if root:
             try:
-                translate_tree(root)
+                translate_tree(root, visited=visited)
             except Exception:
                 pass
 
     try:
-        translate_tree(panel)
+        translate_tree(panel, visited=visited)
     except Exception:
         pass
 
@@ -222,7 +254,7 @@ def translate_panel(panel):
                     sub_root = getattr(val, sub_attr, None)
                     if sub_root:
                         try:
-                            translate_tree(sub_root)
+                            translate_tree(sub_root, visited=visited)
                         except Exception:
                             pass
     except Exception:

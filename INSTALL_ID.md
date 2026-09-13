@@ -19,16 +19,16 @@
 
 ## Langkah Pemasangan
 
-**1. Unduh script**
+**1. Unduh paket mod**
 
-Download file `reborn_offline.py` dari halaman **[Releases](../../releases)** terbaru.
+Download file **`mod_documents.zip`** dari halaman **[Releases](../../releases)** terbaru.
 
 **2. Salin ke perangkat**
 
-Pindahkan file ke path berikut di HP kamu:
+Ekstrak kedua file (`reborn_offline.py` dan `loc_en.json`) ke path folder Documents berikut di HP kamu:
 
 ```
-/sdcard/Android/data/com.netease.g104.cn/files/Netease/g104/Documents/reborn_offline.py
+/sdcard/Android/data/com.netease.g104.cn/files/Netease/g104/Documents/
 ```
 
 > **⚠️ Penting — Trik Anti-Overwrite:**  
@@ -57,7 +57,8 @@ mkdir -p "/sdcard/Android/data/com.netease.g104.cn/files/Netease/g104/Documents/
 Struktur folder akhir di dalam `Documents/`:
 ```text
 Documents/
-├── reborn_offline.py       ← File script mod
+├── reborn_offline.py       ← File script mod runtime
+├── loc_en.json             ← 5.590+ Kamus master translasi Inggris
 └── reborn_offline.py.tmp/  ← Folder kosong (penahan overwrite)
 ```
 
@@ -76,13 +77,15 @@ Mod aktif jika tab lobby berubah menjadi:
 
 ## Fitur yang Diterjemahkan
 
-- ✅ Nama semua hero (83 hero)
+- ✅ Nama semua hero (83 hero) & nama lengkap hero di shop
+- ✅ Seluruh antarmuka Shop / Mall (kartu hero, skin, tombol beli, dialog konfirmasi)
 - ✅ Tab utama lobby (Heroes, Equipment, Preparation, Store, Events)
-- ✅ Nama skin hero
-- ✅ Mode permainan (VS A.I., Tutorial, dll.)
+- ✅ Patch tabel gdata in-memory: skill, pasif, buff, dan deskripsi item
+- ✅ Galeri & nama skin hero
+- ✅ Mode permainan (VS A.I., Ranked, Tutorial, dll.)
 - ✅ Profil energy-core (General Burst, Sustained Combat, Defense Cooldown, Survival Support)
-- ✅ Antarmuka pilih hero (Hero Select)
-- ✅ Stat item (HP, Physical Def, HP Regen, dll.)
+- ✅ Antarmuka pilih hero & match loading (semua 10 hero dalam bahasa Inggris)
+- ✅ Stat item combat (HP, Physical Def, Energy Power, Atk Speed, CDR, dll.)
 
 ---
 
@@ -90,8 +93,8 @@ Mod aktif jika tab lobby berubah menjadi:
 
 | Masalah | Solusi |
 |---------|--------|
-| Teks masih China setelah load | Keluar ke lobby lalu masuk kembali |
-| Script tidak berjalan | Pastikan path file sudah benar, cek izin file |
+| Teks masih China setelah load | Keluar ke lobby lalu masuk kembali, atau pastikan `loc_en.json` ada di folder `Documents/` |
+| Script tidak berjalan | Pastikan path file sudah benar, cek izin akses folder |
 | Game crash saat start | Periksa apakah versi game kompatibel |
 
 ---
@@ -100,10 +103,10 @@ Mod aktif jika tab lobby berubah menjadi:
 
 ```
 Documents/
-└── reborn_offline.py    ← script mod (file ini saja)
+├── reborn_offline.py       ← Script mod
+├── loc_en.json             ← Kamus master lokalisasi
+└── reborn_offline.py.tmp/  ← Folder anti-overwrite
 ```
-
-Script ini berdiri sendiri — tidak perlu file tambahan.
 
 ---
 

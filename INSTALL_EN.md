@@ -19,16 +19,16 @@
 
 ## Installation Steps
 
-**1. Download the script**
+**1. Download the mod package**
 
-Download `reborn_offline.py` from the latest **[Releases](../../releases)** page.
+Download **`mod_documents.zip`** from the latest **[Releases](../../releases)** page.
 
 **2. Copy to device**
 
-Move the file to this exact path on your device:
+Extract both files (`reborn_offline.py` and `loc_en.json`) to this exact directory on your device:
 
 ```
-/sdcard/Android/data/com.netease.g104.cn/files/Netease/g104/Documents/reborn_offline.py
+/sdcard/Android/data/com.netease.g104.cn/files/Netease/g104/Documents/
 ```
 
 > **⚠️ Important — Anti-Overwrite Trick:**  
@@ -57,7 +57,8 @@ mkdir -p "/sdcard/Android/data/com.netease.g104.cn/files/Netease/g104/Documents/
 Final folder structure inside `Documents/`:
 ```text
 Documents/
-├── reborn_offline.py       ← Mod script file
+├── reborn_offline.py       ← Mod runtime script
+├── loc_en.json             ← 5,590+ Master English dictionary
 └── reborn_offline.py.tmp/  ← Empty folder (blocks auto-overwrite)
 ```
 
@@ -76,13 +77,15 @@ The mod is active when lobby tabs read:
 
 ## Translated Content
 
-- ✅ All hero names (83 heroes)
+- ✅ All hero names (83 heroes) & full hero names in shop
+- ✅ Complete in-game shop / mall (hero cards, skins, tabs, purchase dialogs)
 - ✅ Main lobby tabs (Heroes, Equipment, Preparation, Store, Events)
-- ✅ Hero skin names
-- ✅ Game modes (VS A.I., Tutorial, etc.)
+- ✅ In-memory gdata tables: skills, passives, combat stats, item descriptions
+- ✅ Hero skin names & gallery
+- ✅ Game modes (VS A.I., Ranked, Tutorial, etc.)
 - ✅ Energy-core presets (General Burst, Sustained Combat, Defense Cooldown, Survival Support)
-- ✅ Hero select screen
-- ✅ Item stats (HP, Physical Def, HP Regen, etc.)
+- ✅ Hero select & match loading screens (all 10 heroes in English)
+- ✅ Combat item stats (HP, Physical Def, Energy Power, CDR, etc.)
 
 ---
 
@@ -90,7 +93,7 @@ The mod is active when lobby tabs read:
 
 | Issue | Fix |
 |-------|-----|
-| Text still Chinese after load | Exit to lobby and re-enter |
+| Text still Chinese after load | Exit to lobby and re-enter, or ensure `loc_en.json` is in `Documents/` |
 | Script not running | Verify the file path is correct and the file is readable |
 | Game crashes on start | Check if your game build version is compatible |
 
@@ -100,10 +103,10 @@ The mod is active when lobby tabs read:
 
 ```
 Documents/
-└── reborn_offline.py    ← mod script (this file only)
+├── reborn_offline.py       ← Mod script
+├── loc_en.json             ← Master localization dictionary
+└── reborn_offline.py.tmp/  ← Anti-overwrite folder
 ```
-
-The script is self-contained — no additional files needed.
 
 ---
 
