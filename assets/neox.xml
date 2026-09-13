@@ -1,0 +1,118 @@
+<ppg3d>
+	<modules>
+		<module Name='Python' File='python.dll'/>
+		<module Name='Audio' File='audio.dll'/>
+        <!--<module Name='Voice' File='voice.dll'/>
+		<module Name="Terrain" File="terrain.dll" />
+		<module Name="video" File="video.dll" /> 
+		<module Name="browser" File="browser.dll" /> 
+		-->	
+	</modules>
+	<log Level='1'/>
+	<client
+		ResourceRoot		= '.\res'
+		LimitDisplayRate	= 'True'
+		ShowLogWindow		= 'True'
+		DumpType		= '0'
+		DumpPath		= 'dumps'
+		ShowDumpDlg		= 'False'
+		World			= '3d'
+        WindowClientWidth   = '1334'
+        WindowClientHeight  = '750'
+		FixedLogicRate = 'False'
+		SmoothLevel = '2'
+		CatchupFrame = 'False'
+		WindowAutoSize = 'True'
+		FrameRate = '30'
+		UseCADisplayLink = 'True'
+		UseSound = 'True'
+    FontPath = 'ui/cocos21/fonts/heiti.ttf'
+    NoPatch = '0'
+        >
+		<uis>
+			<cocosui Passing = 'False' />
+			<pygame Passing = 'False' />
+		</uis>
+	</client>
+	<cocosui 
+		LoadSeparateAlphaFile = 'False'
+		LogLevel = '40'
+		EnableBatchOptimize = 'True'
+		UseScissorOverStencil = 'False'
+		EnableLabelUndoPrepare = 'True'
+		SimulateIPhoneX = 'False'
+		TtfFontCacheHotFrames = '-1'
+		TtfFontMax = '160'
+	>
+		<MergeSprite Enabled = "True" >
+			<MergeSprite
+				Name = "attack"
+				Regex = ".*matk_.*"
+				Algorithm = "Lines_Generic"
+				TextureSize = "1024"
+			/>
+		</MergeSprite>
+	</cocosui>
+	<profiling PerfSystem = 'False' ThreadBlockingTime = '300'/>
+ 	<filesystems>
+		<filesystem name='res'>
+			<loader name='discrete' opener='asset' root='res'/>
+			<loader name='npk' opener='sys' root='%DOC_DIR%\\res' depth='1'/>
+			<loader name='discrete' opener='sys' root='%DOC_DIR%\\res'/>
+
+			<loader name='npk' opener='asset' root='res' depth='1'/>
+			<loader name='discrete' opener='sys' root='%WORK_DIR%\\res'/>
+		</filesystem>
+		<filesystem name='script'>
+			<loader name='discrete' opener='asset' root='script'/>
+			<loader name='npk' opener='sys' root='%DOC_DIR%\\script' depth = '0'/>
+			<loader name='npk' opener='asset' root='script'/>
+		</filesystem>
+	</filesystems>	
+	<render
+		Depth			= '32'
+		MultiSample		= '0'
+		VSync			= 'False'
+		OneLightOptimize = 'True'
+	    EnableShadowMap = 'True'
+	    EnableDepthShadow = 'True'
+	    EnableESM = 'False'
+	    EnableRenderThread = 'True'
+		RenderThreadBlackList = 'LG-H868;HUAWEI RIO-AL00'
+		RedirectBackbuffer = 'True'
+	    UseMetal = 'True'
+	    MetalBlackList = 'iphone7,1;iphone7,2;ipad4,1;ipad4,2;ipad4,3'
+	    ProjectionZBias = 'True'
+	    DisableDisffuseAttrib = 'False'
+		UseGLES2 = 'False'
+		EffectCacheBehavior = '1'
+		>
+	</render>
+	<world
+		GpuSkinningEnable = 'False'
+		PixelDecal = 'False'
+		GpuParticle = 'False'
+		HardwareInstancing = 'True'
+		EnablePhysicsThread = 'False'
+		CrashOnInvalidGis = 'True'
+		EnableSfxCulling = 'True'
+		MergeDynamicModel = 'False'
+	    SkeletalMeshInstancing = 'False'
+		SubMeshBatching = 'True'
+		NewBatchRenderer = 'False'
+		ModelInstanceRenderer = 'True'
+		MergeStaticShadowMap = 'True'
+		EnableMergeAlpha = 'True'
+		>
+  </world>
+  <python
+		Optimize		= 'True'
+		ThreadEnable	= 'True'
+		>
+  </python>
+	<wwise
+		DefaultPoolSize = '4'
+		LowEngineDefaultPoolSize = '4'
+	>
+	</wwise>
+</ppg3d>
