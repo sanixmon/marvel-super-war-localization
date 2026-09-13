@@ -3,8 +3,9 @@
 """
 build_mod_apk.py — Marvel Super War Standalone English Localization Builder
 
-Injects internal NeoX VFS discrete loader configuration and Python localization
-modules directly into the APK. Produces a self-contained, 1-click install APK.
+Injects internal NeoX VFS discrete loader configuration, Python localization
+modules, and Level 4 Native C++ Hooking (liblocnative.so) directly into the APK.
+Produces a self-contained, 1-click install APK.
 """
 
 import os
@@ -17,7 +18,7 @@ import argparse
 ORIGINAL_APK = "marvel_by_sfys.apk"
 OUTPUT_APK = "marvel_english_standalone.apk"
 KEYSTORE = os.path.expanduser("~/.android/debug.keystore")
-SCRIPT_DIR = "assets/script"
+NATIVE_DIR = "native"
 
 
 def log(msg):
@@ -62,6 +63,49 @@ def verify_source_files():
     log("All required localization and engine files verified.")
 
 
+def build_native_hook():
+    log("Compiling native C++ hook library (liblocnative.so)...")
+    run("make -C native", "Building native ARM64 companion library...")
+    so_path = os.path.join(NATIVE_DIR, "liblocnative.so")
+    if not os.path.isfile(so_path):
+        print(f"[!] Compilation failed: {so_path} not found.")
+        sys.exit(1)
+    log(f"Native library compiled successfully: {so_path}")
+    return so_path
+
+
+def inject_native_hook(tmp_apk):
+    so_path = build_native_hook()
+    work_dir = "/tmp/native_patch_work"
+    shutil.rmtree(work_dir, ignore_errors=True)
+    os.makedirs(os.path.join(work_dir, "lib", "arm64-v8a"), exist_ok=True)
+
+    extracted_client = os.path.join(work_dir, "libclient_orig.so")
+    patched_client = os.path.join(work_dir, "lib", "arm64-v8a", "libclient.so")
+    copied_locnative = os.path.join(work_dir, "lib", "arm64-v8a", "liblocnative.so")
+
+    # 1. Extract original libclient.so
+    run(f"unzip -p {tmp_apk} lib/arm64-v8a/libclient.so > {extracted_client}", "Extracting libclient.so from APK...")
+
+    # 2. Patch DT_NEEDED
+    shutil.copyfile(extracted_client, patched_client)
+    run(f"patchelf --add-needed liblocnative.so {patched_client}", "Injecting DT_NEEDED liblocnative.so into libclient.so...")
+
+    # 3. Copy liblocnative.so
+    shutil.copyfile(so_path, copied_locnative)
+
+    # 4. Update APK archive
+    cwd = os.getcwd()
+    apk_abs = os.path.abspath(tmp_apk)
+    run(
+        f"cd {work_dir} && zip -0 -u {apk_abs} lib/arm64-v8a/libclient.so lib/arm64-v8a/liblocnative.so",
+        "Updating APK with native hook binaries..."
+    )
+
+    shutil.rmtree(work_dir, ignore_errors=True)
+    log("Native hook injection completed.")
+
+
 def patch_arsc_if_requested(decoded_dir="apk_res_out"):
     if not os.path.isdir(decoded_dir):
         run(f"apktool d -s --no-assets {ORIGINAL_APK} -o {decoded_dir}", "Decoding resources with apktool (skipping assets)...")
@@ -95,6 +139,7 @@ def patch_arsc_if_requested(decoded_dir="apk_res_out"):
 def main():
     parser = argparse.ArgumentParser(description="Marvel Super War Standalone Mod APK Builder")
     parser.add_argument("--with-arsc", action="store_true", help="Also rebuild and inject patched Android resources.arsc")
+    parser.add_argument("--no-native", action="store_true", help="Skip Level 4 native C++ hook injection")
     parser.add_argument("--out", default=OUTPUT_APK, help=f"Output APK path (default: {OUTPUT_APK})")
     args = parser.parse_args()
 
@@ -125,13 +170,17 @@ def main():
     inject_list_str = " ".join(files_to_inject)
     run(f"zip -0 -u {tmp_apk} {inject_list_str}", "Injecting VFS discrete loader and Python localization scripts...")
 
-    # 3. Strip old signatures
+    # 3. Inject Native C++ Hooks (Level 4) unless disabled
+    if not args.no_native:
+        inject_native_hook(tmp_apk)
+
+    # 4. Strip old signatures
     run(f'zip -d {tmp_apk} "META-INF/*.RSA" "META-INF/*.SF" "META-INF/*.MF"', "Stripping original signatures...", check=False)
 
-    # 4. Zipalign (4-byte alignment)
+    # 5. Zipalign (4-byte alignment)
     run(f"zipalign -p -f 4 {tmp_apk} {aligned_apk}", "Aligning APK to 4-byte page boundaries...")
 
-    # 5. Apksigner sign
+    # 6. Apksigner sign
     run(
         f"apksigner sign --ks {KEYSTORE} --ks-key-alias androiddebugkey "
         f"--ks-pass pass:android --key-pass pass:android --out {out_apk} {aligned_apk}",
@@ -143,7 +192,7 @@ def main():
         if os.path.isfile(f):
             os.remove(f)
 
-    # 6. Verify signature
+    # 7. Verify signature
     out = run(f"apksigner verify --verbose {out_apk}", "Verifying signed APK signature...")
     print(out)
 
