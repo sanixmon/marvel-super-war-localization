@@ -1638,8 +1638,8 @@ def patch_gdata_translations():
 _sweep_timer_scheduled = False
 
 
-def schedule_next_sweep(delay=0.8):
-    """Schedule the next auto_translate_sweep safely without stacking timers."""
+def schedule_next_sweep(delay=0.15):
+    """Schedule a single one-shot sweep on demand when a dialog/panel opens."""
     global _sweep_timer_scheduled
     if _sweep_timer_scheduled:
         return
@@ -1652,12 +1652,12 @@ def schedule_next_sweep(delay=0.8):
 
 
 def auto_translate_sweep():
-    """Periodic background sweep to translate dynamically created UI elements."""
+    """Event-driven sweep to translate UI elements without polling stutter."""
     global _sweep_timer_scheduled, _gdata_hero_patched, _gdata_sweep_counter
     _sweep_timer_scheduled = False
     try:
         _gdata_sweep_counter += 1
-        if _gdata_sweep_counter <= 3 or _gdata_sweep_counter % 8 == 0:
+        if _gdata_sweep_counter <= 2:
             patch_gdata_translations()
 
         # 1. Sweep entire Cocos2d-x running scene graph
@@ -1705,8 +1705,7 @@ def auto_translate_sweep():
         _ACTIVE_PANELS = alive[-30:]
     except Exception:
         pass
-    finally:
-        schedule_next_sweep(0.8)
+    # Production: ZERO periodic polling loop — runs purely on-demand to eliminate all micro-stutters!
 
 
 def check_command():
@@ -2974,12 +2973,13 @@ def do_enter_hall():
         except Exception:
             pass
 
-        # Fast initial sweeps and continuous background loop
+        # Initial lobby sweeps (0.15s, 0.5s, 1.2s) - then stops completely (no background polling/stutter)
         try:
-            schedule_next_sweep(0.15)
-            schedule_next_sweep(0.4)
-            schedule_next_sweep(0.8)
-            log("Periodic auto_translate sweeper loop started.")
+            import mbengine.common.Timer as Timer
+            Timer.addTimer(0.15, auto_translate_sweep)
+            Timer.addTimer(0.5, auto_translate_sweep)
+            Timer.addTimer(1.2, auto_translate_sweep)
+            log("Initial lobby auto_translate sweeps scheduled (0.15s, 0.5s, 1.2s).")
         except Exception:
             log("Timer registration error:", traceback.format_exc())
 
