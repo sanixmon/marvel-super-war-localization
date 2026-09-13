@@ -46,7 +46,7 @@ static bool set_memory_prot(void* addr, size_t len, int prot) {
     return true;
 }
 
-// Find base address of libclient.so from /proc/self/maps
+// Find base address of libclient.so from /proc/self/maps with strict ELF magic validation
 static uintptr_t get_libclient_base() {
     FILE* fp = fopen("/proc/self/maps", "r");
     if (!fp) {
@@ -61,33 +61,17 @@ static uintptr_t get_libclient_base() {
             unsigned long long offset = 0;
             if (sscanf(line, "%lx-%lx %*s %llx", &start, &end, &offset) >= 2) {
                 if (offset == 0) {
-                    base = start;
-                    LOGI("Found libclient.so base in maps: 0x%lx (line: %s)", (unsigned long)base, line);
-                    break;
+                    // Validate ELF magic: \x7fELF (0x464c457f)
+                    if (*(uint32_t*)start == 0x464c457f) {
+                        base = start;
+                        LOGI("Found valid libclient.so ELF header at: 0x%lx", (unsigned long)base);
+                        break;
+                    }
                 }
             }
         }
     }
     fclose(fp);
-
-    // Fallback if offset 0 wasn't caught
-    if (!base) {
-        fp = fopen("/proc/self/maps", "r");
-        if (fp) {
-            while (fgets(line, sizeof(line), fp)) {
-                if (strstr(line, "libclient.so") && strstr(line, "r-xp")) {
-                    uintptr_t start = 0, end = 0;
-                    if (sscanf(line, "%lx-%lx", &start, &end) == 2) {
-                        base = start;
-                        LOGW("Fallback to r-xp segment for libclient.so: 0x%lx", (unsigned long)base);
-                        break;
-                    }
-                }
-            }
-            fclose(fp);
-        }
-    }
-
     return base;
 }
 
@@ -179,17 +163,31 @@ static std::string translate_text(const std::string& text) {
 
 // Hooked cocos2d::ui::Text::setString
 static void hooked_Text_setString(void* self, const std::string& text) {
-    std::string translated = translate_text(text);
-    if (orig_Text_setString) {
-        orig_Text_setString(self, translated);
+    if (!self) return;
+    try {
+        std::string translated = translate_text(text);
+        if (orig_Text_setString) {
+            orig_Text_setString(self, translated);
+        }
+    } catch (...) {
+        if (orig_Text_setString) {
+            orig_Text_setString(self, text);
+        }
     }
 }
 
 // Hooked cocos2d::ui::Button::setTitleText
 static void hooked_Button_setTitleText(void* self, const std::string& text) {
-    std::string translated = translate_text(text);
-    if (orig_Button_setTitleText) {
-        orig_Button_setTitleText(self, translated);
+    if (!self) return;
+    try {
+        std::string translated = translate_text(text);
+        if (orig_Button_setTitleText) {
+            orig_Button_setTitleText(self, translated);
+        }
+    } catch (...) {
+        if (orig_Button_setTitleText) {
+            orig_Button_setTitleText(self, text);
+        }
     }
 }
 
@@ -197,13 +195,11 @@ static void init_dictionary() {
     g_dict.clear();
     g_sorted_pairs.clear();
 
-    // Load initial 534 pairs
     for (const auto& p : g_initial_translations) {
         g_dict[p.first] = p.second;
         g_sorted_pairs.push_back(p);
     }
 
-    // Sort by key length descending for accurate substring replacement
     std::sort(g_sorted_pairs.begin(), g_sorted_pairs.end(),
         [](const auto& a, const auto& b) {
             return a.first.length() > b.first.length();
@@ -220,7 +216,7 @@ __attribute__((constructor)) static void native_init() {
 
     g_libclient_base = get_libclient_base();
     if (!g_libclient_base) {
-        LOGE("Could not find libclient.so base address! Aborting hook to prevent crash.");
+        LOGW("Could not reliably find libclient.so ELF base address. Skipping inline hooks safely.");
         return;
     }
 
@@ -228,18 +224,34 @@ __attribute__((constructor)) static void native_init() {
 
     // Target 1: cocos2d::ui::Text::setString at offset 0xe1463c
     void* target_Text_setString = (void*)(g_libclient_base + 0xe1463c);
-    orig_Text_setString = (Text_setString_t)install_arm64_hook(
-        target_Text_setString, (void*)hooked_Text_setString);
+    uint32_t expected_text_op = 0xa9be4ff4; // stp x20, x19, [sp, #-32]!
+    uint32_t current_text_op = *(uint32_t*)target_Text_setString;
+
+    if (current_text_op == expected_text_op) {
+        orig_Text_setString = (Text_setString_t)install_arm64_hook(
+            target_Text_setString, (void*)hooked_Text_setString);
+    } else {
+        LOGW("Text::setString opcode mismatch at %p: expected 0x%08x, got 0x%08x. Skipping hook.",
+             target_Text_setString, expected_text_op, current_text_op);
+    }
 
     // Target 2: cocos2d::ui::Button::setTitleText at offset 0xde7ed4
     void* target_Button_setTitleText = (void*)(g_libclient_base + 0xde7ed4);
-    orig_Button_setTitleText = (Button_setTitleText_t)install_arm64_hook(
-        target_Button_setTitleText, (void*)hooked_Button_setTitleText);
+    uint32_t expected_btn_op = 0xd10103ff; // sub sp, sp, #0x40
+    uint32_t current_btn_op = *(uint32_t*)target_Button_setTitleText;
+
+    if (current_btn_op == expected_btn_op) {
+        orig_Button_setTitleText = (Button_setTitleText_t)install_arm64_hook(
+            target_Button_setTitleText, (void*)hooked_Button_setTitleText);
+    } else {
+        LOGW("Button::setTitleText opcode mismatch at %p: expected 0x%08x, got 0x%08x. Skipping hook.",
+             target_Button_setTitleText, expected_btn_op, current_btn_op);
+    }
 
     if (orig_Text_setString && orig_Button_setTitleText) {
         LOGI("=== All Native C++ Hooks successfully installed! ===");
     } else {
-        LOGW("Partial hook installation (Text: %p, Button: %p)",
+        LOGI("Native hook initialization completed (Text: %p, Button: %p)",
              orig_Text_setString, orig_Button_setTitleText);
     }
 }

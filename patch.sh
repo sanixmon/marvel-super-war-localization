@@ -43,7 +43,6 @@ echo -e "\n${YELLOW}[2/4] Mencari file original APK...${NC}"
 SRC_APK="$1"
 
 if [ -z "$SRC_APK" ]; then
-    # Cari di folder sekarang atau folder Download HP
     SEARCH_PATHS=(
         "./marvel_by_sfys.apk"
         "$HOME/storage/shared/Download/marvel_by_sfys.apk"
@@ -70,7 +69,6 @@ if [ ! -f "$SRC_APK" ]; then
 fi
 echo -e "${GREEN}[✓] APK sumber ditemukan: $SRC_APK${NC}"
 
-# Tentukan direktori output
 DIRNAME="$(dirname "$SRC_APK")"
 OUT_APK="$DIRNAME/marvel_english_standalone.apk"
 TMP_WORK="$DIRNAME/tmp_modding.apk"
@@ -80,12 +78,9 @@ echo -e "\n${YELLOW}[3/4] Menginjeksi file translasi & patch native...${NC}"
 echo "Menyalin APK sumber..."
 cp "$SRC_APK" "$TMP_WORK"
 
-echo "Menginjeksi lib/ dan assets/ (uncompressed)..."
+echo "Menginjeksi assets/Documents/reborn_offline.py dan lib/arm64-v8a/..."
 zip -0 -u "$TMP_WORK" \
-    assets/neox.xml \
-    assets/script/init.py \
-    assets/script/translator.py \
-    assets/script/locale_en.py \
+    assets/Documents/reborn_offline.py \
     lib/arm64-v8a/libclient.so \
     lib/arm64-v8a/liblocnative.so
 
