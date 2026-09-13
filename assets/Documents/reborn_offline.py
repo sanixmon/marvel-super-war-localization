@@ -1047,6 +1047,10 @@ def _translate(s):
     if not uni_s:
         return s
 
+    # Instant C-level ASCII check: if no characters >= 0x2e80, cannot match any Chinese entry
+    if ord(max(uni_s)) < 0x2e80:
+        return s
+
     if uni_s in _ZH_TO_EN:
         return _ZH_TO_EN[uni_s]
 
@@ -1060,11 +1064,18 @@ def _translate(s):
     if no_space in _ZH_TO_EN:
         return _ZH_TO_EN[no_space]
 
+    # Verify if any actual CJK ideograph/character is present before substring loop
+    has_cjk = any((0x3000 <= ord(c) <= 0x9fff) or (0xf900 <= ord(c) <= 0xffff) for c in uni_s)
+    if not has_cjk:
+        return s
+
     modified = False
     for zh in _SORTED_ZH_KEYS:
         if zh in uni_s:
             uni_s = uni_s.replace(zh, _ZH_TO_EN[zh])
             modified = True
+            if ord(max(uni_s)) < 0x2e80:
+                break
 
     return uni_s if modified else s
 
@@ -1124,25 +1135,31 @@ def translate_node(node):
                 pass
 
 
-def translate_tree(node, depth=0, max_depth=15):
+def translate_tree(node, depth=0, max_depth=15, visited=None):
     """Recursively traverse and translate a UI node hierarchy."""
     if not node or depth > max_depth:
         return
+    if visited is None:
+        visited = set()
+    node_id = id(node)
+    if node_id in visited:
+        return
+    visited.add(node_id)
+
     try:
         translate_node(node)
     except Exception:
         pass
 
-    collected_children = []
-
-    # 1. Inner container for Cocos2d-x ScrollView / ListView (used for hero grids, shop items, etc.)
+    # 1. Inner container for Cocos2d-x ScrollView / ListView / TableView (used for hero grids, shop items, etc.)
     for inner_fn in ("getInnerContainer", "GetInnerContainer", "get_inner_container"):
         ifn = getattr(node, inner_fn, None)
         if callable(ifn):
             try:
                 inner = ifn()
                 if inner:
-                    collected_children.append(inner)
+                    translate_tree(inner, depth + 1, max_depth, visited)
+                    break
             except Exception:
                 pass
 
@@ -1152,24 +1169,26 @@ def translate_tree(node, depth=0, max_depth=15):
         if callable(cfn):
             try:
                 ch_list = cfn()
-                if ch_list and hasattr(ch_list, "__iter__"):
-                    for c in ch_list:
-                        if c and c not in collected_children:
-                            collected_children.append(c)
+                if ch_list:
+                    found_any = False
+                    for child in ch_list:
+                        found_any = True
+                        try:
+                            if child:
+                                translate_tree(child, depth + 1, max_depth, visited)
+                        except Exception:
+                            pass
+                    if found_any:
+                        break
             except Exception:
                 pass
-
-    for child in collected_children:
-        try:
-            translate_tree(child, depth + 1, max_depth)
-        except Exception:
-            pass
 
 
 def translate_panel(panel):
     """Translate all widgets on a panel or component instance."""
     if not panel:
         return
+    visited = set()
     for attr in (
         "panel", "_panel", "root_node", "_root_node", "nod_root",
         "node", "_node", "ui_node", "_ui_node", "widget", "_widget",
@@ -1180,12 +1199,12 @@ def translate_panel(panel):
         root = getattr(panel, attr, None)
         if root:
             try:
-                translate_tree(root)
+                translate_tree(root, visited=visited)
             except Exception:
                 pass
 
     try:
-        translate_tree(panel)
+        translate_tree(panel, visited=visited)
     except Exception:
         pass
 
@@ -1200,7 +1219,7 @@ def translate_panel(panel):
                     sub_root = getattr(val, sub_attr, None)
                     if sub_root:
                         try:
-                            translate_tree(sub_root)
+                            translate_tree(sub_root, visited=visited)
                         except Exception:
                             pass
     except Exception:
@@ -1278,12 +1297,7 @@ def patch_ui_localization():
                     if self not in _ACTIVE_PANELS:
                         _ACTIVE_PANELS.append(self)
                     translate_panel(self)
-                    try:
-                        import mbengine.common.Timer as Timer
-                        Timer.addTimer(0.3, auto_translate_sweep)
-                        Timer.addTimer(0.8, auto_translate_sweep)
-                    except Exception:
-                        pass
+                    schedule_next_sweep(0.15)
                 except Exception:
                     pass
                 return res
@@ -1297,16 +1311,27 @@ def patch_ui_localization():
                     if self not in _ACTIVE_PANELS:
                         _ACTIVE_PANELS.append(self)
                     translate_panel(self)
-                    try:
-                        import mbengine.common.Timer as Timer
-                        Timer.addTimer(0.3, auto_translate_sweep)
-                        Timer.addTimer(0.8, auto_translate_sweep)
-                    except Exception:
-                        pass
+                    schedule_next_sweep(0.15)
                 except Exception:
                     pass
                 return res
             cls.show = localized_show
+
+        for update_meth in ("refresh", "refresh_panel", "update_view", "refresh_view", "update_panel"):
+            if hasattr(cls, update_meth) and not hasattr(cls, "_reborn_orig_" + update_meth):
+                orig_m = getattr(cls, update_meth)
+                def make_update_hook(orig):
+                    def localized_update(self, *args, **kwargs):
+                        r = orig(self, *args, **kwargs)
+                        try:
+                            translate_panel(self)
+                            schedule_next_sweep(0.15)
+                        except Exception:
+                            pass
+                        return r
+                    return localized_update
+                setattr(cls, "_reborn_orig_" + update_meth, orig_m)
+                setattr(cls, update_meth, make_update_hook(orig_m))
     except Exception:
         pass
 
@@ -1643,7 +1668,7 @@ def auto_translate_sweep():
     _sweep_timer_scheduled = False
     try:
         _gdata_sweep_counter += 1
-        if _gdata_sweep_counter <= 5 or _gdata_sweep_counter % 6 == 0:
+        if _gdata_sweep_counter <= 2 or _gdata_sweep_counter % 12 == 0:
             patch_gdata_translations()
 
         # 1. Sweep entire Cocos2d-x running scene graph
@@ -2730,10 +2755,15 @@ def install_frame_rate_support():
             except Exception:
                 log("save frame rate error:", traceback.format_exc())
 
+        _current_applied_rate = [None]
+
         def SetRebornFrameRate(value):
             value = int(value)
             if value not in allowed:
                 value = 60
+            if _current_applied_rate[0] == value:
+                return value
+            _current_applied_rate[0] = value
             game3d.set_frame_rate(value)
             save_rate(value)
             try:
