@@ -1,31 +1,49 @@
 # Marvel Super War — English Localization Mod & Toolkit
 *(漫威超级战争 英文本地化补丁与工具包)*
 
-[![Latest Release](https://img.shields.io/github/v/release/sanixmon/marvel-super-war-localization?color=blue&label=Mod%20Release)](https://github.com/sanixmon/marvel-super-war-localization/releases/latest)
 [![Game](https://img.shields.io/badge/Game-Marvel%20Super%20War%20(CN)-red.svg)](https://g104.163.com/)
+[![Engine: Rust ARM64](https://img.shields.io/badge/Engine-Rust%20ARM64-orange.svg)](native-rust/)
+[![Android: 15 Ready](https://img.shields.io/badge/Android%2015-16KB%20Page%20Size-brightgreen.svg)](native-rust/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![No Root Required](https://img.shields.io/badge/Root-Not%20Required-success.svg)](#quick-installation)
 
-English patch for **Marvel Super War** (`com.netease.g104.cn`) offline / custom server builds.  
-**No root required. No 3GB APK repacking.** Just copy 1 small script and play in English!
+Complete English localization and offline combat suite for **Marvel Super War** (`com.netease.g104.cn`).  
+Powered by a **Dual-Engine architecture**: **Native ARM64 Rust Trampoline Hooking** for sub-microsecond in-memory UI translation, coupled with a **Python VFS Runtime** for local server and bot match emulation.
 
 ---
 
-## 🎮 Quick Download & Installation · Unduh & Pasang
+## 🎮 Installation Methods · Cara Pemasangan
+
+Choose the installation method that best suits your setup:
+
+### 🌟 Option 1: Standalone Mod APK (1-Click Install · Recommended)
+*Best for most players. No file manager or `Android/data` access required.*
+1. Build or download the pre-patched **`marvel_english_standalone.apk`** (see [BUILD.md](BUILD.md)).
+2. Install via ADB or standard Android package installer:
+   ```bash
+   adb install -r marvel_english_standalone.apk
+   ```
+3. **Benefits:**
+   - App label displays as **`Marvel Super War`** in the launcher (searchable by typing "Marvel").
+   - **Level 4 Rust Hook (`liblocnative.so`)** activates automatically at boot.
+   - Zero configuration or manual file copying required.
+
+---
+
+### 📂 Option 2: Hot-Drop Documents (No APK Reinstall · 3-Step Setup)
+*For players who already have the base game APK installed and do not want to re-download 3 GB.*
 
 | 🇬🇧 English | 🇮🇩 Bahasa Indonesia |
 |---|---|
 | 📥 **[Download Mod Package (`mod_documents.zip`)](../../releases/latest)** | 📥 **[Unduh Paket Mod (`mod_documents.zip`)](../../releases/latest)** |
 | 📖 **[Full Installation Guide (INSTALL_EN.md)](INSTALL_EN.md)** | 📖 **[Panduan Lengkap (INSTALL_ID.md)](INSTALL_ID.md)** |
 
-### ⚡ 3-Step Setup (Cara Cepat):
-
-1. **Download** `mod_documents.zip` from the latest **[Releases](../../releases/latest)**.
-2. **Extract** the files (`reborn_offline.py` and `loc_en.json`) into the game's Documents folder (ekstrak kedua file ke folder ini):
+1. **Download** `mod_documents.zip` from **[Releases](../../releases/latest)**.
+2. **Extract** `reborn_offline.py` and `loc_en.json` to:
    ```text
    /sdcard/Android/data/com.netease.g104.cn/files/Netease/g104/Documents/
    ```
-   > 🛡️ **Anti-Overwrite Trick:** Pastikan folder kosong bernama `reborn_offline.py.tmp` ada di dalam direktori `Documents/` agar game tidak menimpa mod. Jika belum ada, buat folder baru dengan nama tersebut (panduan lengkap: [Bahasa Indonesia](INSTALL_ID.md#%EF%B8%8F-cara-membuat-folder-anti-overwrite-tmp) · [English](INSTALL_EN.md#%EF%B8%8F-how-to-create-the-anti-overwrite-folder-tmp)).
+   > 🛡️ **Anti-Overwrite Trick:** Ensure an empty folder named `reborn_offline.py.tmp` exists inside `Documents/` to prevent the game engine from replacing the mod (guide: [Bahasa Indonesia](INSTALL_ID.md#%EF%B8%8F-cara-membuat-folder-anti-overwrite-tmp) · [English](INSTALL_EN.md#%EF%B8%8F-how-to-create-the-anti-overwrite-folder-tmp)).
 3. **Launch the game!** Lobby, shop, heroes, skills, and combat will automatically load in English.
 
 ---
@@ -52,15 +70,17 @@ English patch for **Marvel Super War** (`com.netease.g104.cn`) offline / custom 
 
 ## ✨ Features · Fitur Mod
 
-- ✅ **83 Marvel Heroes Translated**: Thor, Iron Man, Spider-Man, Captain America, Thanos, dll.
-- ✅ **Complete In-Game Shop & Mall Translation**: Nama hero di shop, skin gallery, tombol beli, konfirmasi, dan filter tab.
-- ✅ **Lobby Navigation Tabs**: *Heroes*, *Equipment*, *Preparation*, *Store*, *Events*.
-- ✅ **Hero Select & Match Loading Screen**: Semua nama hero di kedua tim dalam bahasa Inggris.
-- ✅ **5,590+ Master Dictionary Coverage**: In-memory gdata patching untuk deskripsi skill, pasif, buff, dan item combat.
-- ✅ **Energy Core & Talent Presets**: *General Burst*, *Sustained Combat*, *Defense Cooldown*, *Survival Support*.
-- ✅ **Equipment Item Stats**: HP, Physical Def, Energy Power, Atk Speed, CDR, dll.
-- ✅ **Zero-Stutter Performance**: Fast C-level ASCII bypass dan child hierarchy traversal (<5ms UI sweep) menjaga FPS stabil (30–165 FPS).
-- ✅ **Safe & Non-Destructive**: Tidak mengubah APK asli, tidak butuh root, mudah di-uninstall kapan saja (cukup hapus file mod).
+- ⚡ **Native Rust ARM64 Hooking (`native-rust/`)**: Sub-microsecond $O(1)$ static hashmap lookup across 5,594+ strings, single-cycle ASCII bypass, and inline trampolines on `cocos2d::ui::Text::setString` and `Button::setTitleText`.
+- 🛡️ **Android 15+ 16KB Page-Size Compliant**: Built with `-Wl,-z,max-page-size=16384` for modern Android kernels.
+- 🏷️ **English App Launcher Label**: Patched binary `resources.arsc` renaming Chinese title `漫威超级战争` to `Marvel Super War`.
+- 🦸 **83 Marvel Heroes Translated**: Thor, Iron Man, Spider-Man, Captain America, Thanos, Magneto, Storm, Wolverine, etc.
+- 🛒 **Complete In-Game Shop & Mall Translation**: Hero names, skin galleries, purchase confirmation modals, filter tabs.
+- 🗺️ **Lobby Navigation Tabs**: *Heroes*, *Equipment*, *Preparation*, *Store*, *Events*.
+- ⚔️ **Hero Select & Match Loading Screen**: All 10 hero names translated in loading screens and battle HUD.
+- 🧬 **Energy Core & Talent Presets**: *General Burst*, *Sustained Combat*, *Defense Cooldown*, *Survival Support*.
+- 🛡️ **Equipment Item Stats**: HP, Physical Defense, Energy Attack, Attack Speed, CDR, etc.
+- 🚀 **Multi-Stage Cascade Sweeper**: Scheduled sweeps (0.05s, 0.25s, 0.60s) in Python catching dynamic animated widgets without periodic polling stutters.
+- 🔒 **Safe & Non-Destructive**: No root required, fully reversible anytime.
 
 ---
 
@@ -71,17 +91,18 @@ English patch for **Marvel Super War** (`com.netease.g104.cn`) offline / custom 
 
 <br/>
 
+**Q: Apa perbedaan memakai APK Standalone (Rust) dibanding copy file ke `Android/data`?**  
+> APK Standalone menyertakan engine native Rust ARM64 langsung di dalam game (`liblocnative.so`) dan mengubah nama ikon di HP menjadi "Marvel Super War". Teks diterjemahkan di level memori sebelum sempat digambar ke layar, menghasilkan performa tercepat (0 latency). Metode copy file hanya memakai script Python sebagai fallback.
+
 **Q: Apakah butuh HP yang sudah di-root?**  
-> Tidak! Kamu hanya butuh aplikasi file manager (seperti ZArchiver, MT Manager, atau bawaan HP) untuk menyalin file ke folder `Android/data`.
+> Tidak! Kedua metode sama sekali tidak membutuhkan akses root.
 
 **Q: Apakah game akan lag atau patah-patah?**  
-> Tidak. Versi rilis terbaru (`v1.0+`) sudah dioptimalkan tanpa background timer berulang, sehingga frame rate tetap mulus (support hingga 165 FPS).
+> Tidak. Dengan interseptor Rust ARM64, proses pencarian kata berjalan $O(1)$ (<1 mikrodetik) dengan bypass ASCII instan, menjaga gameplay mulus hingga 165 FPS.
 
 **Q: Bagaimana cara menghapus / uninstall mod?**  
-> Cukup hapus file `reborn_offline.py` dari folder `Documents/` game. Game akan kembali seperti semula.
-
-**Q: Kenapa teks kembali bahasa Mandarin setelah update resource game?**  
-> Pastikan folder `reborn_offline.py.tmp` di dalam direktori `Documents/` tidak terhapus. Folder ini mencegah engine game mendownload ulang script aslinya.
+> Untuk APK Standalone: Cukup uninstall game seperti aplikasi biasa.  
+> Untuk metode Documents: Hapus file `reborn_offline.py` dari folder `Documents/` game.
 
 </details>
 
@@ -90,47 +111,44 @@ English patch for **Marvel Super War** (`com.netease.g104.cn`) offline / custom 
 
 <br/>
 
+**Q: What is the difference between the Standalone APK (Rust) and the Documents hot-drop?**  
+> The Standalone APK embeds the compiled Rust ARM64 engine (`liblocnative.so`) and patches the Android launcher title to "Marvel Super War". Translations happen at the native C++ level before rendering. The Documents hot-drop relies on Python runtime traversal as a non-repacking fallback.
+
 **Q: Does this mod require root?**  
-> No! You only need a standard file manager (like ZArchiver or MT Manager) to paste the file into `Android/data`.
+> No! Neither method requires root access.
 
 **Q: Will this cause lag or FPS drops?**  
-> No. The production release (`v1.0+`) is fully optimized with zero background polling loops, maintaining smooth gameplay up to 165 FPS.
+> No. The Rust engine executes $O(1)$ in-memory lookups (<1 microsecond) with single-cycle ASCII bypass, preserving peak framerates up to 165 FPS.
 
 **Q: How do I uninstall the mod?**  
-> Simply delete `reborn_offline.py` from the game's `Documents/` folder.
-
-**Q: Why did text revert to Chinese after game update?**  
-> Ensure the folder `reborn_offline.py.tmp` inside `Documents/` is still intact. This folder prevents the game engine from overwriting the modded script.
+> Standalone APK: Simply uninstall the application from Android settings.  
+> Documents method: Delete `reborn_offline.py` from the `Documents/` folder.
 
 </details>
 
 ---
 
-## 🛠️ Developer & Reverse Engineering Toolkit
-
-> *Bagian ini ditujukan bagi developer, periset reverse engineering, atau kontributor yang ingin memodifikasi script dan resource.*
+## 🛠️ Developer & Architecture Toolkit
 
 <details>
-<summary><b>🔍 Technical Overview & Engine Architecture (Click to expand)</b></summary>
+<summary><b>🔍 Technical Architecture (Click to expand)</b></summary>
 
-### 1. Game Architecture
-- **Engine**: NetEase **NeoX 3D Engine** (`ppg3d` / NeoX 3.0)
-- **Core Library**: `lib/arm64-v8a/libclient.so` (C++)
-- **Scripting Runtime**: Embedded **Python 2.7.3** inside NeoX
-- **Data Tables**: `both.data.data_main.GameData` (`HeroSkinProto` with 83 heroes, `SkinProto` with 310 skins)
-- **UI Framework**: Cocos2d-x / CocosUI Python bindings (`cc.Director`, `cc.Label`, `ccui.Button`)
+### 1. Dual-Engine Breakdown
+- **Native C++/Rust Layer (`native-rust/`)**:
+  - Compiles to `lib/arm64-v8a/liblocnative.so`.
+  - Injected into `libclient.so` ELF header via `patchelf --add-needed liblocnative.so`.
+  - Installs inline ARM64 trampolines on `cocos2d::ui::Text::setString` (`0xe1463c`) and `cocos2d::ui::Button::setTitleText` (`0xde7ed4`).
+  - Hardware cache flushing via direct ARM64 instructions (`dc cvau`, `ic ivau`, `dsb ish`, `isb`).
+- **Python Scripting Layer (`assets/Documents/reborn_offline.py`)**:
+  - Embedded Python 2.7.3 inside NetEase NeoX.
+  - In-memory `GameData` patching (`HeroSkinProto` with 83 heroes, `SkinProto` with 310 skins).
+  - Offline match emulation, AI bot spawning, and energy core presets.
 
-### 2. How the Mod Works
-Instead of modifying the 3.1 GB encrypted APK, the mod hooks into the game's embedded Python runtime at boot:
-1. Reads `HeroSkinProto` and `SkinProto` tables in memory and dynamically replaces Chinese name fields with English equivalents.
-2. Intercepts CocosUI string setters (`setString`, `setTitleText`) with whitespace-tolerant Chinese dictionary lookup.
-3. Automatically unlocks offline matchmaking and AI battle slots without server authentication.
-
-### 3. Repository Documentation
+### 2. Repository Documentation
+- [BUILD.md](./BUILD.md) — Rust compilation & automated standalone APK builder guide.
 - [GLOSSARY.md](./GLOSSARY.md) — Standardized character names, abilities, roles, and menu glossary.
 - [STRINGS.csv](./STRINGS.csv) — 1,195 extracted Chinese string entries with IDs and translation contexts.
 - [RECON.md](./RECON.md) — Technical reverse-engineering report on NeoX VFS and binary structures.
-- [BUILD.md](./BUILD.md) — APK repacking & signing research guide (legacy method).
 - [PATCH.md](./PATCH.md) — Proof of concept diffs and invariant verification log.
 - [CONTRIBUTING.md](./CONTRIBUTING.md) — Contribution and translation guidelines.
 - [DISCLAIMER.md](./DISCLAIMER.md) — Legal notice and intellectual property policy.
@@ -143,3 +161,4 @@ Instead of modifying the 3.1 GB encrypted APK, the mod hooks into the game's emb
 ## ⚖️ Legal Disclaimer
 
 This project is an independent educational research and fan translation effort. It is not affiliated with, endorsed by, or sponsored by Marvel Entertainment, The Walt Disney Company, or NetEase, Inc. All game assets and trademarks belong to their respective owners. See [DISCLAIMER.md](./DISCLAIMER.md) for full details.
+
