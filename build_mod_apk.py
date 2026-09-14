@@ -21,14 +21,24 @@ KEYSTORE = os.path.expanduser("~/.android/debug.keystore")
 NATIVE_DIR = "native"
 
 
+# Auto-detect Android SDK build-tools
+for _d in (
+    "/home/kouzen/Android/Sdk/build-tools/35.0.0",
+    "/home/kouzen/Android/Sdk/build-tools/34.0.0",
+    "/home/kouzen/Android/Sdk/build-tools/36.0.0",
+):
+    if os.path.isdir(_d) and _d not in os.environ.get("PATH", ""):
+        os.environ["PATH"] = f"{_d}:{os.environ.get('PATH', '')}"
+
+
 def log(msg):
     print(f"[*] {msg}")
 
 
-def run(cmd, desc="", check=True):
+def run(cmd, desc="", check=True, cwd=None):
     if desc:
         log(desc)
-    res = subprocess.run(cmd, shell=True, capture_output=True, text=True)
+    res = subprocess.run(cmd, shell=True, capture_output=True, text=True, cwd=cwd)
     if check and res.returncode != 0:
         print(f"[!] Command failed: {cmd}")
         print(res.stderr)
@@ -64,6 +74,18 @@ def verify_source_files():
 
 
 def build_native_hook():
+    rust_dir = "native-rust"
+    if os.path.isdir(rust_dir):
+        log("Compiling native ARM64 hook library via Rust (native-rust)...")
+        run("cargo build --target aarch64-linux-android --release", "Building Rust locnative library...", cwd=rust_dir)
+        rust_so = os.path.join(rust_dir, "target/aarch64-linux-android/release/liblocnative.so")
+        if os.path.isfile(rust_so):
+            run(f"patchelf --set-soname liblocnative.so {rust_so}")
+            os.makedirs(NATIVE_DIR, exist_ok=True)
+            shutil.copyfile(rust_so, os.path.join(NATIVE_DIR, "liblocnative.so"))
+            log(f"Rust native library compiled successfully: {rust_so}")
+            return rust_so
+
     log("Compiling native C++ hook library (liblocnative.so)...")
     run("make -C native", "Building native ARM64 companion library...")
     so_path = os.path.join(NATIVE_DIR, "liblocnative.so")
@@ -106,39 +128,30 @@ def inject_native_hook(tmp_apk):
     log("Native hook injection completed.")
 
 
-def patch_arsc_if_requested(decoded_dir="apk_res_out"):
-    if not os.path.isdir(decoded_dir):
-        run(f"apktool d -s --no-assets {ORIGINAL_APK} -o {decoded_dir}", "Decoding resources with apktool (skipping assets)...")
+def patch_arsc(tmp_apk):
+    log("Patching application label in resources.arsc...")
+    with zipfile.ZipFile(tmp_apk, "r") as z:
+        arsc_data = bytearray(z.read("resources.arsc"))
 
-    log("Patching Android XML string tables...")
-    def replace_in_file(path, old, new):
-        if os.path.isfile(path):
-            with open(path, "r", encoding="utf-8") as f:
-                c = f.read()
-            if old in c:
-                c = c.replace(old, new)
-                with open(path, "w", encoding="utf-8") as f:
-                    f.write(c)
-
-    replace_in_file(f"{decoded_dir}/res/values/strings.xml", '<string name="app_name">漫威超级战争</string>', '<string name="app_name">Marvel Super War</string>')
-    replace_in_file(f"{decoded_dir}/res/values/strings.xml", '<string name="export_ef_alert_title">退出游戏</string>', '<string name="export_ef_alert_title">Exit Game</string>')
-    replace_in_file(f"{decoded_dir}/res/values/strings.xml", '<string name="export_ef_alert_message">你想要结束游戏并退出吗？</string>', '<string name="export_ef_alert_message">Do you want to exit the game?</string>')
-    replace_in_file(f"{decoded_dir}/res/values/strings.xml", '<string name="export_ef_alert_confirm">退出</string>', '<string name="export_ef_alert_confirm">Exit</string>')
-    replace_in_file(f"{decoded_dir}/res/values/strings.xml", '<string name="export_ef_alert_cancel">取消</string>', '<string name="export_ef_alert_cancel">Cancel</string>')
-    replace_in_file(f"{decoded_dir}/res/values-zh-rCN/strings.xml", '<string name="app_name">漫威超级战争</string>', '<string name="app_name">Marvel Super War</string>')
-    replace_in_file(f"{decoded_dir}/res/values-zh-rCN/strings.xml", '<string name="neox_exit_game_tip">是否要立即离开瓦坎达战场？</string>', '<string name="neox_exit_game_tip">Confirm to exit?</string>')
-    replace_in_file(f"{decoded_dir}/res/values-zh-rCN/strings.xml", '<string name="neox_exit_game_title">退出游戏</string>', '<string name="neox_exit_game_title">Exit Game</string>')
-    replace_in_file(f"{decoded_dir}/res/values-en/strings.xml", '<string name="app_name">漫威超级战争</string>', '<string name="app_name">Marvel Super War</string>')
-
-    run(f"apktool b --use-aapt2 {decoded_dir} -o tmp_rebuild.apk", "Rebuilding resources.arsc with AAPT2...")
-    run("unzip -p tmp_rebuild.apk resources.arsc > resources.arsc", "Extracting compiled resources.arsc...")
-    run("rm -f tmp_rebuild.apk")
-    return True
+    # Replace Chinese app name with 'Marvel Super War' in ARSC UTF-8 string pool
+    target = b"\x06\x12\xe6\xbc\xab\xe5\xa8\x81\xe8\xb6\x85\xe7\xba\xa7\xe6\x88\x98\xe4\xba\x89\x00"
+    replacement = b"\x10\x10Marvel Super War\x00\x00\x00"
+    if target in arsc_data:
+        idx = arsc_data.find(target)
+        arsc_data[idx:idx + len(replacement)] = replacement
+        with open("resources.arsc", "wb") as f:
+            f.write(arsc_data)
+        run(f"zip -0 -u {tmp_apk} resources.arsc", "Updating APK with patched resources.arsc...")
+        if os.path.isfile("resources.arsc"):
+            os.remove("resources.arsc")
+        log("App name successfully changed to 'Marvel Super War' in resources.arsc.")
+    else:
+        log("Target app name string not found or already patched in resources.arsc.")
 
 
 def main():
     parser = argparse.ArgumentParser(description="Marvel Super War Standalone Mod APK Builder")
-    parser.add_argument("--with-arsc", action="store_true", help="Also rebuild and inject patched Android resources.arsc")
+    parser.add_argument("--no-arsc", action="store_true", help="Skip patching Android resources.arsc")
     parser.add_argument("--no-native", action="store_true", help="Skip Level 4 native C++ hook injection")
     parser.add_argument("--out", default=OUTPUT_APK, help=f"Output APK path (default: {OUTPUT_APK})")
     args = parser.parse_args()
@@ -153,12 +166,9 @@ def main():
     log(f"Creating unaligned APK copy from {ORIGINAL_APK}...")
     shutil.copyfile(ORIGINAL_APK, tmp_apk)
 
-    # 1. Patch resources.arsc if requested
-    if args.with_arsc:
-        patch_arsc_if_requested()
-        run(f"zip -0 -u {tmp_apk} resources.arsc", "Injecting patched resources.arsc...")
-        if os.path.isfile("resources.arsc"):
-            os.remove("resources.arsc")
+    # 1. Patch resources.arsc to change app name to 'Marvel Super War'
+    if not args.no_arsc:
+        patch_arsc(tmp_apk)
 
     # 2. Inject VFS discrete files & Documents scripts
     files_to_inject = [

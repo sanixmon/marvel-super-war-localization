@@ -1650,16 +1650,17 @@ _sweep_timer_scheduled = False
 
 
 def schedule_next_sweep(delay=0.15):
-    """Schedule a single one-shot sweep on demand when a dialog/panel opens."""
-    global _sweep_timer_scheduled
-    if _sweep_timer_scheduled:
-        return
+    """Multi-stage cascade sweep on demand when a dialog or panel opens."""
     try:
         import mbengine.common.Timer as Timer
-        _sweep_timer_scheduled = True
-        Timer.addTimer(delay, auto_translate_sweep)
+        Timer.addTimer(0.05, auto_translate_sweep)
+        Timer.addTimer(0.25, auto_translate_sweep)
+        Timer.addTimer(0.60, auto_translate_sweep)
     except Exception:
-        _sweep_timer_scheduled = False
+        try:
+            auto_translate_sweep()
+        except Exception:
+            pass
 
 
 def auto_translate_sweep():
