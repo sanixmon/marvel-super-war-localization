@@ -1,8 +1,9 @@
-# Android Packages & Binaries
+# Android Packages, Artifacts & Signatures
 *.apk
 *.apks
 *.xapk
 *.idsig
+*.dex
 
 # Intermediate Resource Tables & Temporary Rebuilds
 resources.arsc
@@ -15,10 +16,27 @@ apk_res_out/
 dist/
 build/
 
+# Rust Cargo build directories
+target/
+**/target/
+
+# Native Binaries & Objects
+*.so
+**/*.so
+*.o
+*.a
+
 # Python & Environment
 __pycache__/
 *.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+.venv/
 *.keystore
+*.jks
 .agents/
 
 # Large analysis artifacts and extracted binaries
@@ -30,11 +48,19 @@ orig_resources.arsc
 dump_orig.txt
 dump_rebuilt.txt
 
-# Debug/development scripts (not released)
+# Debug/development scripts & dumps
 reborn_offline_en.py
 Screenshots/
 upload_and_link.sh
-*.so
 gdrive_link.txt
 extracted_dump/
 marvel_vfs_patch.zip
+
+# IDEs & System Files
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db

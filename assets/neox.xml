@@ -56,7 +56,6 @@
 	<profiling PerfSystem = 'False' ThreadBlockingTime = '300'/>
  	<filesystems>
 		<filesystem name='res'>
-			<loader name='discrete' opener='asset' root='res'/>
 			<loader name='npk' opener='sys' root='%DOC_DIR%\\res' depth='1'/>
 			<loader name='discrete' opener='sys' root='%DOC_DIR%\\res'/>
 
@@ -64,7 +63,6 @@
 			<loader name='discrete' opener='sys' root='%WORK_DIR%\\res'/>
 		</filesystem>
 		<filesystem name='script'>
-			<loader name='discrete' opener='asset' root='script'/>
 			<loader name='npk' opener='sys' root='%DOC_DIR%\\script' depth = '0'/>
 			<loader name='npk' opener='asset' root='script'/>
 		</filesystem>
