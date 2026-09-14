@@ -30,7 +30,25 @@ Modify one harmless user-visible UI string in the application package to verify 
 
 ## 4. Preservation Invariants Verified
 - **Bytecode Integrity**: All 6 DEX files (`classes.dex` through `classes6.dex`) preserved bit-for-bit without modification.
-- **Native Binaries**: `lib/arm64-v8a/libclient.so` and all audio/video `.so` files untouched.
+- **Native Binaries**: Audio/video engines (`libfmodex.so`, `libfmodevent.so`, etc.) remain untouched.
 - **Asset Integrity**: All 3.1 GB of `.npk` archives (`gui.npk`, `res.npk`, `script.npk`, hero packages) remain 100% intact.
 - **Alignment**: 4-byte page boundary alignment preserved via `zipalign -p -f 4`.
 - **Signatures**: Re-signed with `apksigner` (v1 + v2 + v3 scheme enabled).
+
+---
+
+## 5. Production Upgrade: Level 4 Native ARM64 Hooking (`liblocnative.so`)
+
+Building upon the initial string POC, the production engine integrates an in-memory ARM64 inline hook written in **Rust** (`native-rust/`):
+
+- **Target Binary**: `lib/arm64-v8a/libclient.so` (version 3.22.2)
+- **ELF Header**: Injected `DT_NEEDED liblocnative.so` via `patchelf`.
+- **Hook Targets**:
+  - `cocos2d::ui::Text::setString(const std::string&)` at `0xe1463c`
+  - `cocos2d::ui::Button::setTitleText(const std::string&)` at `0xde7ed4`
+- **Trampoline Mechanism**:
+  - ARM64 `ldr x16, #8; br x16` absolute register indirect jump.
+  - Hardware cache synchronization via `dc cvau`, `ic ivau`, `dsb ish`, and `isb`.
+  - Android 15 16KB page-size aligned (`-Wl,-z,max-page-size=16384`).
+- **Dictionary**: 5,594+ static entries with single-cycle ASCII bypass and $O(1)$ static hashmap lookup (< 1 µs latency).
+- **Physical Verification**: Confirmed functional on POCO F5 (Android 14 / HyperOS) with zero crashes, rendering English strings directly on first draw call.

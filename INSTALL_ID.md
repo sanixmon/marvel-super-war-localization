@@ -6,28 +6,54 @@
 
 ---
 
-## Persyaratan
+## Pilihan Metode Pemasangan
 
-| Kebutuhan | Detail |
-|-----------|--------|
-| Game | Marvel Super War (CN) versi offline/modded |
-| Runtime | Python 2.7.3 tertanam di engine NeoX |
-| Akses | Izin baca/tulis ke folder Documents game |
-| Tidak perlu | Root, APK repack, atau koneksi internet |
+Tersedia **2 cara pemasangan**:
+1. **[Metode 1: Standalone Mod APK (Paling Mudah · Rekomendasi)](#-metode-1-standalone-mod-apk-rekomendasi-utama)** — Cukup 1x install APK, nama di launcher menjadi *"Marvel Super War"*, dan modul native Rust langsung aktif.
+2. **[Metode 2: Manual Documents (Hot-Drop)](#-metode-2-manual-hot-drop-documents)** — Untuk yang sudah punya APK dan tidak ingin mengunduh ulang 3 GB.
 
 ---
 
-## Langkah Pemasangan
+## 🌟 Metode 1: Standalone Mod APK (Rekomendasi Utama)
 
-**1. Unduh paket mod**
+Metode ini adalah cara termudah karena **tidak membutuhkan akses ke folder `Android/data`** yang sering diblokir oleh Android 11+.
 
+### Keunggulan:
+- ⚡ **Native Rust ARM64 Hook**: Terjemahan berjalan di memori RAM ($O(1)$) dengan kecepatan native C/Rust tanpa lag.
+- 🏷️ **Nama Bahasa Inggris di Launcher**: Ikon di HP otomatis bernama **`Marvel Super War`** (bisa dicari di launcher dengan kata kunci *"Marvel"*).
+- 🛡️ **Siap untuk Android 15**: Mendukung ukuran halaman memori 16KB.
+
+### Langkah Pasang:
+1. Unduh atau bangun file **`marvel_english_standalone.apk`** (lihat [BUILD.md](BUILD.md)).
+2. Pasang APK ke perangkat Android Anda:
+   - **Lewat Komputer (ADB)**:
+     ```bash
+     adb install -r marvel_english_standalone.apk
+     ```
+   - **Lewat HP Langsung**: Salin file APK ke memori HP (via USB/KDE Connect/Google Drive), lalu buka file APK di File Manager untuk memasangnya.
+3. Buka game dan langsung mainkan dalam bahasa Inggris!
+
+---
+
+## 📂 Metode 2: Manual Hot-Drop Documents
+
+Gunakan metode ini jika Anda sudah memiliki game versi asli terpasang dan hanya ingin menaruh script mod tanpa menginstal ulang file APK 3 GB.
+
+### Persyaratan
+| Kebutuhan | Detail |
+|---|---|
+| Game | Marvel Super War (CN) versi offline/modded |
+| Runtime | Python 2.7.3 tertanam di engine NeoX |
+| Akses | Izin baca/tulis ke folder Documents game |
+| Tidak perlu | Root atau koneksi internet |
+
+### Langkah Pemasangan:
+**1. Unduh paket mod**  
 Download file **`mod_documents.zip`** dari halaman **[Releases](../../releases)** terbaru.
 
-**2. Salin ke perangkat**
-
+**2. Salin ke perangkat**  
 Ekstrak kedua file (`reborn_offline.py` dan `loc_en.json`) ke path folder Documents berikut di HP kamu:
-
-```
+```text
 /sdcard/Android/data/com.netease.g104.cn/files/Netease/g104/Documents/
 ```
 
