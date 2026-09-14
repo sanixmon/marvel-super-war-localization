@@ -6,28 +6,54 @@
 
 ---
 
-## Requirements
+## Installation Options
 
-| Requirement | Details |
-|-------------|---------|
-| Game | Marvel Super War (CN) offline/modded build |
-| Runtime | Python 2.7.3 embedded in NeoX engine |
-| Access | Read/write permission to the game's Documents folder |
-| Not required | Root, APK repacking, or internet connection |
+Choose between **2 installation methods**:
+1. **[Option 1: Standalone Mod APK (Easiest · Recommended)](#-option-1-standalone-mod-apk-recommended)** — 1-click APK installation with built-in Rust native engine and English launcher label.
+2. **[Option 2: Manual Hot-Drop Documents](#-option-2-manual-hot-drop-documents)** — Non-repacking method for players who already have the 3 GB APK installed.
 
 ---
 
-## Installation Steps
+## 🌟 Option 1: Standalone Mod APK (Recommended)
 
-**1. Download the mod package**
+This is the easiest method and **does not require access to `Android/data`**, which is restricted on Android 11+.
 
+### Key Advantages:
+- ⚡ **Native Rust ARM64 Hook**: Sub-microsecond in-memory $O(1)$ translation before UI draw calls.
+- 🏷️ **English Launcher Name**: Icon title automatically displays as **`Marvel Super War`** (searchable by typing *"Marvel"* in your launcher).
+- 🛡️ **Android 15 Ready**: Supports 16KB memory page sizes.
+
+### Installation Steps:
+1. Download or build **`marvel_english_standalone.apk`** (see [BUILD.md](BUILD.md)).
+2. Install the APK onto your Android device:
+   - **Via Computer (ADB)**:
+     ```bash
+     adb install -r marvel_english_standalone.apk
+     ```
+   - **Directly on Device**: Transfer the APK to your phone storage (USB / KDE Connect / Drive) and install it using your file manager.
+3. Open the game and play in English!
+
+---
+
+## 📂 Option 2: Manual Hot-Drop Documents
+
+Use this method if you already have the game installed and prefer not to re-download or reinstall a 3 GB APK.
+
+### Requirements
+| Requirement | Details |
+|---|---|
+| Game | Marvel Super War (CN) offline/modded build |
+| Runtime | Python 2.7.3 embedded in NeoX engine |
+| Access | Read/write permission to the game's Documents folder |
+| Not required | Root or internet connection |
+
+### Installation Steps:
+**1. Download the mod package**  
 Download **`mod_documents.zip`** from the latest **[Releases](../../releases)** page.
 
-**2. Copy to device**
-
+**2. Copy to device**  
 Extract both files (`reborn_offline.py` and `loc_en.json`) to this exact directory on your device:
-
-```
+```text
 /sdcard/Android/data/com.netease.g104.cn/files/Netease/g104/Documents/
 ```
 
